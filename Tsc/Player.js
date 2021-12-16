@@ -6,7 +6,7 @@ class player {
         this.matricule = matricule;
         this.marblesBet = 0;
     }
-    getNumber() {
+    getMatricule() {
         return "001";
     }
     ;

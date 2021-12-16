@@ -11,7 +11,7 @@ class player {
         this.marblesBet = 0;
     }
 
-    getNumber(): string {
+    getMatricule(): string {
         return "001";
     };
 
