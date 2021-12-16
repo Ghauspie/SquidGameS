@@ -27,7 +27,7 @@ function remainingMarbles() {
 // function pair ou impair
 
 function evenOrOdd() {
-    let marblesNbr = getMarblesNbr();
+    let marblesNbr: number = getMarblesNbr();
     if (marblesNbr % 2 === 0) {
         return true; 
     } else {

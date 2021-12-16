@@ -1,9 +1,9 @@
 "use strict";
 class player {
-    constructor(playerName, playerNumber) {
+    constructor(playerName, matricule) {
         this.marbles = 10; //Chaque joueur a 10 billes au départ
         this.name = playerName;
-        this.number = playerNumber;
+        this.matricule = matricule;
         this.marblesBet = 0;
     }
     getNumber() {
