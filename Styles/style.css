@@ -75,7 +75,7 @@
     -moz-border-radius : 50px;
     -webkit-border-radius : 50px;
     border: var(--color-pink-white) solid 15px;
-    border-radius : 50px;  /* ou 50% */
+    border-radius : 100px;  /* ou 50% */
     background: transparent;
   }
 
