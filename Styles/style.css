@@ -4,6 +4,7 @@
      --color-white:#ffffff;
      --color-bleu-green:#249f9c;
      --color-green:#037a76 ;
+     --color-gold:#d4af37;
 
      --background-url:"../Pictures/SquidGameBG.jpg";
 
@@ -21,18 +22,19 @@
       font-family: SquidGame;
       font-size: var(--size-h1);
   }
+  h3{
+    background-color: transparent;
+    margin: auto;
+    font-size: var(--size-h3);
+    color: var(--color-bleu-green);
+    font-weight: bolder;
+}
   body{
       background-image:url("../Pictures/SquidGameBG.jpg");
       background-repeat: no-repeat;
       background-size: cover;
   }
-  h3{
-      background-color: transparent;
-      margin: auto;
-      font-size: var(--size-h3);
-      color: var(--color-bleu-green);
-      font-weight: bolder;
-  }
+
 
     /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -158,11 +160,79 @@
     }
     .button button {
         margin-right: 10%;
-        background: transparent;
-        border: solid 10px var(--color-pink-white);
+        background: var(--color-gold);
+       background-image: url(../Pictures/CardsquidGame.png);
        width: 100%;
        margin-bottom: 10%;
        font-size: 1.3em;
+       height: 8vh;
     }
 
-    #Goplay
+
+          /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Page Name Player                                         ////
+  ///                                partie input                                             ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+  .inputplayer{
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 10%;
+      flex-direction: row;
+  }
+  .inputplayer input{
+      margin-right: 5%;
+  }
+  #Goplay{
+    margin: 2% 40%;
+  }
+
+            /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Footer                                                   ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+  footer{
+      display: flex;
+      margin-top: 30%;
+    flex-direction: row;
+      height: 4vh;
+      background-color: var(--color-green);
+      justify-content: space-between;
+      align-items: center;
+  }
+  .nameFooter{
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      margin-left: 2%;
+      width: 80%;
+  }
+  .nameFooter p{
+      margin-right: 1%;
+  }
+  ul {
+      display: flex;
+      flex-direction: row;
+  }
+  li {
+      margin-right: 4%;
+  }
+  .lien {
+      margin-right: 2%;
+  }

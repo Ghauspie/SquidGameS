@@ -40,11 +40,15 @@
                  </button>
                 <button id="multiplayers" onclick="SelectNumberPlayer(value)" value="multiplayers">Multijoueurs</button>
             </div>
-            <div>
-                <p id="Name1" class="hidden">Quel est votre nom joueur ?</p>
+            <div class="inputplayer">
+                <div>
+                    <p id="Name1" class="hidden">Quel est votre nom joueur matricule  temporaire 1 ?</p>
                     <input type="text" id="username1" class="hidden">
-                <p id="Name2" class="hidden">Quel est votre nom joueur ?</p>
+                </div>
+                <div>
+                    <p id="Name2" class="hidden">Quel est votre nom joueur matricule temporaire 2 ?</p>
                     <input type="text" id="username2" class="hidden">  
+                </div>
             </div>
             <button id="Goplay" onclick="goplay()">Go play for my life</button>
         </section>
@@ -61,7 +65,18 @@
         </section>
 
     </main>
-    <footer>Netflix</footer>
+    <footer>
+        <div class="nameFooter">
+            <p>Created by : </p>
+            <ul>
+                <li>Ghauspie</li>
+                <li>JC</li>
+                <li>HG</li>
+            </ul>
+        </div>
+        <div class="lien">
+            <a href="">Netflix</a> 
+        </div></footer>
     <script src="./Tsc/Game.js"></script>
     <script src="./Tsc/IA.js"></script>
     <script src="./Tsc/Player.js"></script>

@@ -30,8 +30,9 @@ class player {
         return (this.marbles <= 0);
     }
 
-
+    
 }
+
 
 //Exemples d'utilisation
 // let p1 = new player("hervé", 1);
