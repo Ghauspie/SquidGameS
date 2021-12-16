@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.player = void 0;
 /**
  * Classe représentant un joueur.
  */
@@ -73,6 +75,7 @@ class player {
         return (this.marbles <= 0);
     }
 }
+exports.player = player;
 //Exemples d'utilisation
 // let p1 = new player("hervé", 1);
 // let p2 = new player("jc", 456);
