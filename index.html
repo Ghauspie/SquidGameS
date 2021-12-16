@@ -6,40 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=*, initial-scale=1.0">
     <title>Squid Game: play or death</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Styles/reset.css">
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
 
 <body>
     <nav>
         <h1>Squid Game: Marbles</h1>
-        <button id="backToHomePage">Retour</button>
+        <button id="backToHomePage" class="fas fa-hotel">Retour</button>
     </nav>
     <main>
         <section id="homePage">
-            <button id="rules">Régles</button>
-            <button id="start">Start</button>
-            <button id="hallOfFame">Meilleurs joueurs</button>
+            <button id="rules" onclick="">
+                Régles
+            </button>
+            <button id="start" onclick="StartPlayer()">
+                Start
+            </button>
+            <button id="hallOfFame" onclick="">Meilleurs joueurs</button>
         </section>
-        <section id="selectPlayers">
+        <section id="selectPlayers" class="hidden">
             <button id="solo">Solo</button>
             <button id="multiplayers">Multijoueurs</button>
             <input type="text" id="username1">
             <input type="text" id="username2">
         </section>
-        <section id="gameChoice">
+        <section id="gameChoice" class="hidden">
             <input type="number" id="numberOfMarbles">
             <button id="validateChoice">Valider</button>
         </section>
-        <section id="gameGuess">   
+        <section id="gameGuess" class="hidden">    
             <button id="even">Pair</button>
             <button id="odd">Impair</button>
         </section>
-        <section id="changingPlayer">
+        <section id="changingPlayer"class="hidden">
             <button id="myTurn">Je suis prêt!</button>
         </section>
 
     </main>
     <footer>Netflix</footer>
+    <script src="./Tsc/Game.js"></script>
+    <script src="./Tsc/IA.js"></script>
+    <script src="./Tsc/Player.js"></script>
 </body>
 
 </html>

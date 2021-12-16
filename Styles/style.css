@@ -1,3 +1,16 @@
+:root {
+     --color-pink:#ed1b76; 
+     --color-pink-white: #f44786;
+     --color-white:#ffffff;
+     --color-bleu-green:#249f9c;
+     --color-green:#037a76 ;
+
+     --background-url:"../Pictures/SquidGameBG.jpg";
+
+    --size-h1:1.8em;
+    --size-btn:1em;
+}
+
 @font-face {
     font-family: SquidGame;
     src: url("../font/Game\ Of\ Squids.ttf");
@@ -5,4 +18,104 @@
 
   h1 {
       font-family: SquidGame;
+      font-size: var(--size-h1);
   }
+  body{
+      background-image:url("../Pictures/SquidGameBG.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+
+    /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Nav                                                      ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+  nav{
+      background-color:var(--color-pink) 	 ;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row-reverse;
+      height: 5vh;
+  }
+
+  #backToHomePage{
+      background-color: transparent;
+      background-image: url("../Pictures/house.png");
+  }
+
+      /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Button Squid Game                                        ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+
+  /* button rond */
+  #rules{
+    width : 200px;
+    height : 200px;
+/*     background : var(--color-pink-white); */
+    -moz-border-radius : 50px;
+    -webkit-border-radius : 50px;
+    border: var(--color-pink-white) solid 15px;
+    border-radius : 50px;  /* ou 50% */
+    background: transparent;
+  }
+
+
+  /* button triangle */
+  #start {
+
+    width:200px;
+    border-bottom:solid 150px var(--color-pink-white);
+    border-right:solid 120px transparent;
+    border-left:solid 120px transparent;
+    background-color: transparent;
+}
+
+/* button carre */
+#hallOfFame{
+    width: 200px;
+    height: 200px;
+    border: var(--color-pink-white) solid 15px;
+    background: transparent;
+}
+
+      /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Button Squid Game                                        ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#homePage{
+    margin-top: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.hidden{
+    display: none;
+}
