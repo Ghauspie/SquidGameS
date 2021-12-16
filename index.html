@@ -28,11 +28,11 @@
         </section>
         <section id="gameChoice">
             <input type="number" id="numberOfMarbles">
-            <button id="validateChoice" onclick="getMarblesNbr()">Valider</button>
+            <button id="validateChoice" onclick="game()">Valider</button>
         </section>
         <section id="gameGuess">   
-            <button id="even">Pair</button>
-            <button id="odd">Impair</button>
+            <button id="even" onclick="selectEvenOrOdd(0)">Pair</button>
+            <button id="odd" onclick="selectEvenOrOdd(1)">Impair</button>
         </section>
         <section id="changingPlayer">
             <button id="myTurn">Je suis prêt!</button>
@@ -41,6 +41,8 @@
     </main>
     <footer>Netflix</footer>
     <script src="./Tsc/Game.js"></script>
+    <script src="./Tsc/Player.js"></script>
+    <script src="./Tsc/IA.js"></script>
 </body>
 
 </html>
