@@ -26,10 +26,11 @@
             <button id="hallOfFame" onclick="">Meilleurs joueurs</button>
         </section>
         <section id="selectPlayers" class="hidden">
-            <button id="solo"onclick="SelectNumberPlayer()">Solo</button>
-            <button id="multiplayers" onclick="SelectNumberPlayer()">Multijoueurs</button>
+            <button id="solo" onclick="SelectNumberPlayer(value)" value="solo">Solo</button>
+            <button id="multiplayers" onclick="SelectNumberPlayer(value)" value="multiplayers">Multijoueurs</button>
             <input type="text" id="username1" class="hidden">
             <input type="text" id="username2" class="hidden">
+            <button id="Goplay" onclick="goplay()">Go play for my life</button>
         </section>
         <section id="gameChoice" class="hidden">
             <input type="number" id="numberOfMarbles">
@@ -48,6 +49,7 @@
     <script src="./Tsc/Game.js"></script>
     <script src="./Tsc/IA.js"></script>
     <script src="./Tsc/Player.js"></script>
+    <script src="./Tsc/Page.js"></script>
 </body>
 
 </html>

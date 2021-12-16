@@ -1,27 +1,9 @@
-<<<<<<< HEAD
-let name: string;
-let matricule:number;
-
-
-function StartPlayer(){
-    let selectPlayerDisplay:any;
-    let index:any;
-    index=document.getElementById('homePage');
-    index.style.display="none";
-    selectPlayerDisplay=document.getElementById('selectPlayers');
-    selectPlayerDisplay.removeAttribute('class','hidden');
-    console.log("test start");
-}
-
-function SelectNumberPlayer(){
-
-}
-=======
 class player {
     marbles: number;
     name: string;
     private matricule: number;
     private marblesBet: number;
+    
 
     constructor(playerName: string, matricule: number) {
         this.marbles = 10; //Chaque joueur a 10 billes au départ
@@ -48,6 +30,7 @@ class player {
         return (this.marbles <= 0);
     }
 
+
 }
 
 //Exemples d'utilisation
@@ -58,4 +41,3 @@ class player {
 // if (p2.guess(true, p1)) {
 //     console.log("p2 a bien deviné un nombre pair et gagne" + p1.marbles);
 // };s
->>>>>>> origin/JC
