@@ -17,6 +17,7 @@ class player {
 
     bet(marbles: number): void {
         this.marblesBet = marbles;
+        
     }
 
     guess(pair: boolean, player2: player): boolean {
@@ -25,7 +26,7 @@ class player {
     }
 
     isDead() : boolean {
-        return this.marbles <= 0;
+        return (this.marbles <= 0);
     }
 
 }
