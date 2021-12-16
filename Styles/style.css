@@ -161,11 +161,16 @@
     .button button {
         margin-right: 10%;
         background: var(--color-gold);
-       background-image: url(../Pictures/CardsquidGame.png);
+       background-image: url("../Pictures/CardsquidGame.png");
        width: 100%;
        margin-bottom: 10%;
-       font-size: 1.3em;
+       font-size: 1.5em;
        height: 8vh;
+       background-repeat: no-repeat;
+       background-size: 100%;
+       background-position: center;
+       color: var(--color-white);
+       font-weight: bolder;
     }
 
 
