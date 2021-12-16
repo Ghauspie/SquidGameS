@@ -9,6 +9,7 @@
 
     --size-h1:1.8em;
     --size-btn:1em;
+    --size-h3:2.7em;
 }
 
 @font-face {
@@ -24,6 +25,13 @@
       background-image:url("../Pictures/SquidGameBG.jpg");
       background-repeat: no-repeat;
       background-size: cover;
+  }
+  h3{
+      background-color: transparent;
+      margin: auto;
+      font-size: var(--size-h3);
+      color: var(--color-bleu-green);
+      font-weight: bolder;
   }
 
     /*
@@ -84,11 +92,17 @@
   #start {
 
     width:200px;
-    border-bottom:solid 150px var(--color-pink-white);
+/*     border-bottom:solid 150px var(--color-pink-white);
     border-right:solid 120px transparent;
     border-left:solid 120px transparent;
+    background-color: transparent; */
+    background-image: url("../Pictures/TSG2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     background-color: transparent;
+    border: transparent;
 }
+
 
 /* button carre */
 #hallOfFame{
@@ -119,3 +133,36 @@
 .hidden{
     display: none;
 }
+
+      /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Page Name Player                                         ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+    #selectPlayers{
+        margin-top: 10%;
+        margin-left: 15%;
+        margin-right: 10%;
+    }
+
+    .button{
+
+        display: flex;
+    }
+    .button button {
+        margin-right: 10%;
+        background: transparent;
+        border: solid 10px var(--color-pink-white);
+       width: 100%;
+       margin-bottom: 10%;
+       font-size: 1.3em;
+    }
+
+    #Goplay

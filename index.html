@@ -18,18 +18,34 @@
     <main>
         <section id="homePage">
             <button id="rules" onclick="">
-                Régles
+                <h3>
+                    Régles
+                </h3>
+                
             </button>
             <button id="start" onclick="StartPlayer()">
-                Start
+                <div id="intTri">
+                    <h3>Start</h3> 
+                </div>
+               
             </button>
-            <button id="hallOfFame" onclick="">Meilleurs joueurs</button>
+            <button id="hallOfFame" onclick=""><h3>
+                Meilleurs joueurs
+            </h3> </button>
         </section>
         <section id="selectPlayers" class="hidden">
-            <button id="solo" onclick="SelectNumberPlayer(value)" value="solo">Solo</button>
-            <button id="multiplayers" onclick="SelectNumberPlayer(value)" value="multiplayers">Multijoueurs</button>
-            <input type="text" id="username1" class="hidden">
-            <input type="text" id="username2" class="hidden">
+            <div  class="button">
+                <button id="solo" onclick="SelectNumberPlayer(value)" value="solo"><i class="far fa-user"></i>
+                    Solo
+                 </button>
+                <button id="multiplayers" onclick="SelectNumberPlayer(value)" value="multiplayers">Multijoueurs</button>
+            </div>
+            <div>
+                <p id="Name1" class="hidden">Quel est votre nom joueur ?</p>
+                    <input type="text" id="username1" class="hidden">
+                <p id="Name2" class="hidden">Quel est votre nom joueur ?</p>
+                    <input type="text" id="username2" class="hidden">  
+            </div>
             <button id="Goplay" onclick="goplay()">Go play for my life</button>
         </section>
         <section id="gameChoice" class="hidden">

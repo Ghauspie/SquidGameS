@@ -25,13 +25,16 @@ function SelectNumberPlayer(chooseP) {
     if (versionplayer === "solo") {
         displayname = document.getElementById('username1');
         displayname.removeAttribute('class', 'hidden');
+        document.getElementById('Name1').removeAttribute('class');
         return versionplayer;
     }
     else {
         displayname = document.getElementById('username1');
         displayname.removeAttribute('class', 'hidden');
+        document.getElementById('Name1').removeAttribute('class');
         displayname = document.getElementById('username2');
         displayname.removeAttribute('class', 'hidden');
+        document.getElementById('Name2').removeAttribute('class');
         return versionplayer;
     }
 }

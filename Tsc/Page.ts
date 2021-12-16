@@ -25,13 +25,16 @@ class Page{
         if(versionplayer==="solo"){
             displayname=document.getElementById('username1');
             displayname.removeAttribute('class','hidden');
+            document.getElementById('Name1').removeAttribute('class') as HTMLElement ;
             return versionplayer;
         }
         else {
             displayname=document.getElementById('username1');
             displayname.removeAttribute('class','hidden');
+            document.getElementById('Name1').removeAttribute('class') as HTMLElement ;
             displayname=document.getElementById('username2');
             displayname.removeAttribute('class','hidden');
+            document.getElementById('Name2').removeAttribute('class') as HTMLElement ;
             return versionplayer;
         }
    
@@ -45,6 +48,7 @@ class Page{
         if(versionplayer==="solo")
         {
             player1=document.getElementById('username1').value;
+            
             localStorage.setItem('name1',player1);
         }
         else{
