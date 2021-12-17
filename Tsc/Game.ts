@@ -1,11 +1,14 @@
 let marblesInput = (<HTMLInputElement>document.getElementById('numberOfMarbles'));
+let evenInput = (<HTMLInputElement>document.getElementById('even'));
+let oddInput = (<HTMLInputElement>document.getElementById('odd'));
 
 // selectionner le nombre bille 
 let marblesNbr: number = 0
 let PlayerRemainingMarbles: number = 10;
 let IARemainingMarbles: number = 10;
-let playerTurn: string = "player1";
 let marblesBet: number;
+let playerTurn: string = "player1";
+let evenOrOddChoice: string = '';
 
 function game() {
     let marblesBet: number = getMarblesNbr()
@@ -28,21 +31,16 @@ function getMarblesNbr() {
     return marblesNbr;
 }
 
-// function bille restantes
-
-function remainingMarbles() {
-
-}
-
 // function pair ou impair
-let evenInput = (<HTMLInputElement>document.getElementById('even'));
-let oddInput = (<HTMLInputElement>document.getElementById('odd'));
-let evenOrOddChoice: string = '';
 
 function selectEvenOrOdd(choice: number) {
     let marblesBet: number = getMarblesNbr()
     if(PlayerRemainingMarbles <= 0){
+        PlayerRemainingMarbles = 0;
         console.log("Game OVER");     
+    } else if (PlayerRemainingMarbles >= 20){
+        PlayerRemainingMarbles = 20;
+        console.log("Vous avez gagné");
     } else {
         if (getMarblesNbr() == 0) {
             console.log("veuillez choisir un nombre de bille à parier");
@@ -55,11 +53,19 @@ function selectEvenOrOdd(choice: number) {
                     IARemainingMarbles -= marblesBet;
                     console.log("Nombre de billes restantes:", PlayerRemainingMarbles);
                     console.log("gagné");
+                    if(PlayerRemainingMarbles >= 20){
+                        PlayerRemainingMarbles = 20;
+                        console.log("Vous avez gagné");     
+                    }
                 } else {
                     PlayerRemainingMarbles -= marblesBet;
                     IARemainingMarbles += marblesBet;
                     console.log("Nombre de billes restantes:", PlayerRemainingMarbles);
                     console.log("perdu");
+                    if(PlayerRemainingMarbles <= 0){
+                        PlayerRemainingMarbles = 0;
+                        console.log("Game OVER");     
+                    }
                 }
             } else if (choice == 1) {
                 let evenOrOddChoice = "odd";
@@ -69,12 +75,20 @@ function selectEvenOrOdd(choice: number) {
                     IARemainingMarbles += marblesBet;
                     console.log("Nombre de billes restantes:", PlayerRemainingMarbles);
                     console.log("perdu");
+                    if(PlayerRemainingMarbles <= 0){
+                        PlayerRemainingMarbles = 0;
+                        console.log("Game OVER");     
+                    }
     
                 } else {
                     PlayerRemainingMarbles += marblesBet;
                     IARemainingMarbles -= marblesBet;
                     console.log("Nombre de billes restantes:", PlayerRemainingMarbles);
                     console.log("gagné");
+                    if(PlayerRemainingMarbles >= 20){
+                        PlayerRemainingMarbles = 20;
+                        console.log("Vous avez gagné");     
+                    }
                 }
                 return evenOrOddChoice;
             }
@@ -93,6 +107,12 @@ function evenOrOdd() {
 
 
 // Ia function random nombre de bille
+
+function IA(){   
+    if(playerTurn == "IA"){
+        
+    }
+}
 
 function randomMarblesNumber() {
     let randomMarbles: number = Math.floor(Math.random() * 20)

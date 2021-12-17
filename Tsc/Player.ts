@@ -1,7 +1,8 @@
 /**
  * Classe représentant un joueur.
  */
-class player {
+
+export class player {
     marbles: number;
     name: string;
     private matricule: number;
@@ -33,10 +34,10 @@ class player {
      * @param marbles le nombre de billes misées
      */
     bet(marbles: number): void {
-        if( marbles > this.marbles ) {
+        if (marbles > this.marbles) {
             throw new Error(`Le nombre de billes pariées (${marbles}) est supérieur au nombre de billes restantes (${this.marbles}).`);
         }
-        if( marbles <= 0 ) {
+        if (marbles <= 0) {
             throw new Error("Le nombre de billes misées doit être supérieur ou égal à 0 !")
         }
         this.marblesBet = marbles;
@@ -49,17 +50,17 @@ class player {
      * @param player2 le joueur dont on doit deviner la mise (marblesBet)
      * @returns vrai si bien deviné (gain), faux sinon (perte)
      */
-    guess(choice : "pair" | "impair", player2: player): boolean {
-        if( player2.marblesBet == 0 ) {
+    guess(choice: "pair" | "impair", player2: player): boolean {
+        if (player2.marblesBet == 0) {
             throw new Error(`Le player2 (matricule ${player2.getMatricule()}) n'a pas misé de billes !`);
         }
         let victoire: boolean;
-        if( choice == "pair" ) {
-            victoire = ( player2.marblesBet % 2 == 0 );
+        if (choice == "pair") {
+            victoire = (player2.marblesBet % 2 == 0);
         } else {
-            victoire = ( player2.marblesBet % 2 != 0 );
+            victoire = (player2.marblesBet % 2 != 0);
         }
-        if( victoire ) {
+        if (victoire) {
             player2.marbles -= player2.marblesBet;
             this.marbles += player2.marblesBet; //le joueur gagne les billes misées
         } else {
@@ -74,7 +75,7 @@ class player {
      * 
      * @returns true si le player n'a plus de billes, false sinon.
      */
-    isDead() : boolean {
+    isDead(): boolean {
         return (this.marbles <= 0);
     }
 

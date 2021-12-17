@@ -2,6 +2,8 @@
 /**
  * Classe représentant un joueur.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.player = void 0;
 class player {
     /**
      * Constructeur de la classe. Le joueur reçoit 10 billes.
@@ -73,6 +75,7 @@ class player {
         return (this.marbles <= 0);
     }
 }
+exports.player = player;
 //Exemples d'utilisation
 // let p1 = new player("hervé", 1);
 // let p2 = new player("jc", 456);
