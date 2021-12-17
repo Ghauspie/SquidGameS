@@ -140,6 +140,8 @@ function BackHome() {
     }
 }
 function displayRule() {
+    let DialogModal = document.getElementById('DialogModal').showModal();
+    console.log('test');
 }
 
 },{}],3:[function(require,module,exports){
