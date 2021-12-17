@@ -7,6 +7,7 @@ export class player {
     name: string;
     private matricule: number;
     private marblesBet: number;
+    
 
     /**
      * Constructeur de la classe. Le joueur reçoit 10 billes.
@@ -79,7 +80,9 @@ export class player {
         return (this.marbles <= 0);
     }
 
+    
 }
+
 
 //Exemples d'utilisation
 // let p1 = new player("hervé", 1);
