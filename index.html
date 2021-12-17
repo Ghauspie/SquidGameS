@@ -8,9 +8,8 @@
     <title>Squid Game Marbles</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="stylesheet" href="./Styles/style.css">
-    <script>var exports = {};</script>
-    <!--script src="./Tsc/Player.js" type="module" defer></script-->    
-    <script src="./Tsc/bundle.js"></script>
+    <link rel="stylesheet" href="./Styles/marbles.css">  
+    <script src="./Tsc/bundle.js" defer></script>
 </head>
 
 <body>
@@ -31,11 +30,15 @@
             <input type="text" id="username2">
         </section>
         <section id="gameChoice">
+            <h2>CHOISIR LE NOMBRE DE BILLES A MISER</h2>
             <input type="number" id="numberOfMarbles">
+            <button id="testMarbles">Test marbles</button>
             <button id="validateChoice">Valider</button>
+            <br>
+            <div id="btnMarbles" class="hover15"></div>
         </section>
         <section id="gameGuess">   
-            <button id="even">Pair</button>
+            <button id="even"><span class="big">1</span>Pair<span class="big">2</span></button>
             <button id="odd">Impair</button>
         </section>
         <section id="changingPlayer">
