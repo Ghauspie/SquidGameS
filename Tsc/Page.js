@@ -1,6 +1,4 @@
 "use strict";
-class Page {
-}
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;

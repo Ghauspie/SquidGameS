@@ -1,4 +1,4 @@
-import {player} from  './Player';
+import { player } from './Player';
 
 // let marblesInput = (<HTMLInputElement>document.getElementById('numberOfMarbles'));
 // let evenInput = (<HTMLInputElement>document.getElementById('even'));
@@ -81,7 +81,7 @@ import {player} from  './Player';
 //                         PlayerRemainingMarbles = 0;
 //                         console.log("Game OVER");     
 //                     }
-    
+
 //                 } else {
 //                     PlayerRemainingMarbles += marblesBet;
 //                     IARemainingMarbles -= marblesBet;
@@ -112,7 +112,7 @@ import {player} from  './Player';
 
 // function IA(){   
 //     if(playerTurn == "IA"){
-        
+
 //     }
 // }
 
@@ -133,21 +133,32 @@ import {player} from  './Player';
 //     }
 // }
 
-// let marblesInput = (<HTMLInputElement>document.getElementById('numberOfMarbles'));
-// let evenInput = (<HTMLInputElement>document.getElementById('even'));
-// let oddInput = (<HTMLInputElement>document.getElementById('odd'));
+let GoplayButton = (<HTMLInputElement>document.getElementById('Goplay'));
 
-let p1 = new player("hervé", 1);
-let p2 = new player("jc", 456);
-console.log(p1.getMatricule());
-p2.bet(4);
-if(p1.guess("impair", p2)) {
-    console.log("gagné");
-} else {
-    console.log("perdu");
+GoplayButton.addEventListener('click', () => {
+    getUsername();
+})
+
+function getUsername() {
+    let username1Input = (<HTMLInputElement>document.getElementById('username1'));
+    let username2Input = (<HTMLInputElement>document.getElementById('username2'));
+    let username1 = username1Input.value;
+    let username2 = username2Input.value;
+    let p1 = new player(username1, 1);
+    let p2 = new player(username2, 456);
+    console.log(p1, p2);
 }
-console.log(p1);
-console.log(p2);
-p1.bet(3);
-console.log(p1);
+// let p1 = new player("hervé", 1);
+// let p2 = new player("jc", 456);
+// console.log(p1.getMatricule());
+// p2.bet(4);
+// if(p1.guess("impair", p2)) {
+//     console.log("gagné");
+// } else {
+//     console.log("perdu");
+// }
+// console.log(p1);
+// console.log(p2);
+// p1.bet(3);
+// console.log(p1);
 

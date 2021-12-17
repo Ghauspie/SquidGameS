@@ -1,6 +1,6 @@
 
 
-class Page{
+
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;
@@ -59,4 +59,4 @@ class Page{
             localStorage.setItem('name2',player2);
         }
     }
-}
+

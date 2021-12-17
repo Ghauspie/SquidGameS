@@ -120,23 +120,32 @@ const Player_1 = require("./Player");
 //         return randomEvenOrOdd
 //     }
 // }
-// let marblesInput = (<HTMLInputElement>document.getElementById('numberOfMarbles'));
-// let evenInput = (<HTMLInputElement>document.getElementById('even'));
-// let oddInput = (<HTMLInputElement>document.getElementById('odd'));
-let p1 = new Player_1.player("hervé", 1);
-let p2 = new Player_1.player("jc", 456);
-console.log(p1.getMatricule());
-p2.bet(4);
-if (p1.guess("impair", p2)) {
-    console.log("gagné");
+let GoplayButton = document.getElementById('Goplay');
+GoplayButton.addEventListener('click', () => {
+    getUsername();
+});
+function getUsername() {
+    let username1Input = document.getElementById('username1');
+    let username2Input = document.getElementById('username2');
+    let username1 = username1Input.value;
+    let username2 = username2Input.value;
+    let p1 = new Player_1.player(username1, 1);
+    let p2 = new Player_1.player(username2, 456);
+    console.log(p1, p2);
 }
-else {
-    console.log("perdu");
-}
-console.log(p1);
-console.log(p2);
-p1.bet(3);
-console.log(p1);
+// let p1 = new player("hervé", 1);
+// let p2 = new player("jc", 456);
+// console.log(p1.getMatricule());
+// p2.bet(4);
+// if(p1.guess("impair", p2)) {
+//     console.log("gagné");
+// } else {
+//     console.log("perdu");
+// }
+// console.log(p1);
+// console.log(p2);
+// p1.bet(3);
+// console.log(p1);
 
 },{"./Player":2}],2:[function(require,module,exports){
 "use strict";
