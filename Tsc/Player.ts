@@ -1,4 +1,4 @@
-class player {
+export class player {
     marbles: number;
     name: string;
     private matricule: number;

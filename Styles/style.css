@@ -129,9 +129,12 @@
   */
 #homePage{
     margin-top: 15%;
+}
+.home{
     display: flex;
     justify-content: space-around;
 }
+
 
 .hidden{
     display: none;
