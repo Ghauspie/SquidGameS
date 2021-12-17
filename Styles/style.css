@@ -12,6 +12,7 @@
     --size-btn:1em;
     --size-h3:2.7em;
     --size-p-footer:1.3em;
+    --size-p:1.5em;
 }
 
 @font-face {
@@ -66,8 +67,12 @@
       background-color: transparent;
       margin-right: 25%;
   }
-  .fas{
-      size:400%;
+  .fa-hotel{
+      font-size: 250%;
+      color: var(--color-white);
+  }
+  #backToHomePage:hover{
+      color: var(--color-bleu-green);
   }
 
       /*
@@ -95,7 +100,10 @@
     border-radius : 100px;  /* ou 50% */
     background: transparent;
   }
-
+  #rules:hover{
+      transform:translate(15px,5px) ;
+      border: var(--color-green) solid 25px;
+  }
 
   /* button triangle */
   #start {
@@ -111,7 +119,9 @@
     background-color: transparent;
     border: transparent;
 }
-
+#start:hover{
+    transform:translate(15px,5px) ;
+}
 
 /* button carre */
 #hallOfFame{
@@ -120,6 +130,11 @@
     border: var(--color-pink-white) solid 15px;
     background: transparent;
 }
+#hallOfFame:hover{
+    transform:translate(15px,5px) ;
+    border: var(--color-gold) solid 25px;
+}
+
 
       /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,8 +199,12 @@
     }
 
     #solo:hover {
-        transform: rotate3d(10%,20%,10%);
-        rotate: 360deg;
+       transform: translate(5%,2%);
+       border: solid 0.2em var(--color-bleu-green);
+    }
+    #multiplayers:hover{
+        transform: translate(5%,2%);
+        border: solid 0.2em var(--color-bleu-green);
     }
 
           /*
@@ -209,9 +228,13 @@
   }
   .inputplayer input{
       margin-right: 5%;
+      size: 3em;
   }
   #Goplay{
     margin: 2% 40%;
+  }
+  .inputplayer{
+      font-size: var(--size-p);
   }
 
             /*
@@ -228,9 +251,9 @@
   */
   footer{
       display: flex;
-      margin-top: 21%;
+      margin-top: 20%;
     flex-direction: row;
-      height: 4vh;
+      height: 5vh;
       background-color: var(--color-pink);
       justify-content: space-between;
       align-items: center;
@@ -241,6 +264,7 @@
       list-style-type: none;
       margin-left: 2%;
       width: 80%;
+      margin-bottom: 1%;
   }
   .nameFooter p{
       margin-right: 1%;
@@ -262,4 +286,10 @@
   }
   .lien {
       margin-right: 2%;
+  }
+  #netflix{
+      background-image: url("../Pictures/netflix.png");
+      background-size: 100%;
+      content: " ";
+      height: 4vh;
   }
