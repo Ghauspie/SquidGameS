@@ -120,6 +120,9 @@ const Player_1 = require("./Player");
 //         return randomEvenOrOdd
 //     }
 // }
+// let marblesInput = (<HTMLInputElement>document.getElementById('numberOfMarbles'));
+// let evenInput = (<HTMLInputElement>document.getElementById('even'));
+// let oddInput = (<HTMLInputElement>document.getElementById('odd'));
 let p1 = new Player_1.player("hervé", 1);
 let p2 = new Player_1.player("jc", 456);
 console.log(p1.getMatricule());
