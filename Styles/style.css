@@ -121,6 +121,11 @@
     border: transparent;
 }
 #start:hover{
+    background-image: url("../Pictures/TSGred.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
     transform:translate(15px,5px) ;
 }
 

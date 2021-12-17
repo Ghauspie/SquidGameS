@@ -102,6 +102,8 @@ import {player} from "./Player";
     }
 
     function displayRule(){
-        
+        let DialogModal:any=document.getElementById('DialogModal').showModal()
+        console.log('test');
+
     }
     }
