@@ -1,7 +1,6 @@
 /**
  * Classe représentant un joueur.
  */
-
 export class player {
     marbles: number;
     name: string;
@@ -38,8 +37,8 @@ export class player {
         if (marbles > this.marbles) {
             throw new Error(`Le nombre de billes pariées (${marbles}) est supérieur au nombre de billes restantes (${this.marbles}).`);
         }
-        if (marbles <= 0) {
-            throw new Error("Le nombre de billes misées doit être supérieur ou égal à 0 !")
+        if( marbles <= 0 ) {
+            throw new Error("Le nombre de billes misées doit être supérieur à 0 !")
         }
         this.marblesBet = marbles;
     }
@@ -51,13 +50,13 @@ export class player {
      * @param player2 le joueur dont on doit deviner la mise (marblesBet)
      * @returns vrai si bien deviné (gain), faux sinon (perte)
      */
-    guess(choice: "pair" | "impair", player2: player): boolean {
-        if (player2.marblesBet == 0) {
+    guess(choice : "even" | "odd", player2: player): boolean {
+        if( player2.marblesBet == 0 ) {
             throw new Error(`Le player2 (matricule ${player2.getMatricule()}) n'a pas misé de billes !`);
         }
         let victoire: boolean;
-        if (choice == "pair") {
-            victoire = (player2.marblesBet % 2 == 0);
+        if( choice == "even" ) {
+            victoire = ( player2.marblesBet % 2 == 0 );
         } else {
             victoire = (player2.marblesBet % 2 != 0);
         }
@@ -65,10 +64,12 @@ export class player {
             player2.marbles -= player2.marblesBet;
             this.marbles += player2.marblesBet; //le joueur gagne les billes misées
         } else {
-            player2.marbles += player2.marblesBet;
-            this.marbles -= player2.marblesBet; //le joueur perd les billes misées
+            let perte = player2.marblesBet;
+            if( perte > this.marbles ) perte = this.marbles;
+            player2.marbles += perte;
+            this.marbles -= perte; //le joueur perd les billes misées
         }
-        player2.marblesBet = 0; //pas forcément indispensable
+        player2.marblesBet = 0;
         return victoire;
     }
 
@@ -97,6 +98,6 @@ export class player {
 // console.log(p1);
 // console.log(p2);
 // p1.bet(3);
-// if (p2.guess(true, p1)) {
+// if (p2.guess("impair", p1)) {
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
