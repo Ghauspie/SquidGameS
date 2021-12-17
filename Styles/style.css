@@ -22,6 +22,7 @@
   h1 {
       font-family: SquidGame;
       font-size: var(--size-h1);
+      margin-right: 20%;
   }
   h3{
     background-color: transparent;
@@ -63,6 +64,7 @@
       width: 10%;
       height: 4.8vh;
       background-color: transparent;
+      margin-right: 25%;
   }
   .fas{
       size:400%;
