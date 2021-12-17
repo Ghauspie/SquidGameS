@@ -4,6 +4,7 @@
 export class player {
     marbles: number;
     name: string;
+    colorMarbles: Array<number> = [];
     private matricule: number;
     private marblesBet: number;
     
@@ -18,6 +19,16 @@ export class player {
         this.name = playerName;
         this.matricule = matricule;
         this.marblesBet = 0;
+        this.initColors();
+    }
+
+    /**
+     * Attribue un numéro de couleur de bille aléatoire entre 1 et 9
+     */
+    private initColors(): void {
+        for( let i = 0; i < 20; i++) {
+            this.colorMarbles.push( Math.floor(Math.random()*9) + 1 );
+        }
     }
 
     /**
@@ -34,7 +45,10 @@ export class player {
      * @param marbles le nombre de billes misées
      */
     bet(marbles: number): void {
-        if (marbles > this.marbles) {
+
+        console.log(this.name + " bet " + marbles);
+        if( marbles > this.marbles ) {
+
             throw new Error(`Le nombre de billes pariées (${marbles}) est supérieur au nombre de billes restantes (${this.marbles}).`);
         }
         if( marbles <= 0 ) {
