@@ -7,6 +7,7 @@ export class player {
     colorMarbles: Array<number> = [];
     private matricule: number;
     private marblesBet: number;
+    
 
     /**
      * Constructeur de la classe. Le joueur reçoit 10 billes.
@@ -44,8 +45,10 @@ export class player {
      * @param marbles le nombre de billes misées
      */
     bet(marbles: number): void {
+
         console.log(this.name + " bet " + marbles);
         if( marbles > this.marbles ) {
+
             throw new Error(`Le nombre de billes pariées (${marbles}) est supérieur au nombre de billes restantes (${this.marbles}).`);
         }
         if( marbles <= 0 ) {
@@ -69,9 +72,9 @@ export class player {
         if( choice == "even" ) {
             victoire = ( player2.marblesBet % 2 == 0 );
         } else {
-            victoire = ( player2.marblesBet % 2 != 0 );
+            victoire = (player2.marblesBet % 2 != 0);
         }
-        if( victoire ) {
+        if (victoire) {
             player2.marbles -= player2.marblesBet;
             this.marbles += player2.marblesBet; //le joueur gagne les billes misées
         } else {
@@ -88,10 +91,11 @@ export class player {
      * 
      * @returns true si le player n'a plus de billes, false sinon.
      */
-    isDead() : boolean {
+    isDead(): boolean {
         return (this.marbles <= 0);
     }
 
+    
 }
 
 
@@ -110,5 +114,4 @@ export class player {
 // p1.bet(3);
 // if (p2.guess("impair", p1)) {
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
-// };
 // };
