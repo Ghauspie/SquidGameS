@@ -94,4 +94,6 @@ function BackHome() {
     }
 }
 function displayRule() {
+    let DialogModal = document.getElementById('DialogModal').showModal();
+    console.log('test');
 }
