@@ -1,8 +1,9 @@
-class player {
+export class player {
     marbles: number;
     name: string;
     private matricule: number;
     private marblesBet: number;
+    
 
     constructor(playerName: string, matricule: number) {
         this.marbles = 10; //Chaque joueur a 10 billes au départ
@@ -29,7 +30,9 @@ class player {
         return (this.marbles <= 0);
     }
 
+    
 }
+
 
 //Exemples d'utilisation
 // let p1 = new player("hervé", 1);

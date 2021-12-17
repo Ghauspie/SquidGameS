@@ -6,41 +6,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <title>Squid Game: play or death</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Styles/reset.css">
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
 
 <body>
     <nav>
         <h1>Squid Game: Marbles</h1>
-        <button id="backToHomePage">Retour</button>
+        <button id="backToHomePage" class="fas fa-hotel"></button>
     </nav>
     <main>
-        <section id="homePage">
-            <button id="rules">Régles</button>
-            <button id="start">Start</button>
-            <button id="hallOfFame">Meilleurs joueurs</button>
+        <section id="homePage" class="home">
+            <button id="rules" onclick="">
+                <h3>
+                    Régles
+                </h3>
+                
+            </button>
+            <button id="start" >
+                <div id="intTri">
+                    <h3>Start</h3> 
+                </div>
+               
+            </button>
+            <button id="hallOfFame" onclick=""><h3>
+                Meilleurs joueurs
+            </h3> </button>
         </section>
-        <section id="selectPlayers">
-            <button id="solo">Solo</button>
-            <button id="multiplayers">Multijoueurs</button>
-            <input type="text" id="username1">
-            <input type="text" id="username2">
+        <section id="selectPlayers" class="hidden">
+            <div  class="button">
+                <button id="solo" value="solo"><i class="far fa-user"></i>
+                    Solo
+                 </button>
+                <button id="multiplayers" value="multiplayers"><i class="fas fa-user-plus"></i>Multijoueurs</button>
+            </div>
+            <div class="inputplayer">
+                <div>
+                    <p id="Name1" class="hidden">Quel est votre nom joueur matricule  temporaire 1 ?</p>
+                    <input type="text" id="username1" class="hidden">
+                </div>
+                <div>
+                    <p id="Name2" class="hidden">Quel est votre nom joueur matricule temporaire 2 ?</p>
+                    <input type="text" id="username2" class="hidden">  
+                </div>
+            </div>
+            <button id="Goplay" onclick="goplay()">Go play for my life</button>
         </section>
-        <section id="gameChoice">
+        <section id="gameChoice" class="hidden">
             <input type="number" id="numberOfMarbles">
             <button id="validateChoice" onclick="getMarblesNbr()">Valider</button>
         </section>
-        <section id="gameGuess">   
+        <section id="gameGuess" class="hidden">    
             <button id="even">Pair</button>
             <button id="odd">Impair</button>
         </section>
-        <section id="changingPlayer">
+        <section id="changingPlayer"class="hidden">
             <button id="myTurn">Je suis prêt!</button>
         </section>
 
     </main>
-    <footer>Netflix</footer>
-    <script src="./Tsc/Game.js"></script>
+    <footer>
+        <div class="nameFooter">
+            <p>Created by : </p>
+            <ul>
+                <li>Ghauspie</li>
+                <li>JC</li>
+                <li>HG</li>
+            </ul>
+        </div>
+        <div class="lien">
+                <a href="https://www.netflix.com/fr/" id="netflix" >loololl</a>
+        </div>
+        <audio autoplay controls>
+            <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3">
+            Votre navigateur ne supporte pas la balise audio.
+        </audio>
+    </footer>
+<!--     <script src="./Tsc/Game.js"></script>
+    <script src="./Tsc/IA.js"></script>
+    <script src="./Tsc/Player.js"></script> -->
+    <!-- <script src="./Tsc/Page.js"></script> -->
+    <script src="./Tsc/bundle.js"></script>
+    <script src="https://kit.fontawesome.com/6bd3017b32.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
