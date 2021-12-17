@@ -13,17 +13,17 @@
 <body>
     <nav>
         <h1>Squid Game: Marbles</h1>
-        <button id="backToHomePage" class="fas fa-hotel">Retour</button>
+        <button id="backToHomePage" class="fas fa-hotel"></button>
     </nav>
     <main>
-        <section id="homePage">
+        <section id="homePage" class="home">
             <button id="rules" onclick="">
                 <h3>
                     Régles
                 </h3>
                 
             </button>
-            <button id="start" onclick="StartPlayer()">
+            <button id="start" >
                 <div id="intTri">
                     <h3>Start</h3> 
                 </div>
@@ -35,10 +35,10 @@
         </section>
         <section id="selectPlayers" class="hidden">
             <div  class="button">
-                <button id="solo" onclick="SelectNumberPlayer(value)" value="solo"><i class="far fa-user"></i>
+                <button id="solo" value="solo"><i class="far fa-user"></i>
                     Solo
                  </button>
-                <button id="multiplayers" onclick="SelectNumberPlayer(value)" value="multiplayers">Multijoueurs</button>
+                <button id="multiplayers" value="multiplayers"><i class="fas fa-user-plus"></i>Multijoueurs</button>
             </div>
             <div class="inputplayer">
                 <div>
@@ -75,10 +75,19 @@
             </ul>
         </div>
         <div class="lien">
-            <a href="">Netflix</a> 
-        </div></footer>
-        <script src="./Tsc/bundle.js"></script>
-        <script src="./Tsc/Page.js"></script>
+                <a href="https://www.netflix.com/fr/" id="netflix" >loololl</a>
+        </div>
+        <audio autoplay controls>
+            <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3">
+            Votre navigateur ne supporte pas la balise audio.
+        </audio>
+    </footer>
+<!--     <script src="./Tsc/Game.js"></script>
+    <script src="./Tsc/IA.js"></script>
+    <script src="./Tsc/Player.js"></script> -->
+    <!-- <script src="./Tsc/Page.js"></script> -->
+    <script src="./Tsc/bundle.js"></script>
+    <script src="https://kit.fontawesome.com/6bd3017b32.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

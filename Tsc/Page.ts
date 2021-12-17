@@ -1,6 +1,4 @@
-
-
-
+import {player} from "./Player";
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;
@@ -8,20 +6,36 @@
     player1:string;
     player2:string;
  */
+
+    let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
+    let SelectSolo: HTMLElement= document.getElementById('solo') as HTMLElement;
+    let SelectMulti:HTMLElement=document.getElementById('multiplayers') as HTMLElement;
+    let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
+    let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
+    let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
+    StartPlay.addEventListener("click",StartPlayer);
+    SelectSolo.addEventListener("click",SelectNumberPlayer );
+    SelectMulti.addEventListener("click",SelectNumberPlayer);
+    Go.addEventListener("click",goplay);
+    home.addEventListener("click",BackHome);
+    Rules.addEventListener("click",displayRule);
+
     
+
     function StartPlayer(){
         let index:HTMLElement;
+        let selectPlayerDisplay:HTMLElement;
         index=document.getElementById('homePage') as HTMLElement;
-        index.style.display="none";
-        let selectPlayerDisplay:void;
-        selectPlayerDisplay=document.getElementById('selectPlayers');
+        index.setAttribute('class',"hidden");
+       /*  index.style.display="none"; */ 
+        selectPlayerDisplay=document.getElementById('selectPlayers') as HTMLElement;
         selectPlayerDisplay.removeAttribute('class','hidden');
         console.log("test start");
     }
     
-    function SelectNumberPlayer(chooseP){
+    function SelectNumberPlayer(e:string){
         let versionplayer: string;
-        versionplayer=chooseP;
+        versionplayer=e.target.value;
         let displayname:HTMLFormElement;
         localStorage.setItem('Type',versionplayer);
         if(versionplayer==="solo"){
@@ -38,9 +52,9 @@
             displayname.removeAttribute('class','hidden');
             document.getElementById('Name2').removeAttribute('class') as HTMLElement ;
             return versionplayer;
-        }
-   
+        } 
     }
+
     function goplay(){
         let player1: HTMLFormElement;
         let player2: HTMLFormElement;
@@ -60,3 +74,34 @@
         }
     }
 
+    function BackHome(){
+        let HomePage:HTMLElement;
+        let selectPlayers:HTMLElement;
+        let gameChoose:HTMLElement;
+        let gameGuess:HTMLElement;
+        let chaningPlayer:HTMLElement;
+        HomePage=document.getElementById('homePage') as HTMLElement;
+        HomePage.removeAttribute('class');
+        HomePage.setAttribute('class','home');
+        selectPlayers=document.getElementById('selectPlayers') as HTMLElement;
+        gameChoose=document.getElementById('gameChoice') as HTMLElement;
+        gameGuess=document.getElementById('gameGuess') as HTMLElement;
+        chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
+        if(selectPlayers.getAttribute('class')==null){
+            selectPlayers.setAttribute('class',"hidden");
+        }
+        if(gameChoose.getAttribute('class')==null){
+            gameChoose.setAttribute('class','hidden');
+        }
+        if(gameGuess.getAttribute('class')==null){
+            gameGuess.setAttribute('class','hidden');
+        }
+        if(chaningPlayer.getAttribute('class')==null){
+            chaningPlayer.setAttribute('class','hidden');
+        }
+    }
+
+    function displayRule(){
+        
+    }
+    }

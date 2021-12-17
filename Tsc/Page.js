@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;
@@ -6,18 +7,31 @@
     player1:string;
     player2:string;
  */
+let StartPlay = document.getElementById('start');
+let SelectSolo = document.getElementById('solo');
+let SelectMulti = document.getElementById('multiplayers');
+let Go = document.getElementById('Goplay');
+let home = document.getElementById('backToHomePage');
+let Rules = document.getElementById('rules');
+StartPlay.addEventListener("click", StartPlayer);
+SelectSolo.addEventListener("click", SelectNumberPlayer);
+SelectMulti.addEventListener("click", SelectNumberPlayer);
+Go.addEventListener("click", goplay);
+home.addEventListener("click", BackHome);
+Rules.addEventListener("click", displayRule);
 function StartPlayer() {
     let index;
-    index = document.getElementById('homePage');
-    index.style.display = "none";
     let selectPlayerDisplay;
+    index = document.getElementById('homePage');
+    index.setAttribute('class', "hidden");
+    /*  index.style.display="none"; */
     selectPlayerDisplay = document.getElementById('selectPlayers');
     selectPlayerDisplay.removeAttribute('class', 'hidden');
     console.log("test start");
 }
-function SelectNumberPlayer(chooseP) {
+function SelectNumberPlayer(e) {
     let versionplayer;
-    versionplayer = chooseP;
+    versionplayer = e.target.value;
     let displayname;
     localStorage.setItem('Type', versionplayer);
     if (versionplayer === "solo") {
@@ -52,4 +66,32 @@ function goplay() {
         localStorage.setItem('name1', player1);
         localStorage.setItem('name2', player2);
     }
+}
+function BackHome() {
+    let HomePage;
+    let selectPlayers;
+    let gameChoose;
+    let gameGuess;
+    let chaningPlayer;
+    HomePage = document.getElementById('homePage');
+    HomePage.removeAttribute('class');
+    HomePage.setAttribute('class', 'home');
+    selectPlayers = document.getElementById('selectPlayers');
+    gameChoose = document.getElementById('gameChoice');
+    gameGuess = document.getElementById('gameGuess');
+    chaningPlayer = document.getElementById('changingPlayer');
+    if (selectPlayers.getAttribute('class') == null) {
+        selectPlayers.setAttribute('class', "hidden");
+    }
+    if (gameChoose.getAttribute('class') == null) {
+        gameChoose.setAttribute('class', 'hidden');
+    }
+    if (gameGuess.getAttribute('class') == null) {
+        gameGuess.setAttribute('class', 'hidden');
+    }
+    if (chaningPlayer.getAttribute('class') == null) {
+        chaningPlayer.setAttribute('class', 'hidden');
+    }
+}
+function displayRule() {
 }
