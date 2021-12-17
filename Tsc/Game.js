@@ -1,8 +1,8 @@
-import {player} from "./Player";
-
-let p1 = new player("moi",123);
-let p2 = new player("lui",345)
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Player_1 = require("./Player");
+let p1 = new Player_1.player("moi", 123);
+let p2 = new Player_1.player("lui", 345);
 // console.log("p2 mise 4 billes");
 // p2.bet(4);
 // console.log("p1 devine pair");
@@ -19,22 +19,19 @@ let p2 = new player("lui",345)
 // } else {
 //     console.log(`p2 a perdu, il a ${p2.marbles} billes, et p1 en a ${p1.marbles}.`);
 // }
-let button = document.getElementById('testMarbles') as HTMLButtonElement; 
+let button = document.getElementById('testMarbles');
 button.addEventListener('click', addMarblesButtons);
-
 function addMarblesButtons() {
-    p1.marbles = Math.floor(Math.random()*19)+1;
+    p1.marbles = Math.floor(Math.random() * 19) + 1;
     console.log(`Ajout des ${p1.marbles} billes de ${p1.name}`);
-    let docContext = document.getElementById("btnMarbles") as HTMLDivElement;
+    let docContext = document.getElementById("btnMarbles");
     docContext.innerHTML = "";
-    for( let i = 1; i <= p1.marbles; i++) {
-        let button = document.createElement("button") as HTMLButtonElement;
+    for (let i = 1; i <= p1.marbles; i++) {
+        let button = document.createElement("button");
         button.innerHTML = "<span class='big'> </span>" + i.toString();
         button.id = "btnMarble" + i;
         button.className = "marble marble" + p1.colorMarbles[i];
-        button.onclick = function() { p1.bet(i) };
-
+        button.onclick = function () { p1.bet(i); };
         docContext.appendChild(button);
     }
-}
 }

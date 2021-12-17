@@ -111,3 +111,4 @@ export class player {
 // if (p2.guess("impair", p1)) {
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
+// };
