@@ -5,12 +5,13 @@
      --color-bleu-green:#249f9c;
      --color-green:#037a76 ;
      --color-gold:#d4af37;
-
+     --color-black:"black";
      --background-url:"../Pictures/SquidGameBG.jpg";
 
     --size-h1:1.8em;
     --size-btn:1em;
     --size-h3:2.7em;
+    --size-p-footer:1.3em;
 }
 
 @font-face {
@@ -173,6 +174,10 @@
        font-weight: bolder;
     }
 
+    #solo:hover {
+        transform: rotate3d(10%,20%,10%);
+        rotate: 360deg;
+    }
 
           /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,10 +219,10 @@
   */
   footer{
       display: flex;
-      margin-top: 30%;
+      margin-top: 21%;
     flex-direction: row;
       height: 4vh;
-      background-color: var(--color-green);
+      background-color: var(--color-pink);
       justify-content: space-between;
       align-items: center;
   }
@@ -230,6 +235,10 @@
   }
   .nameFooter p{
       margin-right: 1%;
+      color: var(--color-green);
+      font-weight: bolder;
+      font-size: var(--size-p-footer);
+      text-shadow: 0.2em 0.2em 0.3em var(--color-white);
   }
   ul {
       display: flex;
@@ -237,6 +246,10 @@
   }
   li {
       margin-right: 4%;
+      color: var(--color-green);
+      font-weight: bolder;
+      font-size: var(--size-p-footer);
+      text-shadow: 0.2em 0.2em 0.3em var(--color-white);
   }
   .lien {
       margin-right: 2%;
