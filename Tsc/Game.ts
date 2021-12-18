@@ -1,7 +1,20 @@
-
 import { player } from './Player';
-let p1 = new player("moi",123);
-let p2 = new player("lui",345)
+
+let versionplayer = localStorage.getItem('Type');
+
+let username1 = localStorage.getItem('name1');
+let username2 = localStorage.getItem('name2');
+
+let matricule1 = Math.floor(Math.random() * 457);
+let matricule2 = Math.floor(Math.random() * 457);
+
+let p1 = new player(username1, matricule1);
+let p2 = new player(username2, matricule2);
+
+let playerTurn: any = p1;
+
+// let p1 = new player("moi", 123);
+// let p2 = new player("lui", 345)
 
 // console.log("p2 mise 4 billes");
 // p2.bet(4);
@@ -19,30 +32,24 @@ let p2 = new player("lui",345)
 // } else {
 //     console.log(`p2 a perdu, il a ${p2.marbles} billes, et p1 en a ${p1.marbles}.`);
 // }
-let button = document.getElementById('testMarbles') as HTMLButtonElement; 
+let button = document.getElementById('testMarbles') as HTMLButtonElement;
 button.addEventListener('click', addMarblesButtons);
 
 function addMarblesButtons() {
-    p1.marbles = Math.floor(Math.random()*19)+1;
+    p1.marbles = Math.floor(Math.random() * 19) + 1;
     console.log(`Ajout des ${p1.marbles} billes de ${p1.name}`);
     let docContext = document.getElementById("btnMarbles") as HTMLDivElement;
     docContext.innerHTML = "";
-    for( let i = 1; i <= p1.marbles; i++) {
+    for (let i = 1; i <= p1.marbles; i++) {
         let button = document.createElement("button") as HTMLButtonElement;
         button.innerHTML = "<span class='big'> </span>" + i.toString();
         button.id = "btnMarble" + i;
         button.className = "marble marble" + p1.colorMarbles[i];
-        button.onclick = function() { p1.bet(i) };
+        button.onclick = function () { p1.bet(i) };
 
         docContext.appendChild(button);
     }
 }
-
-let players = getUsername();
-/*let p1 = players[0];
-let p2 = players[1];*/
-
-let playerTurn: any = p1;
 
 let GoplayButton = (<HTMLInputElement>document.getElementById('Goplay'));
 let myTurnButton = (<HTMLInputElement>document.getElementById('myTurn'));
@@ -50,11 +57,25 @@ let validateChoiceButton = (<HTMLInputElement>document.getElementById('validateC
 let evenButton = (<HTMLInputElement>document.getElementById('even'));
 let oddButton = (<HTMLInputElement>document.getElementById('odd'));
 
+let username1Input = (<HTMLInputElement>document.getElementById('username1'));
+let username2Input = (<HTMLInputElement>document.getElementById('username2'));
+
+let gameChoiceSection = document.getElementById('gameChoice')as HTMLFormElement;
+let selectPlayersSection = document.getElementById('selectPlayers')as HTMLFormElement;
 // ---------------------- Button AddEvenListener -----------------------
 
 GoplayButton.addEventListener('click', () => {
-    getUsername();
-})
+    if (versionplayer === 'solo'){    
+        console.log("Coucou je suis solo");
+        selectPlayersSection.setAttribute('class',"hidden");
+        gameChoiceSection.removeAttribute('class',"hidden");
+        
+    } else {
+        selectPlayersSection.setAttribute('class',"hidden");
+        gameChoiceSection.removeAttribute('class',"hidden");
+        getUsername();
+    }
+
 myTurnButton.addEventListener('click', () => {
     switchPlayer();
 })
@@ -71,14 +92,11 @@ oddButton.addEventListener('click', () => {
 // ------------------- Username ----------------------
 
 function getUsername() {
-    let username1Input = (<HTMLInputElement>document.getElementById('username1'));
-    let username2Input = (<HTMLInputElement>document.getElementById('username2'));
     let username1 = username1Input.value;
     let username2 = username2Input.value;
-    let p1 = new player(username1, Math.floor(Math.random() * 457));
-    let p2 = new player(username2, Math.floor(Math.random() * 457));
+    localStorage.setItem('name1',username1);
+    localStorage.setItem('name2',username2);
     console.log(p1, p2);
-    return [p1, p2];
 }
 
 function switchPlayer() {
@@ -116,7 +134,7 @@ function betMarbles() {
     }
 }
 
-function guess() {  
+function guess() {
     if (playerTurn === p1) {
         if (p1.guess(betMarbles(), p2)) {
             console.log("gagné");
