@@ -85,11 +85,6 @@ function addMarblesButtons() {
     }
 }
 
-// let selectMode = document.createElement("div");
-// selectMode.className = "selectmode";
-// selectMode.innerHTML = "Veuillez choisir un mode !";
-// selectPlayersSection.append(selectMode);
-// console.log("Veuillez choisir un mode");
 
 // ---------------------- Button AddEvenListener -----------------------
 
@@ -98,10 +93,10 @@ GoplayButton.addEventListener('click', () => {
     if (versionplayer === "") {
         console.log("Veuillez choisir un mode");
     } else if (versionplayer === "solo") {
-        console.log("Je joue en solo contre l'IA");
         playerTurn = localStorage.setItem("playerTurn", p1.name);
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
+        console.log("Je joue en solo contre l'IA");
     } else {
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
@@ -117,7 +112,13 @@ validateBetButton.addEventListener('click', () => {
     gameGuessSection.removeAttribute('class');
 
     if (versionplayer === 'solo') {
-        gameVsIA();
+        if (IA.marbles <= 0) {
+            alert("C'est gagné !!");    
+        } else if (p1.marbles === 0) {
+            alert("C'est perdu !");
+        } else {
+            gameVsIA();
+        }
 
     } else {
         switchPlayer();
@@ -129,17 +130,25 @@ validateBetButton.addEventListener('click', () => {
 evenButton.addEventListener('click', () => {
     gameGuessSection.setAttribute('class', "hidden");
     gameChoiceSection.removeAttribute('class');
-    p1.guess("even", IA);
+    if (versionplayer == "solo") {
+        p1.guess("even", IA);
+    } else {
+        console.log('multiplayer');
+        
+    }
     switchPlayer();
     console.log(p1, IA)
-
 })
 
 oddButton.addEventListener('click', () => {
     gameGuessSection.setAttribute('class', "hidden");
     gameChoiceSection.removeAttribute('class');
+    if (versionplayer == "solo") {
+        p1.guess("odd", IA);
+    } else {
+        console.log("multiplayer");     
+    }
     switchPlayer();
-    p1.guess("odd", IA);
     console.log(p1, IA)
 
 
@@ -158,10 +167,10 @@ function gameVsIA() {
             p1.bet(+marblesBetInput.value)
             if (evenOrOdd() === randomEvenOrOdd()) {
                 console.log("IA a trouvé la solution");
-                IA.guess("odd", p1);
+                IA.guess("even", p1);
             } else {
                 console.log("IA n'a pas trouvé la solution");
-                IA.guess("even", p1);
+                IA.guess("odd", p1);
             }
         } else {
             let randomBetIA: any = randomMarblesNumber(IA.marbles);
@@ -223,11 +232,14 @@ function switchPlayer() {
 
 function evenOrOdd() {
     let betMarbles = marblesBetInput.value;
-    if (+betMarbles % 2 === 0) {
-        return "even";
-    } else {
-        return "odd";
+    if(playerTurn === p1.name){
+        if (+betMarbles % 2 === 0) {
+            return "even";
+        } else {
+            return "odd";
+        }
     }
+
 
 }
 
