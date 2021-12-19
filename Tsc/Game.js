@@ -19,7 +19,7 @@ let changingPlayerSection = document.getElementById('changingPlayer');
 let displayMarblesP1 = document.getElementById('marblesplayer1');
 let displayMarblesP2 = document.getElementById('marblesplayer1');
 // ------------------------------ LOCAL STORAGE ---------------------------------------
-let versionplayer = localStorage.getItem('Type');
+let versionPlayer = localStorage.getItem('Type');
 let username1 = localStorage.getItem('name1');
 let username2 = localStorage.getItem('name2');
 let playerTurn = localStorage.getItem('playerTurn');
@@ -68,11 +68,11 @@ function addMarblesButtons() {
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
     playerTurn = localStorage.setItem("playerTurn", p1.name);
-    versionplayer = localStorage.getItem('Type');
-    if (versionplayer === "") {
+    versionPlayer = localStorage.getItem('Type');
+    if (versionPlayer === "") {
         console.log("Veuillez choisir un mode");
     }
-    else if (versionplayer === "solo") {
+    else if (versionPlayer === "solo") {
         playerTurn = localStorage.setItem("playerTurn", p1.name);
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
@@ -87,10 +87,10 @@ GoplayButton.addEventListener('click', () => {
 myTurnButton.addEventListener('click', () => {
 });
 validateBetButton.addEventListener('click', () => {
-    versionplayer = localStorage.getItem('Type');
+    versionPlayer = localStorage.getItem('Type');
     gameChoiceSection.setAttribute('class', "hidden");
     gameGuessSection.removeAttribute('class');
-    if (versionplayer === "solo") {
+    if (versionPlayer === "solo") {
         if (IA.marbles <= 0) {
             alert("C'est gagné !!");
         }
@@ -101,18 +101,18 @@ validateBetButton.addEventListener('click', () => {
             gameVsIA();
         }
     }
-    else if (versionplayer === "multiplayers") {
+    else if (versionPlayer === "multiplayers") {
         gameMultiplayers();
     }
 });
 evenButton.addEventListener('click', () => {
-    versionplayer = localStorage.getItem('Type');
+    versionPlayer = localStorage.getItem('Type');
     gameGuessSection.setAttribute('class', "hidden");
     gameChoiceSection.removeAttribute('class');
-    if (versionplayer === "solo") {
+    if (versionPlayer === "solo") {
         p1.guess("even", IA);
     }
-    else if (versionplayer === "multiplayers") {
+    else if (versionPlayer === "multiplayers") {
         playerTurn = localStorage.getItem('playerTurn');
         if (playerTurn === p1.name) {
             p1.guess("even", p2);
@@ -123,13 +123,13 @@ evenButton.addEventListener('click', () => {
     }
 });
 oddButton.addEventListener('click', () => {
-    versionplayer = localStorage.getItem('Type');
+    versionPlayer = localStorage.getItem('Type');
     gameGuessSection.setAttribute('class', "hidden");
     gameChoiceSection.removeAttribute('class');
-    if (versionplayer === "solo") {
+    if (versionPlayer === "solo") {
         p1.guess("odd", IA);
     }
-    else if (versionplayer === "multiplayers") {
+    else if (versionPlayer === "multiplayers") {
         playerTurn = localStorage.getItem('playerTurn');
         if (playerTurn === p1.name) {
             if (evenOrOdd())
@@ -201,8 +201,8 @@ function getUsername() {
     console.log(p1, p2);
 }
 function switchPlayer() {
-    versionplayer == localStorage.getItem("Type");
-    if (versionplayer === "solo") {
+    versionPlayer == localStorage.getItem("Type");
+    if (versionPlayer === "solo") {
         playerTurn = localStorage.getItem("playerTurn");
         if (playerTurn === p1.name) {
             playerTurn = localStorage.setItem("playerTurn", "IA");
@@ -211,7 +211,7 @@ function switchPlayer() {
             playerTurn = localStorage.setItem("playerTurn", p1.name);
         }
     }
-    else if (versionplayer === "multiplayers") {
+    else if (versionPlayer === "multiplayers") {
         playerTurn = localStorage.getItem('playerTurn');
         if (playerTurn === p1.name) {
             playerTurn = localStorage.setItem("playerTurn", p2.name);

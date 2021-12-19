@@ -26,7 +26,7 @@ let displayMarblesP2 = document.getElementById('marblesplayer1') as HTMLFormElem
 
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 
-let versionplayer = localStorage.getItem('Type');
+let versionPlayer = localStorage.getItem('Type');
 let username1: any = localStorage.getItem('name1');
 let username2: any = localStorage.getItem('name2');
 let playerTurn: any = localStorage.getItem('playerTurn');
@@ -90,10 +90,10 @@ function addMarblesButtons() {
 
 GoplayButton.addEventListener('click', () => {
     playerTurn = localStorage.setItem("playerTurn", p1.name);
-    versionplayer = localStorage.getItem('Type');
-    if (versionplayer === "") {
+    versionPlayer = localStorage.getItem('Type');
+    if (versionPlayer === "") {
         console.log("Veuillez choisir un mode");
-    } else if (versionplayer === "solo") {
+    } else if (versionPlayer === "solo") {
         playerTurn = localStorage.setItem("playerTurn", p1.name);
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
@@ -109,10 +109,10 @@ myTurnButton.addEventListener('click', () => {
 })
 
 validateBetButton.addEventListener('click', () => {
-    versionplayer = localStorage.getItem('Type');
+    versionPlayer = localStorage.getItem('Type');
     gameChoiceSection.setAttribute('class', "hidden");
     gameGuessSection.removeAttribute('class');
-    if (versionplayer === "solo") {
+    if (versionPlayer === "solo") {
         if (IA.marbles <= 0) {
             alert("C'est gagné !!");    
         } else if (p1.marbles === 0) {
@@ -120,18 +120,18 @@ validateBetButton.addEventListener('click', () => {
         } else {
             gameVsIA();
         }
-    } else if (versionplayer === "multiplayers") {
+    } else if (versionPlayer === "multiplayers") {
         gameMultiplayers()
     }
 })
 
 evenButton.addEventListener('click', () => {
-    versionplayer = localStorage.getItem('Type'); 
+    versionPlayer = localStorage.getItem('Type'); 
     gameGuessSection.setAttribute('class', "hidden");
     gameChoiceSection.removeAttribute('class');
-    if (versionplayer === "solo") {
+    if (versionPlayer === "solo") {
         p1.guess("even", IA);
-    } else if (versionplayer === "multiplayers") {
+    } else if (versionPlayer === "multiplayers") {
         playerTurn = localStorage.getItem('playerTurn');
        if(playerTurn === p1.name){
         p1.guess("even", p2)   
@@ -142,12 +142,12 @@ evenButton.addEventListener('click', () => {
 })
 
 oddButton.addEventListener('click', () => {
-    versionplayer = localStorage.getItem('Type');  
+    versionPlayer = localStorage.getItem('Type');  
     gameGuessSection.setAttribute('class', "hidden");
     gameChoiceSection.removeAttribute('class');
-    if (versionplayer === "solo") {
+    if (versionPlayer === "solo") {
         p1.guess("odd", IA);
-    } else if (versionplayer === "multiplayers"){
+    } else if (versionPlayer === "multiplayers"){
         playerTurn = localStorage.getItem('playerTurn');
         if(playerTurn === p1.name){
             if (evenOrOdd())
@@ -224,15 +224,15 @@ function getUsername() {
 }
 
 function switchPlayer() {
-    versionplayer == localStorage.getItem("Type");
-    if (versionplayer === "solo") {
+    versionPlayer == localStorage.getItem("Type");
+    if (versionPlayer === "solo") {
         playerTurn = localStorage.getItem("playerTurn");
         if (playerTurn === p1.name) {
             playerTurn = localStorage.setItem("playerTurn", "IA");
         } else if (playerTurn === "IA") {
             playerTurn = localStorage.setItem("playerTurn", p1.name);
         }
-    } else if (versionplayer === "multiplayers") {
+    } else if (versionPlayer === "multiplayers") {
         playerTurn = localStorage.getItem('playerTurn');
         if (playerTurn === p1.name) {
             playerTurn = localStorage.setItem("playerTurn", p2.name);
