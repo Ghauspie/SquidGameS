@@ -8,6 +8,7 @@ let myTurnButton = document.getElementById('myTurn');
 let validateBetButton = document.getElementById('validateChoice');
 let evenButton = document.getElementById('even');
 let oddButton = document.getElementById('odd');
+let marblesButton = document.getElementById('testMarbles');
 // ------------------------------ INPUT ---------------------------------------
 let username1Input = document.getElementById('username1');
 let username2Input = document.getElementById('username2');
@@ -17,8 +18,6 @@ let gameChoiceSection = document.getElementById('gameChoice');
 let selectPlayersSection = document.getElementById('selectPlayers');
 let gameGuessSection = document.getElementById('gameGuess');
 let changingPlayerSection = document.getElementById('changingPlayer');
-let displayMarblesP1 = document.getElementById('marblesplayer1');
-let displayMarblesP2 = document.getElementById('marblesplayer1');
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 let versionPlayer = localStorage.getItem('Type');
 let username1 = localStorage.getItem('name1');
@@ -50,25 +49,9 @@ let IA = new Player_1.player("IA", matricule2);
 // } else {
 //     console.log(`p2 a perdu, il a ${p2.marbles} billes, et p1 en a ${p1.marbles}.`);
 // }
-// let button = document.getElementById('testMarbles') as HTMLButtonElement;
-// button.addEventListener('click', addMarblesButtons);
-function addMarblesButtons() {
-    // p1.marbles = Math.floor(Math.random() * 19) + 1;
-    console.log(`Ajout des ${p1.marbles} billes de ${p1.name}`);
-    let docContext = document.getElementById("btnMarbles");
-    docContext.innerHTML = "";
-    for (let i = 1; i <= p1.marbles; i++) {
-        let button = document.createElement("button");
-        button.innerHTML = "<span class='big'> </span>" + i.toString();
-        button.id = "btnMarble" + i;
-        button.className = "marble marble" + p1.colorMarbles[i];
-        button.onclick = function () { p1.bet(i); };
-        docContext.appendChild(button);
-    }
-}
 // ---------------------- Button AddEvenListener -----------------------
+marblesButton.addEventListener('click', addMarblesButtons);
 GoplayButton.addEventListener('click', () => {
-    playerTurn = localStorage.setItem("playerTurn", p1.name);
     versionPlayer = localStorage.getItem('Type');
     if (versionPlayer === "") {
         console.log("Veuillez choisir un mode");
@@ -77,12 +60,16 @@ GoplayButton.addEventListener('click', () => {
         playerTurn = localStorage.setItem("playerTurn", p1.name);
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
+        addMarblesButtons();
+        console.log(p1, IA);
     }
-    else {
+    else if (versionPlayer === "multiplayers") {
         playerTurn = localStorage.setItem("playerTurn", p1.name);
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
         getUsername();
+        addMarblesButtons();
+        console.log(p1, p2);
     }
 });
 myTurnButton.addEventListener('click', () => {
@@ -103,6 +90,7 @@ validateBetButton.addEventListener('click', () => {
         }
     }
     else if (versionPlayer === "multiplayers") {
+        console.log(p1, p2);
         gameMultiplayers();
     }
 });
@@ -112,13 +100,15 @@ evenButton.addEventListener('click', () => {
     gameChoiceSection.removeAttribute('class');
     if (versionPlayer === "solo") {
         p1.guess("even", IA);
+        console.log(p1, IA);
     }
     else if (versionPlayer === "multiplayers") {
+        console.log(p1, p2);
         playerTurn = localStorage.getItem('playerTurn');
-        if (playerTurn === p1.name) {
+        if (playerTurn = p1.name) {
             p1.guess("even", p2);
         }
-        else if (playerTurn === p2.name) {
+        else if (playerTurn = p2.name) {
             p2.guess("even", p1);
         }
     }
@@ -129,12 +119,13 @@ oddButton.addEventListener('click', () => {
     gameChoiceSection.removeAttribute('class');
     if (versionPlayer === "solo") {
         p1.guess("odd", IA);
+        console.log(p1, IA);
     }
     else if (versionPlayer === "multiplayers") {
+        console.log(p1, p2);
         playerTurn = localStorage.getItem('playerTurn');
         if (playerTurn === p1.name) {
-            if (evenOrOdd())
-                p1.guess("odd", p2);
+            p1.guess("odd", p2);
         }
         else if (playerTurn === p2.name) {
             p2.guess("odd", p1);
@@ -152,7 +143,8 @@ function gameVsIA() {
     }
     else {
         if (playerTurn === p1.name) {
-            p1.bet(+marblesBetInput.value);
+            addMarblesButtons();
+            // p1.bet(+marblesBetInput.value)
             if (evenOrOdd() === randomEvenOrOdd()) {
                 console.log("IA a trouvé la solution");
                 IA.guess("even", p1);
@@ -162,7 +154,7 @@ function gameVsIA() {
                 IA.guess("odd", p1);
             }
         }
-        else {
+        else if (playerTurn = IA) {
             let randomBetIA = randomMarblesNumber(IA.marbles);
             IA.bet(randomBetIA);
             console.log("IA bet : ", randomBetIA);
@@ -173,27 +165,38 @@ function gameVsIA() {
         IA.bet(randomBetIA);
         console.log("IA bet : ", randomBetIA);
     }
-    switchPlayer();
 }
 // ----------------------Game 1 V 1--------------------------------
 function gameMultiplayers() {
     playerTurn = localStorage.getItem('playerTurn');
-    if (playerTurn === p1.name) {
-        let betMarbles = marblesBetInput.value;
-        p1.bet(+betMarbles);
-        console.log(p1);
-        console.log(`Joueur 1 mise : ${betMarbles}`);
-        switchPlayer();
+    if (p1.marbles = 0) {
+        console.log(`${p1.name} a perdu !`);
+        console.log(`${p2.name} a gagné !`);
     }
-    else if (playerTurn === p2.name) {
-        let betMarbles = marblesBetInput.value;
-        p2.bet(+betMarbles);
-        console.log(p2);
-        console.log(`Joueur 2 mise : ${betMarbles}`);
-        switchPlayer();
+    else if (p2.marbles = 0) {
+        console.log(`${p1.name} a gagné !`);
+        console.log(`${p2.name} a perdu !`);
+    }
+    else {
+        if (playerTurn === p1.name) {
+            addMarblesButtons();
+            // let betMarbles = marblesBetInput.value;
+            // p1.bet(+betMarbles);  
+            // console.log(p1);
+            // console.log(`Joueur 1 mise : ${betMarbles}`)
+            switchPlayer();
+        }
+        else if (playerTurn === p2.name) {
+            addMarblesButtons();
+            // let betMarbles = marblesBetInput.value;
+            // p2.bet(+betMarbles)
+            // console.log(p2);
+            // console.log(`Joueur 2 mise : ${betMarbles}`)   
+            switchPlayer();
+        }
     }
 }
-// ------------------- Username ----------------------
+// ------------------- username in local storage ----------------------
 function getUsername() {
     let username1 = username1Input.value;
     let username2 = username2Input.value;
@@ -201,6 +204,7 @@ function getUsername() {
     localStorage.setItem('name2', username2);
     console.log(p1, p2);
 }
+// ------------------------------- Switch players ---------------------------------------------
 function switchPlayer() {
     versionPlayer == localStorage.getItem("Type");
     if (versionPlayer === "solo") {
@@ -222,34 +226,63 @@ function switchPlayer() {
         }
     }
 }
+//--------------------- Even or odd -------------------------------------
 function evenOrOdd() {
-    playerTurn = localStorage.getItem('playerTurn');
     let betMarbles = marblesBetInput.value;
-    if (playerTurn === p1.name) {
-        if (+betMarbles % 2 === 0) {
-            return "even";
-        }
-        else {
-            return "odd";
-        }
+    if (+betMarbles % 2 === 0) {
+        return "even";
+    }
+    else {
+        return "odd";
     }
 }
+// -------------------------- IA random marbles bet and even or odd-------------------
 function randomMarblesNumber(max) {
     let randomMarbles = Math.floor(Math.random() * max) + 1;
     console.log(randomMarbles);
     console.log("Billes pariées par l'IA: ", randomMarbles);
     return randomMarbles;
 }
-// ia function random pair/impair 
 function randomEvenOrOdd() {
     let randomEvenOrOdd = Math.floor(Math.random() * 2);
-    if (randomEvenOrOdd === 1) {
+    if (randomEvenOrOdd = 0) {
         console.log("IA dit pair");
         return "even";
     }
     else {
         console.log("IA dit Impair");
         return "odd";
+    }
+}
+// ---------------------- marbles buttons  ---------------
+function addMarblesButtons() {
+    playerTurn = localStorage.getItem('playerTurn');
+    if (playerTurn = p1.name) {
+        let docContext = document.getElementById("btnMarbles");
+        docContext.innerHTML = "";
+        console.log("nombre de billes de p1 :", p1.marbles);
+        for (let i = 1; i <= p1.marbles; i++) {
+            let button = document.createElement("button");
+            button.innerHTML = "<span class='big'> </span>" + i.toString();
+            button.id = "btnMarble" + i;
+            button.className = "marble marble" + p1.colorMarbles[i];
+            button.onclick = function () { p1.bet(i); };
+            docContext.appendChild(button);
+        }
+        console.log(`Ajout des ${p1.marbles} billes de ${p1.name}`);
+    }
+    else if (playerTurn = p2.name) {
+        let docContext = document.getElementById("btnMarbles");
+        docContext.innerHTML = "";
+        for (let i = 1; i <= p2.marbles; i++) {
+            let button = document.createElement("button");
+            button.innerHTML = "<span class='big'> </span>" + i.toString();
+            button.id = "btnMarble" + i;
+            button.className = "marble marble" + p2.colorMarbles[i];
+            button.onclick = function () { p2.bet(i); };
+            docContext.appendChild(button);
+        }
+        console.log(`Ajout des ${p2.marbles} billes de ${p2.name}`);
     }
 }
 
@@ -414,9 +447,9 @@ class player {
      * @returns vrai si bien deviné (gain), faux sinon (perte)
      */
     guess(choice, player2) {
-        if (player2.marblesBet == 0) {
-            throw new Error(`Le player2 (matricule ${player2.getMatricule()}) n'a pas misé de billes !`);
-        }
+        // if( player2.marblesBet == 0 ) {
+        //     throw new Error(`Le player2 (matricule ${player2.getMatricule()}) n'a pas misé de billes !`);
+        // }
         let victoire;
         if (choice == "even") {
             victoire = (player2.marblesBet % 2 == 0);

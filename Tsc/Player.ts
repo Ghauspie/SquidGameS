@@ -65,9 +65,9 @@ export class player {
      * @returns vrai si bien deviné (gain), faux sinon (perte)
      */
     guess(choice : "even" | "odd", player2: player): boolean {
-        if( player2.marblesBet == 0 ) {
-            throw new Error(`Le player2 (matricule ${player2.getMatricule()}) n'a pas misé de billes !`);
-        }
+        // if( player2.marblesBet == 0 ) {
+        //     throw new Error(`Le player2 (matricule ${player2.getMatricule()}) n'a pas misé de billes !`);
+        // }
         let victoire: boolean;
         if( choice == "even" ) {
             victoire = ( player2.marblesBet % 2 == 0 );
