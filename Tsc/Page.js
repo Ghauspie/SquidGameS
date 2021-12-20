@@ -59,6 +59,7 @@ function goplay() {
     if (versionplayer === "solo") {
         player1 = document.getElementById('username1').value;
         localStorage.setItem('name1', player1);
+        
     }
     else {
         player1 = document.getElementById('username1').value;
