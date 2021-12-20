@@ -23,7 +23,8 @@
   h1 {
       font-family: SquidGame;
       font-size: var(--size-h1);
-      margin-right: 35%;
+      margin-right: 10%;
+      width: 60%;
   }
   h3{
     background-color: transparent;

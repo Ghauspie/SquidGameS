@@ -14,8 +14,8 @@ import {player} from "./Player";
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
     StartPlay.addEventListener("click",StartPlayer);
-    SelectSolo.addEventListener("click",SelectNumberPlayer );
-    SelectMulti.addEventListener("click",SelectNumberPlayer);
+    SelectSolo.addEventListener("click",()=>SelectNumberPlayer);
+    SelectMulti.addEventListener("click",()=>SelectNumberPlayer);
     Go.addEventListener("click",goplay);
     home.addEventListener("click",BackHome);
     Rules.addEventListener("click",displayRule);
@@ -29,19 +29,26 @@ import {player} from "./Player";
         index.setAttribute('class',"hidden");
        /*  index.style.display="none"; */ 
         selectPlayerDisplay=document.getElementById('selectPlayers') as HTMLElement;
-        selectPlayerDisplay.removeAttribute('class','hidden');
+        selectPlayerDisplay.removeAttribute('class');
         console.log("test start");
     }
     
     function SelectNumberPlayer(e:string){
+        if (localStorage.type!=null){
+        localStorage.removeItem('Type');
         let versionplayer: string;
         versionplayer=e.target.value;
         let displayname:HTMLFormElement;
+        let Name2:HTMLFormElement;
+        Name2=document.getElementById('Name2') as HTMLFormElement;
         localStorage.setItem('Type',versionplayer);
         if(versionplayer==="solo"){
             displayname=document.getElementById('username1')as HTMLFormElement;
-            displayname.removeAttribute('class','hidden');
-            document.getElementById('Name1').removeAttribute('class') as HTMLElement ;
+            displayname.removeAttribute('class');
+            document.getElementById('Name1').removeAttribute('class');
+            if(Name2.getAttribute('class')==null){
+                Name2.setAttribute('class',"hidden"); 
+            }
             return versionplayer;
         }
         else {
@@ -49,10 +56,37 @@ import {player} from "./Player";
             displayname.removeAttribute('class','hidden');
             document.getElementById('Name1').removeAttribute('class') as HTMLElement ;
             displayname=document.getElementById('username2');
-            displayname.removeAttribute('class','hidden');
+            displayname.removeAttribute('class');
             document.getElementById('Name2').removeAttribute('class') as HTMLElement ;
             return versionplayer;
-        } 
+            } 
+        }
+        else {
+            let versionplayer: string;
+            versionplayer=e.target.value;
+            let displayname:HTMLFormElement;
+            let Name2:HTMLFormElement;
+            Name2=document.getElementById('Name2') as HTMLFormElement;
+            localStorage.setItem('Type',versionplayer);
+            if(versionplayer==="solo"){
+                displayname=document.getElementById('username1')as HTMLFormElement;
+                displayname.removeAttribute('class');
+                document.getElementById('Name1').removeAttribute('class');
+                if(Name2.getAttribute('class')==null){
+                    Name2.setAttribute('class',"hidden"); 
+                }
+                return versionplayer;
+            }
+            else {
+                displayname=document.getElementById('username1')as HTMLFormElement;
+                displayname.removeAttribute('class');
+                document.getElementById('Name1').removeAttribute('class');
+                displayname=document.getElementById('username2');
+                displayname.removeAttribute('class');
+                document.getElementById('Name2').removeAttribute('class');
+                return versionplayer;
+                } 
+        }
     }
 
     function goplay(){
@@ -65,12 +99,14 @@ import {player} from "./Player";
         {
             player1=document.getElementById('username1').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
+            gameVsIA();
         }
         else{
             player1=document.getElementById('username1').value as HTMLFormElement;
             player2=document.getElementById('username2').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
+            gameMultiplayers()
         }
     }
 
@@ -106,4 +142,4 @@ import {player} from "./Player";
         console.log('test');
 
     }
-
+}
