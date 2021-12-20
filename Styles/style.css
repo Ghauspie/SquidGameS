@@ -167,6 +167,20 @@
     display: none;
 }
 
+
+/* ---------------------------------------Button Even or Odd -----------------------------------*/
+
+#even {
+  width: 200px;
+  height: 100px;
+  margin: 0;
+
+}
+#odd {
+    width: 200px;
+    height: 100px;
+}
+
       /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -242,6 +256,49 @@
   .inputplayer{
       font-size: var(--size-p);
   }
+
+  /* --------------------------------GAME GUESS----------------------------------------------- */
+
+  #gameGuess {
+      width: 100%;
+      height: 58vh;  
+  }
+
+    /* --------------------------------GAME CHOICE----------------------------------------------- */
+
+  #gameChoice {
+    width: 100%;
+    height: 58vh;
+  }
+  #gameChoice h2 {
+    position: absolute;
+    width: 60%;
+    color: black;
+    font-size: 25px;
+    top: 40%; left: 50%; 
+    transform: translate(-50%, -50%); 
+  }
+  .marblesBet {
+    position: absolute;
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%);
+  }
+  
+/* ----------------------------Even or Odd ---------------------------------------------------- */
+
+#playerGuess h2 {
+    position: absolute;
+    width: 60%;
+    color: black;
+    font-size: 25px;
+    top: 40%; left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+.evenOrOdd {
+    position: absolute;
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%);
+}
 
             /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
