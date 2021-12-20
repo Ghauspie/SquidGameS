@@ -357,3 +357,19 @@
       content: " ";
       height: 4vh;
   }
+
+
+  /* Modal */
+#modalrule{
+      background-color: var(--color-bleu-green);
+      color: var(--color-white);
+      font-size: var(--size-p);
+     /*  justify-content: center; */
+     width: 50%;
+      margin: auto;
+      position: absolute;
+      top: 30em;
+      left: 30em;
+      top: 30em;
+      bottom: 30em;     
+  }

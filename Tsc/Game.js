@@ -144,14 +144,13 @@ function gameVsIA() {
         if (playerTurn === p1.name) {
             addMarblesButtons();
             // p1.bet(+marblesBetInput.value)
-            if (evenOrOdd() === randomEvenOrOdd()) {
-                console.log("IA a trouvé la solution");
-                IA.guess("even", p1);
-            }
-            else {
-                console.log("IA n'a pas trouvé la solution");
-                IA.guess("odd", p1);
-            }
+            // if (evenOrOdd() === randomEvenOrOdd()) {
+            //     console.log("IA a trouvé la solution");
+            //     IA.guess("even", p1);
+            // } else {
+            //     console.log("IA n'a pas trouvé la solution");
+            //     IA.guess("odd", p1);
+            // }
         }
         else if (playerTurn = IA) {
             let randomBetIA = randomMarblesNumber(IA.marbles);

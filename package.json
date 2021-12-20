@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Ghauspie/SquidGameS/issues"
   },
-  "homepage": "https://github.com/Ghauspie/SquidGameS#readme"
+  "homepage": "https://github.com/Ghauspie/SquidGameS#readme",
+  "dependencies": {
+    "bulma": "^0.9.3"
+  }
 }

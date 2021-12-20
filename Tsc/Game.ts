@@ -78,7 +78,7 @@ GoplayButton.addEventListener('click', () => {
         playerTurn = localStorage.setItem("playerTurn", p1.name);
         selectPlayersSection.setAttribute('class', "hidden");
         gameChoiceSection.removeAttribute('class');
-        addMarblesButtons()
+        addMarblesButtons();
         console.log(p1, IA);
         
         
@@ -109,7 +109,7 @@ validateBetButton.addEventListener('click', () => {
         }
     } else if (versionPlayer === "multiplayers") {
         console.log(p1, p2); 
-        gameMultiplayers()
+        gameMultiplayers();
     }
 })
 
@@ -159,15 +159,15 @@ function gameVsIA() {
         alert("C'est perdu !");
     } else {
         if (playerTurn === p1.name) {
-            addMarblesButtons()
+            addMarblesButtons();
             // p1.bet(+marblesBetInput.value)
-            if (evenOrOdd() === randomEvenOrOdd()) {
-                console.log("IA a trouvé la solution");
-                IA.guess("even", p1);
-            } else {
-                console.log("IA n'a pas trouvé la solution");
-                IA.guess("odd", p1);
-            }
+            // if (evenOrOdd() === randomEvenOrOdd()) {
+            //     console.log("IA a trouvé la solution");
+            //     IA.guess("even", p1);
+            // } else {
+            //     console.log("IA n'a pas trouvé la solution");
+            //     IA.guess("odd", p1);
+            // }
         } else if (playerTurn = IA){
             let randomBetIA: any = randomMarblesNumber(IA.marbles);
             IA.bet(randomBetIA);
@@ -256,7 +256,7 @@ let betMarbles = marblesBetInput.value;
 
 // -------------------------- IA random marbles bet and even or odd-------------------
 
-function randomMarblesNumber(max: number) {
+function randomMarblesNumber(max: number): number {
     let randomMarbles: number = Math.floor(Math.random() * max) + 1;
     console.log(randomMarbles);
 
@@ -264,7 +264,7 @@ function randomMarblesNumber(max: number) {
     return randomMarbles
 }
 
-function randomEvenOrOdd() {
+function randomEvenOrOdd(): "even" | "odd" {
     let randomEvenOrOdd: number = Math.floor(Math.random() * 2)
 
     if (randomEvenOrOdd = 0) {
