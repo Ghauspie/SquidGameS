@@ -359,3 +359,33 @@
       content: " ";
       height: 4vh;
   }
+
+
+  /* Modal */
+#modalRules{
+      background-color: var(--color-bleu-green);
+      color: var(--color-white);
+      font-size: var(--size-p);
+     /*  justify-content: center; */
+     width: 60%;
+      position: absolute;
+      right: 20%;
+      left: 20%;
+      top: 10%;
+      border-radius: 15px;  
+  }
+  .modal-card{
+      margin: 2% 5%;
+  }
+  #closeRules{
+      width: 11%;
+        margin-left: 82%;
+      background-color: var(--color-green);
+      color: var(--color-white);    
+  }
+  button.delete:hover{
+    transform: scale(1.2,1.2) ;
+  }
+  .modal-card-title{
+      margin-bottom: 2%;
+  }

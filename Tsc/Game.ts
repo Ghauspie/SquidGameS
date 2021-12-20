@@ -116,7 +116,7 @@ function playerGuess(p:"even" | "odd"): void{
 
 // -------------------------- IA random marbles bet and even or odd-------------------
 
-function randomMarblesNumber(max: number) {
+function randomMarblesNumber(max: number): number {
     let randomMarbles: number = Math.floor(Math.random() * max) + 1;
     console.log("Billes pariées par l'IA: ", randomMarbles);
     return randomMarbles
