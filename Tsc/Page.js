@@ -14,11 +14,13 @@ let SelectMulti = document.getElementById('multiplayers');
 let Go = document.getElementById('Goplay');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
+let DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
 document.addEventListener("click", function (e) {
-    if (e.target.className == 'modalRules') {
-        alert('click in');
+    console.log(DialogModal.id, e.target.className);
+    if ((e.target.className) != (DialogModal.id = "modalRules")) {
+        closeRules;
     }
     else {
         closeRules;
@@ -44,59 +46,29 @@ function StartPlayer() {
 }
 //function select type of game
 function SelectNumberPlayer(e) {
-    if (localStorage.type != null) {
-        localStorage.removeItem('Type');
-        let versionplayer;
-        versionplayer = e.target.value;
-        let displayname;
-        let Name2;
-        let username2;
-        Name2 = document.getElementById('Name2');
-        localStorage.setItem('Type', versionplayer);
-        if (versionplayer === "solo") {
-            displayname = document.getElementById('username1');
-            displayname.removeAttribute('class');
-            document.getElementById('Name1').removeAttribute('class');
-            if (Name2.getAttribute('class') == null) {
-                Name2.setAttribute('class', "hidden");
-            }
-            return versionplayer;
-        }
-        else {
-            displayname = document.getElementById('username1');
-            displayname.removeAttribute('class', 'hidden');
-            document.getElementById('Name1').removeAttribute('class');
-            displayname = document.getElementById('username2');
-            displayname.removeAttribute('class');
-            document.getElementById('Name2').removeAttribute('class');
-            return versionplayer;
-        }
+    /*  */
+    localStorage.removeItem('Type');
+    let displayname1 = document.getElementById('Name1');
+    let displayname2 = document.getElementById('Name2');
+    if (displayname1.getAttribute("class") !== 'hidden') {
+        displayname1.setAttribute('class', 'hidden');
+    }
+    if (displayname2.getAttribute("class") !== 'hidden') {
+        displayname2.setAttribute('class', 'hidden');
+    }
+    let versionplayer;
+    versionplayer = e.target.value;
+    let displayname;
+    let Name2;
+    let username2;
+    Name2 = document.getElementById('Name2');
+    localStorage.setItem('Type', versionplayer);
+    if (versionplayer === "solo") {
+        displayname1.classList.toggle('hidden');
     }
     else {
-        let versionplayer;
-        versionplayer = e.target.value;
-        let displayname;
-        let Name2;
-        Name2 = document.getElementById('Name2');
-        localStorage.setItem('Type', versionplayer);
-        if (versionplayer === "solo") {
-            displayname = document.getElementById('username1');
-            displayname.removeAttribute('class');
-            document.getElementById('Name1').removeAttribute('class');
-            if (Name2.getAttribute('class') == null) {
-                Name2.setAttribute('class', "hidden");
-            }
-            return versionplayer;
-        }
-        else {
-            displayname = document.getElementById('username1');
-            displayname.removeAttribute('class');
-            document.getElementById('Name1').removeAttribute('class');
-            displayname = document.getElementById('username2');
-            displayname.removeAttribute('class');
-            document.getElementById('Name2').removeAttribute('class');
-            return versionplayer;
-        }
+        displayname1.classList.toggle('hidden');
+        displayname2.classList.toggle('hidden');
     }
 }
 function goplay() {
@@ -127,6 +99,7 @@ function BackHome() {
     let chaningPlayer;
     let gameOver;
     HomePage = document.getElementById('homePage');
+    HomePage.classList.toggle('hidden');
     HomePage.removeAttribute('class');
     HomePage.setAttribute('class', 'home');
     selectPlayers = document.getElementById('selectPlayers');
@@ -134,6 +107,7 @@ function BackHome() {
     gameGuess = document.getElementById('gameGuess');
     chaningPlayer = document.getElementById('changingPlayer');
     gameOver = document.getElementById('gameOver');
+    selectPlayers.classList.toggle('hidden');
     resetLocalStorage;
     if (selectPlayers.getAttribute('class') == null) {
         selectPlayers.setAttribute('class', "hidden");
@@ -159,7 +133,7 @@ function resetLocalStorage() {
 }
 //function Display rule
 function displayRule() {
-    let DialogModal = document.getElementById('modalRules');
+    DialogModal = document.getElementById('modalRules');
     if (DialogModal.getAttribute('class') != null) {
         DialogModal.removeAttribute('class', 'hidden');
         DialogModal.removeAttribute('aria-hidden');

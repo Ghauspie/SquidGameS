@@ -13,16 +13,19 @@ import {player} from "./Player";
     let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
+    let DialogModal:any=document.getElementById('modalRules');
     let texte:string;
     let ruleClose=document.getElementById('closeRules');
     
-     document.addEventListener("click", function (e) {
-        if(e.target.className == 'modalRules'){
-         alert('click in') 
+    document.addEventListener("click", function (e) {
+         console.log(DialogModal.id, e.target.className);
+        if((e.target.className)!=(DialogModal.id="modalRules")){
+            
+            closeRules;
         }else {
             closeRules;
         }
-      },false); 
+      },false);  
 
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
@@ -48,8 +51,16 @@ import {player} from "./Player";
 
 //function select type of game
     function SelectNumberPlayer(e:string){
-        if (localStorage.type!=null){
-            localStorage.removeItem('Type');
+        /*  */
+        localStorage.removeItem('Type');
+        let displayname1=document.getElementById('Name1')as HTMLFormElement;
+        let displayname2=document.getElementById('Name2') as HTMLFormElement;
+        if (displayname1.getAttribute("class")!=='hidden'){
+            displayname1.setAttribute('class','hidden');
+        }
+        if (displayname2.getAttribute("class")!=='hidden'){
+            displayname2.setAttribute('class','hidden');
+        }
             let versionplayer: string;
             versionplayer=e.target.value;
             let displayname:HTMLFormElement;
@@ -58,50 +69,12 @@ import {player} from "./Player";
             Name2=document.getElementById('Name2') as HTMLFormElement;
             localStorage.setItem('Type',versionplayer);
             if(versionplayer==="solo"){
-                displayname=document.getElementById('username1')as HTMLFormElement;
-                displayname.removeAttribute('class');
-                document.getElementById('Name1').removeAttribute('class');
-                if(Name2.getAttribute('class')==null){
-                    Name2.setAttribute('class',"hidden"); 
-                }
-                return versionplayer;
+                displayname1.classList.toggle('hidden');
             }
             else {
-                displayname=document.getElementById('username1')as HTMLFormElement;
-                displayname.removeAttribute('class','hidden');
-                document.getElementById('Name1').removeAttribute('class') as HTMLElement ;
-                displayname=document.getElementById('username2');
-                displayname.removeAttribute('class');
-                document.getElementById('Name2').removeAttribute('class') as HTMLElement ;
-                return versionplayer;
-                } 
+                displayname1.classList.toggle('hidden');
+                displayname2.classList.toggle('hidden');
             }
-        else {
-            let versionplayer: string;
-            versionplayer=e.target.value;
-            let displayname:HTMLFormElement;
-            let Name2:HTMLFormElement;
-            Name2=document.getElementById('Name2') as HTMLFormElement;
-            localStorage.setItem('Type',versionplayer);
-            if(versionplayer==="solo"){
-                displayname=document.getElementById('username1')as HTMLFormElement;
-                displayname.removeAttribute('class');
-                document.getElementById('Name1').removeAttribute('class');
-                if(Name2.getAttribute('class')==null){
-                    Name2.setAttribute('class',"hidden"); 
-                }
-                return versionplayer;
-            }
-            else {
-                displayname=document.getElementById('username1')as HTMLFormElement;
-                displayname.removeAttribute('class');
-                document.getElementById('Name1').removeAttribute('class');
-                displayname=document.getElementById('username2');
-                displayname.removeAttribute('class');
-                document.getElementById('Name2').removeAttribute('class');
-                return versionplayer;
-                } 
-        }
     }
 
     function goplay(){
@@ -121,7 +94,7 @@ import {player} from "./Player";
             player2=document.getElementById('username2').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
-            player.gameMultiplayers()
+            player.gameMultiplayers();
         }
     }
 //Function return home and reset
@@ -131,15 +104,17 @@ import {player} from "./Player";
         let gameChoose:HTMLElement;
         let gameGuess:HTMLElement;
         let chaningPlayer:HTMLElement;
-        let gameOver:HTMLElement
+        let gameOver:HTMLElement;
         HomePage=document.getElementById('homePage') as HTMLElement;
+        HomePage.classList.toggle('hidden');
         HomePage.removeAttribute('class');
-        HomePage.setAttribute('class','home');
+        HomePage.setAttribute('class','home'); 
         selectPlayers=document.getElementById('selectPlayers') as HTMLElement;
         gameChoose=document.getElementById('gameChoice') as HTMLElement;
         gameGuess=document.getElementById('gameGuess') as HTMLElement;
         chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
         gameOver=document.getElementById('gameOver') as HTMLElement;
+        selectPlayers.classList.toggle('hidden');
         resetLocalStorage;
         if(selectPlayers.getAttribute('class')==null){
             selectPlayers.setAttribute('class',"hidden");
@@ -166,7 +141,7 @@ import {player} from "./Player";
     }
 //function Display rule
     function displayRule(){
-        let DialogModal:any=document.getElementById('modalRules');
+        DialogModal=document.getElementById('modalRules');
         if(DialogModal.getAttribute('class')!=null){
             DialogModal.removeAttribute('class','hidden');
             DialogModal.removeAttribute('aria-hidden');
