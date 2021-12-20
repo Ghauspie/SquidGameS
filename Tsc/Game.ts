@@ -44,8 +44,13 @@ let result: boolean;
 
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
-    gameChoiceSection.classList.toggle('hidden');   
-    addMarblesButtons();
+    if(randomEvenOrOdd() === "even"){
+        gameChoiceSection.classList.toggle('hidden');   
+        addMarblesButtons();
+    } else {
+        IABetSection.classList.toggle('hidden');
+        // L'adversaire commence
+    }
 });
 
 validateBetButton.addEventListener('click', () => {
@@ -93,8 +98,11 @@ toPlayerBetButton.addEventListener('click', () => {
 });
 
 replayButton.addEventListener('click', () => {
-    // p1 = new player(p1.name, parseInt(p1.getMatricule()));
-    // IA = new player(IA.name, parseInt(IA.getMatricule()));
+    gameOverSection.classList.toggle('hidden');
+    gameChoiceSection.classList.toggle('hidden');
+    p1.reset();
+    IA.reset();
+    addMarblesButtons();
 });
 
 // ----------------------------- Function VERSUS IA ------------------------------------------------

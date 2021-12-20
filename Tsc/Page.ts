@@ -33,7 +33,7 @@ import {player} from "./Player";
         console.log("test start");
     }
     
-    function SelectNumberPlayer(e:string){
+    function SelectNumberPlayer(e:string){  
         if (localStorage.type!=null){
         localStorage.removeItem('Type');
         let versionplayer: string;

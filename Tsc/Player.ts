@@ -31,6 +31,7 @@ export class player {
         this.marbles = this.initMarbles;
         this.initColors();
         this.marblesBet = 0;
+        this.gainedOrLost = 0;
     }
 
     /**
