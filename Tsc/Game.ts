@@ -21,7 +21,6 @@ let gameOverSection = document.getElementById('gameOver') as HTMLFormElement;
 let IABetSection = document.getElementById('IABet') as HTMLFormElement;
 let playerGuessResultSection = document.getElementById('playerGuessResult') as HTMLFormElement;
 
-
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 
 let username1: any = localStorage.getItem('name1');
