@@ -140,4 +140,8 @@ import {player} from "./Player";
         console.log('test');
 
     }
+<<<<<<< HEAD
 }
+=======
+
+>>>>>>> 0e1f2ab570267f59a2a7da8446485e41dbe8651c
