@@ -125,6 +125,7 @@ function BackHome() {
     let gameChoose;
     let gameGuess;
     let chaningPlayer;
+    let gameOver;
     HomePage = document.getElementById('homePage');
     HomePage.removeAttribute('class');
     HomePage.setAttribute('class', 'home');
@@ -132,6 +133,7 @@ function BackHome() {
     gameChoose = document.getElementById('gameChoice');
     gameGuess = document.getElementById('gameGuess');
     chaningPlayer = document.getElementById('changingPlayer');
+    gameOver = document.getElementById('gameOver');
     resetLocalStorage;
     if (selectPlayers.getAttribute('class') == null) {
         selectPlayers.setAttribute('class', "hidden");
@@ -144,6 +146,9 @@ function BackHome() {
     }
     if (chaningPlayer.getAttribute('class') == null) {
         chaningPlayer.setAttribute('class', 'hidden');
+    }
+    if (gameOver.getAttribute('class') == null) {
+        gameOver.setAttribute('class', 'hidden');
     }
 }
 function resetLocalStorage() {

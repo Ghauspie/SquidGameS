@@ -131,6 +131,7 @@ import {player} from "./Player";
         let gameChoose:HTMLElement;
         let gameGuess:HTMLElement;
         let chaningPlayer:HTMLElement;
+        let gameOver:HTMLElement
         HomePage=document.getElementById('homePage') as HTMLElement;
         HomePage.removeAttribute('class');
         HomePage.setAttribute('class','home');
@@ -138,6 +139,7 @@ import {player} from "./Player";
         gameChoose=document.getElementById('gameChoice') as HTMLElement;
         gameGuess=document.getElementById('gameGuess') as HTMLElement;
         chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
+        gameOver=document.getElementById('gameOver') as HTMLElement;
         resetLocalStorage;
         if(selectPlayers.getAttribute('class')==null){
             selectPlayers.setAttribute('class',"hidden");
@@ -150,6 +152,9 @@ import {player} from "./Player";
         }
         if(chaningPlayer.getAttribute('class')==null){
             chaningPlayer.setAttribute('class','hidden');
+        }
+        if(gameOver.getAttribute('class')==null){
+            gameOver.setAttribute('class','hidden');
         }
         
     }
