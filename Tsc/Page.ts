@@ -99,12 +99,14 @@ import {player} from "./Player";
         {
             player1=document.getElementById('username1').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
+            gameVsIA();
         }
         else{
             player1=document.getElementById('username1').value as HTMLFormElement;
             player2=document.getElementById('username2').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
+            gameMultiplayers()
         }
     }
 
@@ -140,8 +142,4 @@ import {player} from "./Player";
         console.log('test');
 
     }
-<<<<<<< HEAD
 }
-=======
-
->>>>>>> 0e1f2ab570267f59a2a7da8446485e41dbe8651c
