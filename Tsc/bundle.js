@@ -32,8 +32,16 @@ let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
-    gameChoiceSection.classList.toggle('hidden');
-    addMarblesButtons();
+    if (randomEvenOrOdd() === "even") {
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');
+        addMarblesButtons();
+    }
+    else {
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+        // L'adversaire commence
+    }
 });
 validateBetButton.addEventListener('click', () => {
     gameChoiceSection.classList.toggle('hidden');
@@ -75,8 +83,19 @@ toPlayerBetButton.addEventListener('click', () => {
     }
 });
 replayButton.addEventListener('click', () => {
-    // p1 = new player(p1.name, parseInt(p1.getMatricule()));
-    // IA = new player(IA.name, parseInt(IA.getMatricule()));
+    gameOverSection.classList.toggle('hidden');
+    p1.reset();
+    IA.reset();
+    let beginner = localStorage.getItem("begin");
+    if (beginner === "1") {
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+    }
+    else {
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');
+        addMarblesButtons();
+    }
 });
 // ----------------------------- Function VERSUS IA ------------------------------------------------
 function playerGuess(p) {
@@ -92,8 +111,8 @@ function randomMarblesNumber(max) {
     return randomMarbles;
 }
 function randomEvenOrOdd() {
-    let randomEvenOrOdd = Math.floor(Math.random() * 2);
-    if (randomEvenOrOdd = 0) {
+    let randomEvenOrOdd = Math.floor(Math.random());
+    if (randomEvenOrOdd === 0) {
         console.log("IA dit pair");
         return "even";
     }
@@ -121,7 +140,6 @@ function addMarblesButtons() {
 },{"./Player":3}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Player_1 = require("./Player");
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;
@@ -201,14 +219,14 @@ function goplay() {
     if (versionplayer === "solo") {
         player1 = document.getElementById('username1').value;
         localStorage.setItem('name1', player1);
-        Player_1.player.gameVsIA();
+        // player.gameVsIA();
     }
     else {
         player1 = document.getElementById('username1').value;
         player2 = document.getElementById('username2').value;
         localStorage.setItem('name1', player1);
         localStorage.setItem('name2', player2);
-        Player_1.player.gameMultiplayers();
+        // player.gameMultiplayers();
     }
 }
 //Function return home and reset
@@ -277,7 +295,7 @@ function closeRules() {
     DialogModal.setAttribute('class', 'hidden');
 }
 
-},{"./Player":3}],3:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.player = void 0;
@@ -291,12 +309,23 @@ class player {
      * @param matricule le matricule qui lui sera attribué.
      */
     constructor(playerName, matricule) {
-        this.colorMarbles = [];
-        this.marbles = 10;
+        this.initMarbles = 10; //nombre de billes initiales
+        this.colorMarbles = []; //couleurs des billes du joueur
+        this.marbles = this.initMarbles;
         this.name = playerName;
         this.matricule = matricule;
         this.marblesBet = 0;
+        this.gainedOrLost = 0;
         this.initColors();
+    }
+    /**
+     * Garde nom et matricule du joueur, reset le reste
+     */
+    reset() {
+        this.marbles = this.initMarbles;
+        this.initColors();
+        this.marblesBet = 0;
+        this.gainedOrLost = 0;
     }
     /**
      * Attribue un numéro de couleur de bille aléatoire entre 1 et 9
@@ -350,6 +379,8 @@ class player {
         if (victoire) {
             player2.marbles -= player2.marblesBet;
             this.marbles += player2.marblesBet; //le joueur gagne les billes misées
+            this.gainedOrLost = player2.marblesBet;
+            player2.gainedOrLost = -player2.marblesBet;
         }
         else {
             let perte = player2.marblesBet;
@@ -357,6 +388,8 @@ class player {
                 perte = this.marbles;
             player2.marbles += perte;
             this.marbles -= perte; //le joueur perd les billes misées
+            this.gainedOrLost = -perte;
+            player2.gainedOrLost = perte;
         }
         player2.marblesBet = 0;
         return victoire;
@@ -387,4 +420,4 @@ exports.player = player;
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
 
-},{}]},{},[3,2,1]);
+},{}]},{},[3,1,2]);

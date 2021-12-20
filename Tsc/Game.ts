@@ -45,9 +45,11 @@ let result: boolean;
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
     if(randomEvenOrOdd() === "even"){
+        localStorage.setItem("begin", "1");
         gameChoiceSection.classList.toggle('hidden');   
         addMarblesButtons();
     } else {
+        localStorage.setItem("begin", "2");
         IABetSection.classList.toggle('hidden');
         // L'adversaire commence
     }
@@ -99,10 +101,18 @@ toPlayerBetButton.addEventListener('click', () => {
 
 replayButton.addEventListener('click', () => {
     gameOverSection.classList.toggle('hidden');
-    gameChoiceSection.classList.toggle('hidden');
     p1.reset();
     IA.reset();
-    addMarblesButtons();
+    let beginner = localStorage.getItem("begin");
+    if (beginner === "1"){
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+    } else {
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');   
+        addMarblesButtons();
+    }
+
 });
 
 // ----------------------------- Function VERSUS IA ------------------------------------------------
@@ -123,8 +133,8 @@ function randomMarblesNumber(max: number): number {
 }
 
 function randomEvenOrOdd():"even" | "odd" {
-    let randomEvenOrOdd = Math.floor(Math.random() * 2);
-    if (randomEvenOrOdd = 0) {
+    let randomEvenOrOdd = Math.floor(Math.random());
+    if (randomEvenOrOdd === 0) {
         console.log("IA dit pair");
         return "even"
     } else {

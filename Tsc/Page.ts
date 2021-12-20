@@ -87,14 +87,14 @@ import {player} from "./Player";
         {
             player1=document.getElementById('username1').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
-            player.gameVsIA();
+            // player.gameVsIA();
         }
         else{
             player1=document.getElementById('username1').value as HTMLFormElement;
             player2=document.getElementById('username2').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
-            player.gameMultiplayers();
+            // player.gameMultiplayers();
         }
     }
 //Function return home and reset

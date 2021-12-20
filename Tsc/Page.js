@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Player_1 = require("./Player");
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;
@@ -80,14 +79,14 @@ function goplay() {
     if (versionplayer === "solo") {
         player1 = document.getElementById('username1').value;
         localStorage.setItem('name1', player1);
-        Player_1.player.gameVsIA();
+        // player.gameVsIA();
     }
     else {
         player1 = document.getElementById('username1').value;
         player2 = document.getElementById('username2').value;
         localStorage.setItem('name1', player1);
         localStorage.setItem('name2', player2);
-        Player_1.player.gameMultiplayers();
+        // player.gameMultiplayers();
     }
 }
 //Function return home and reset
