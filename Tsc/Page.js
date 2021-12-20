@@ -15,12 +15,22 @@ let Go = document.getElementById('Goplay');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
 let texte;
+let ruleClose = document.getElementById('closeRules');
+document.addEventListener("click", function (e) {
+    if (e.target.className == 'modalRules') {
+        alert('click in');
+    }
+    else {
+        closeRules;
+    }
+}, false);
 StartPlay.addEventListener("click", StartPlayer);
 SelectSolo.addEventListener("click", SelectNumberPlayer);
 SelectMulti.addEventListener("click", SelectNumberPlayer);
 Go.addEventListener("click", goplay);
 home.addEventListener("click", BackHome);
 Rules.addEventListener("click", displayRule);
+ruleClose.addEventListener("click", closeRules);
 //function démarrer la préselection pour une partie
 function StartPlayer() {
     let index;
@@ -158,4 +168,11 @@ function displayRule() {
         DialogModal.setAttribute('aria-hidden', true);
         DialogModal.setAttribute('class', 'hidden');
     }
+}
+function closeRules() {
+    let DialogModal = document.getElementById('modalRules');
+    DialogModal.removeAttribute('aria-modal');
+    DialogModal.removeAttribute('role');
+    DialogModal.setAttribute('aria-hidden', true);
+    DialogModal.setAttribute('class', 'hidden');
 }

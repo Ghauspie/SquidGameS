@@ -14,12 +14,24 @@ import {player} from "./Player";
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
     let texte:string;
+    let ruleClose=document.getElementById('closeRules');
+    
+     document.addEventListener("click", function (e) {
+        if(e.target.className == 'modalRules'){
+         alert('click in') 
+        }else {
+            closeRules;
+        }
+      },false); 
+
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
     SelectMulti.addEventListener("click",SelectNumberPlayer);
     Go.addEventListener("click",goplay);
     home.addEventListener("click",BackHome);
     Rules.addEventListener("click",displayRule);
+    ruleClose.addEventListener("click",closeRules);
+
 
     
 //function démarrer la préselection pour une partie
@@ -167,6 +179,12 @@ import {player} from "./Player";
 
     }
 
-    
+    function closeRules(){
+        let DialogModal:any=document.getElementById('modalRules');
+        DialogModal.removeAttribute('aria-modal');
+        DialogModal.removeAttribute('role');
+        DialogModal.setAttribute('aria-hidden',true);
+        DialogModal.setAttribute('class','hidden');
+    }
 
 }

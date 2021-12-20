@@ -365,26 +365,25 @@
       color: var(--color-white);
       font-size: var(--size-p);
      /*  justify-content: center; */
-     width: 50%;
+     width: 60%;
       position: absolute;
-      right: 30%;
-      left: 30%;
-      top: 15%;
-      bottom: 50%;  
+      right: 20%;
+      left: 20%;
+      top: 10%;
       border-radius: 15px;  
   }
   .modal-card{
       margin: 2% 5%;
-/*       display: flex;
-      flex-direction: column; */
   }
-  .delete{
+  #closeRules{
       width: 11%;
-/*       justify-content:flex-end; */
         margin-left: 82%;
       background-color: var(--color-green);
       color: var(--color-white);    
   }
   button.delete:hover{
     transform: scale(1.2,1.2) ;
+  }
+  .modal-card-title{
+      margin-bottom: 2%;
   }
