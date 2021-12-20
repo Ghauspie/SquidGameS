@@ -286,7 +286,7 @@
   
 /* ----------------------------Even or Odd ---------------------------------------------------- */
 
-#gameGuess h2 {
+#playerGuess h2 {
     position: absolute;
     width: 60%;
     color: black;
