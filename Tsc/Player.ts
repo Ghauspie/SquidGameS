@@ -8,7 +8,7 @@ export class player {
     gainedOrLost: number; //Le nombre de billes perdues ou gagnées au dernier tour de jeu
     colorMarbles: Array<number> = []; //couleurs des billes du joueur
     private matricule: number;
-    private marblesBet: number;
+    marblesBet: number;
     
     /**
      * Constructeur de la classe. Le joueur reçoit 10 billes.

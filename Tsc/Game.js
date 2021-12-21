@@ -32,8 +32,9 @@ let IA = new Player_1.player("IA", matricule2);
 let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
+    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
+    document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
-    document.getElementById('titlePlayerBetChoice').innerHTML = `${p1.name}<br> matricule : ${matricule1} !<br> Veuillez choisir un nombre de bille a parier !`;
     if (randomEvenOrOdd() === "even") {
         localStorage.setItem("begin", "1");
         gameChoiceSection.classList.toggle('hidden');
@@ -46,20 +47,30 @@ GoplayButton.addEventListener('click', () => {
     }
 });
 validateBetButton.addEventListener('click', () => {
-    gameChoiceSection.classList.toggle('hidden');
-    IAGuessSection.classList.toggle('hidden');
-    let p = randomEvenOrOdd();
-    result = IA.guess(p, p1);
-    document.getElementById('titleIAGuess').innerHTML = `${IA.name} a choisi ${p == "even" ? "pair" : "impair"}`;
-    document.getElementById('resultIAGuess').innerHTML = result ? "Il gagne !" : "Il perd !";
+    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
+    document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
+    if (p1.marblesBet === 0) {
+        document.getElementById('titlePlayerBetChoice').innerHTML = `Veuillez choisir un nombre de bille a parier !`;
+    }
+    else {
+        gameChoiceSection.classList.toggle('hidden');
+        IAGuessSection.classList.toggle('hidden');
+        let p = randomEvenOrOdd();
+        result = IA.guess(p, p1);
+        document.getElementById('titleIAGuess').innerHTML = `Joueur <strong>${matricule2}</strong> a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>`;
+        document.getElementById('resultIAGuess').innerHTML = result ? `L'adversaire a gagné <strong>${IA.gainedOrLost}</strong> billes!` : `L'adversaire a perdu <strong>${p1.gainedOrLost}</strong> billes!`;
+    }
 });
 toIABetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
     if (p1.isDead() || IA.isDead()) {
+        result = p1.isDead();
+        document.getElementById('guessIAEvenOrOdd').innerHTML = result ? `Victoire !` : `Game Over`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
         IABetSection.classList.toggle('hidden');
+        document.getElementById('guessIAEvenOrOdd').innerHTML = `À <strong>${p1.name}</strong> de deviner  !`;
         // Compléter le texte à afficher dans la section
     }
 });
@@ -70,13 +81,20 @@ toPlayerGuessButton.addEventListener('click', () => {
 });
 evenButton.addEventListener('click', () => {
     playerGuess("even");
+    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1.name} a choisi <strong>Pair</strong>`;
 });
 oddButton.addEventListener('click', () => {
     playerGuess("odd");
+    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1.name} a choisi <strong>Impair</strong>`;
 });
 toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
-    if (p1.isDead() || IA.isDead()) {
+    if (p1.isDead()) {
+        document.getElementById('txtPlayerGuessResult').innerHTML = `Joueur ${matricule1}, vous êtes mort !`;
+        gameOverSection.classList.toggle('hidden');
+    }
+    else if (IA.isDead()) {
+        document.getElementById('txtPlayerGuessResult').innerHTML = `Bravo ${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
@@ -102,6 +120,7 @@ replayButton.addEventListener('click', () => {
 // ----------------------------- Function VERSUS IA ------------------------------------------------
 function playerGuess(p) {
     result = p1.guess(p, IA);
+    document.getElementById('txtPlayerGuessResult').innerHTML = result ? `${p1.name} a gagné ${p1.gainedOrLost} billes!` : `${p1.name} a perdu ${IA.gainedOrLost} billes!`;
     playerGuessSection.classList.toggle('hidden');
     playerGuessResultSection.classList.toggle('hidden');
     // Ajouter le text Player guess result section
