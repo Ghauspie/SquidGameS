@@ -155,7 +155,7 @@ let SelectMulti = document.getElementById('multiplayers');
 let Go = document.getElementById('Goplay');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
-let DialogModal = document.getElementById('modalRules');
+const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
 let RulesM = document.getElementsByClassName('RulesM');
@@ -174,21 +174,20 @@ let RulesM = document.getElementsByClassName('RulesM');
                 }
               }
              },
-                 false);   */
-    /*   window.onclick = function(event) {
-        let DialogModal:HTMLElement=document.getElementById('modalRules');
-            if(DialogModal.getAttribute('role')== "dialog"){
-            let modal:HTMLElement=document.getElementById('modalRules');
-             let modalCard=document.querySelector('modal-card');
-             console.log(event.target);
-                if (event.target ==modal) {
-                    modal.setAttribute('class','hidden');
-                    console.log("test");
-                }
-                else{
-                }
-            }
-        }  */
+                 false);  */
+    document.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (e.target == DialogModal) {
+            console.log('test');
+        }
+        else {
+            RulesM.classList.toggle('hidden');
+        }
+    });
+    /*     window.onclick = function(event) {
+            if (event.target == DialogModal) {
+                console.log('test');
+        }} */
     StartPlay.addEventListener("click", StartPlayer);
     SelectSolo.addEventListener("click", SelectNumberPlayer);
     SelectMulti.addEventListener("click", SelectNumberPlayer);

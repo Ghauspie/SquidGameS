@@ -16,7 +16,7 @@ import {player} from "./Player";
     let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
-    let DialogModal:any=document.getElementById('modalRules');
+    const DialogModal:any=document.getElementById('modalRules');
     let texte:string;
     let ruleClose=document.getElementById('closeRules');
     let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
@@ -36,21 +36,24 @@ import {player} from "./Player";
             }
           }
          },
-             false);   */
-/*   window.onclick = function(event) {
-    let DialogModal:HTMLElement=document.getElementById('modalRules');
-        if(DialogModal.getAttribute('role')== "dialog"){
-        let modal:HTMLElement=document.getElementById('modalRules'); 
-         let modalCard=document.querySelector('modal-card'); 
-         console.log(event.target);
-            if (event.target ==modal) {
-                modal.setAttribute('class','hidden');
-                console.log("test");
-            } 
-            else{
+             false);  */ 
+    document.addEventListener("click", function(e){
+        
+            e.stopPropagation();
+            if (e.target==DialogModal){
+                console.log('test');
             }
-        }
-    }  */
+            else {
+                RulesM.classList.toggle('hidden');
+            }
+            
+        
+
+    })
+/*     window.onclick = function(event) {
+        if (event.target == DialogModal) {
+            console.log('test');
+    }} */
 
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
