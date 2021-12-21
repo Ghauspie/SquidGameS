@@ -118,15 +118,6 @@ import {player} from "./Player";
         chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
         gameOver=document.getElementById('gameOver') as HTMLElement;
         gameOver.setAttribute('class','hidden');
-        resetLocalStorage;
-
-    }
-    function resetLocalStorage{
-        localStorage.removeItem('Type');
-        localStorage.removeItem('name1');
-        localStorage.removeItem('playerTurn');
-        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
-        gameOver.classList.toggle('hidden');
         if(selectPlayers.getAttribute('class')==null){
             selectPlayers.setAttribute('class',"hidden");
         }
@@ -139,10 +130,14 @@ import {player} from "./Player";
         if(chaningPlayer.getAttribute('class')==null){
             chaningPlayer.setAttribute('class','hidden');
         }
-/*         if(gameOver.getAttribute('class')==null){
-            gameOver.setAttribute('class','hidden');
-        } */
-        
+        resetLocalStorage;
+
+    }
+    function resetLocalStorage{
+        localStorage.removeItem('Type');
+        localStorage.removeItem('name1');
+        localStorage.removeItem('playerTurn');
+        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');        
     }
 //function Display rule
     function displayRule(){
