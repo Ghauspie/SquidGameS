@@ -140,7 +140,6 @@ function addMarblesButtons() {
 },{"./Player":3}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Player_1 = require("./Player");
 /* import { getDatabase } from "firebase/database"; */
 /* const database = getDatabase(); */
 /*     versionplayer:string;

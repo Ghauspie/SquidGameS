@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Player_1 = require("./Player");
 /* import { getDatabase } from "firebase/database"; */
 /* const database = getDatabase(); */
 /*     versionplayer:string;
