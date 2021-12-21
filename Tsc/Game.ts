@@ -21,7 +21,6 @@ let gameOverSection = document.getElementById('gameOver') as HTMLFormElement;
 let IABetSection = document.getElementById('IABet') as HTMLFormElement;
 let playerGuessResultSection = document.getElementById('playerGuessResult') as HTMLFormElement;
 
-
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 
 let username1: any = localStorage.getItem('name1');
@@ -45,8 +44,15 @@ let result: boolean;
 
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
-    gameChoiceSection.classList.toggle('hidden');   
-    addMarblesButtons();
+    if(randomEvenOrOdd() === "even"){
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');   
+        addMarblesButtons();
+    } else {
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+        // L'adversaire commence
+    }
 });
 
 validateBetButton.addEventListener('click', () => {
@@ -94,8 +100,19 @@ toPlayerBetButton.addEventListener('click', () => {
 });
 
 replayButton.addEventListener('click', () => {
-    // p1 = new player(p1.name, parseInt(p1.getMatricule()));
-    // IA = new player(IA.name, parseInt(IA.getMatricule()));
+    gameOverSection.classList.toggle('hidden');
+    p1.reset();
+    IA.reset();
+    let beginner = localStorage.getItem("begin");
+    if (beginner === "1"){
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+    } else {
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');   
+        addMarblesButtons();
+    }
+
 });
 
 // ----------------------------- Function VERSUS IA ------------------------------------------------
@@ -109,15 +126,15 @@ function playerGuess(p:"even" | "odd"): void{
 
 // -------------------------- IA random marbles bet and even or odd-------------------
 
-function randomMarblesNumber(max: number) {
+function randomMarblesNumber(max: number): number {
     let randomMarbles: number = Math.floor(Math.random() * max) + 1;
     console.log("Billes pariées par l'IA: ", randomMarbles);
     return randomMarbles
 }
 
 function randomEvenOrOdd():"even" | "odd" {
-    let randomEvenOrOdd = Math.floor(Math.random() * 2);
-    if (randomEvenOrOdd = 0) {
+    let randomEvenOrOdd = Math.floor(Math.random());
+    if (randomEvenOrOdd === 0) {
         console.log("IA dit pair");
         return "even"
     } else {

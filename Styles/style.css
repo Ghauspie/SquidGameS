@@ -7,6 +7,7 @@
      --color-gold:#d4af37;
      --color-black:"black";
      --background-url:"../Pictures/SquidGameBG.jpg";
+     --background-url-rule:url("../Pictures/squid-game-feature-image.png");
 
     --size-h1:1.8em;
     --size-btn:1em;
@@ -34,11 +35,17 @@
     font-weight: bolder;
 }
   body{
+      width: 100%;
+      height: 100vh;
       background-image:url("../Pictures/SquidGameBG.jpg");
       background-repeat: no-repeat;
       background-size: cover;
+      display: flex;
+      flex-direction: column;
   }
-
+  main{
+      height: 90vh;
+  }
 
     /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,6 +67,7 @@
       justify-content: space-evenly;
       flex-direction: row-reverse;
       height: 5vh;
+      width: 100%;
   }
 
   #backToHomePage{
@@ -267,10 +275,6 @@
 
     /* --------------------------------GAME CHOICE----------------------------------------------- */
 
-  #gameChoice {
-    width: 100%;
-    height: 58vh;
-  }
   #gameChoice h2 {
     position: absolute;
     width: 60%;
@@ -315,12 +319,13 @@
   */
   footer{
       display: flex;
-      margin-top: 20%;
-    flex-direction: row;
+      
+      flex-direction: row;
       height: 5vh;
       background-color: var(--color-pink);
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 0%;
   }
   .nameFooter{
       display: flex;
@@ -356,4 +361,53 @@
       background-size: 100%;
       content: " ";
       height: 4vh;
+  }
+
+/* 
+  ┌─┐┌─┐░░░░┌┐░░┌┐░
+  ││└┘││░░░░││░░││░
+  │┌┐┌┐├──┬─┘├──┤│░
+  ││││││┌┐│┌┐│┌┐││░
+  ││││││└┘│└┘│┌┐│└┐
+  └┘└┘└┴──┴──┴┘└┴─┘ */
+  
+#modalRules{
+
+      background-color: var(--color-bleu-green);
+      color: var(--color-gold);
+      font-size: var(--size-p);
+      font-weight: bolder;
+     width: 60%;
+      position: absolute;
+      right: 20%;
+      left: 20%;
+      top: 10%;
+      border-radius: 15px;  
+  }
+  .modal-card{
+      margin: 2% 5%;
+  }
+  #closeRules{
+      width: 11%;
+        margin-left: 82%;
+      background-color: var(--color-green);
+      color: var(--color-white);    
+  }
+  button.delete:hover{
+    transform: scale(1.2,1.2) ;
+  }
+  .modal-card-title{
+      margin-bottom: 2%;
+  }
+
+  #RulesM{
+    background: rgba(0, 0, 0, 0.877);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top:0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 0;
   }

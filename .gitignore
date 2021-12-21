@@ -1,1 +1,3 @@
 ﻿*.js
+Tsc/Page.js
+node_modules/*
