@@ -7,6 +7,7 @@
      --color-gold:#d4af37;
      --color-black:"black";
      --background-url:"../Pictures/SquidGameBG.jpg";
+     --background-url-rule:url("../Pictures/squid-game-feature-image.png");
 
     --size-h1:1.8em;
     --size-btn:1em;
@@ -37,8 +38,12 @@
       background-image:url("../Pictures/SquidGameBG.jpg");
       background-repeat: no-repeat;
       background-size: cover;
+      display: flex;
+      flex-direction: column;
   }
-
+  main{
+      height: 90vh;
+  }
 
     /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,6 +65,7 @@
       justify-content: space-evenly;
       flex-direction: row-reverse;
       height: 5vh;
+      width: 100%;
   }
 
   #backToHomePage{
@@ -315,12 +321,13 @@
   */
   footer{
       display: flex;
-      margin-top: 20%;
-    flex-direction: row;
+      
+      flex-direction: row;
       height: 5vh;
       background-color: var(--color-pink);
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 0%;
   }
   .nameFooter{
       display: flex;
@@ -358,13 +365,20 @@
       height: 4vh;
   }
 
-
-  /* Modal */
+/* 
+  ┌─┐┌─┐░░░░┌┐░░┌┐░
+  ││└┘││░░░░││░░││░
+  │┌┐┌┐├──┬─┘├──┤│░
+  ││││││┌┐│┌┐│┌┐││░
+  ││││││└┘│└┘│┌┐│└┐
+  └┘└┘└┴──┴──┴┘└┴─┘ */
+  
 #modalRules{
+
       background-color: var(--color-bleu-green);
-      color: var(--color-white);
+      color: var(--color-gold);
       font-size: var(--size-p);
-     /*  justify-content: center; */
+      font-weight: bolder;
      width: 60%;
       position: absolute;
       right: 20%;
