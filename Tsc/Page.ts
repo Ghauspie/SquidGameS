@@ -1,4 +1,7 @@
 import {player} from "./Player";
+/* import { getDatabase } from "firebase/database"; */
+
+/* const database = getDatabase(); */
 /*     versionplayer:string;
     selectPlayerDisplay:void;
     index:any;
@@ -116,6 +119,13 @@ import {player} from "./Player";
         gameOver=document.getElementById('gameOver') as HTMLElement;
         selectPlayers.classList.toggle('hidden');
         resetLocalStorage;
+
+    }
+    function resetLocalStorage{
+        localStorage.removeItem('Type');
+        localStorage.removeItem('name1');
+        localStorage.removeItem('playerTurn');
+        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
         if(selectPlayers.getAttribute('class')==null){
             selectPlayers.setAttribute('class',"hidden");
         }
@@ -133,12 +143,6 @@ import {player} from "./Player";
         }
         
     }
-    function resetLocalStorage{
-        localStorage.removeItem('Type');
-        localStorage.removeItem('name1');
-        localStorage.removeItem('playerTurn');
-        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
-    }
 //function Display rule
     function displayRule(){
         DialogModal=document.getElementById('modalRules');
@@ -147,7 +151,7 @@ import {player} from "./Player";
             DialogModal.removeAttribute('aria-hidden');
             DialogModal.setAttribute('aria-modal',true);
             DialogModal.setAttribute('role','dialog');
-            document.getElementById('modal-Content').innerHTML= "Le jeux des billes ce joue par deux ou seulement avec le boot. \n Chacun des joueurs obtienne un sac qui contient 10 billes. \n A chaque tours le joueur qui doit deviner mets dans sa main un nombre de billes qui souhaite miser, allant de 1 a 10. Puis il indique si il choisit le nombre pair ou impair. \n Pendant le même temps le second joueur decide combien de billes il met dans sa main. \n Une fois les 2 joueurs prets le joueur qui doit devine indique son choix de pair ou impair. Si il a bien devine, alors il emporte le nombre de bille qu'il avait mise. Puis on inverse les roles. Sinon il donne les billes qu'il avait misé.\n Une fois la partie terminé c'est la fin pour le joueur. Et vous ne reverrez plus jamais la lumiere.";
+            document.getElementById('modal-Content').innerHTML= "Le jeux des billes ce joue par deux ou seulement avec le boot.\\n Chacun des joueurs obtienne un sac qui contient 10 billes. \n A chaque tours le joueur qui doit deviner mets dans sa main un nombre de billes qui souhaite miser, allant de 1 a 10. Puis il indique si il choisit le nombre pair ou impair. \n Pendant le même temps le second joueur decide combien de billes il met dans sa main. \n Une fois les 2 joueurs prets le joueur qui doit devine indique son choix de pair ou impair. Si il a bien devine, alors il emporte le nombre de bille qu'il avait mise. Puis on inverse les roles. Sinon il donne les billes qu'il avait misé.\n Une fois la partie terminé c'est la fin pour le joueur. Et vous ne reverrez plus jamais la lumiere.";
         }
         else {
             DialogModal.removeAttribute('aria-modal');
@@ -155,9 +159,8 @@ import {player} from "./Player";
             DialogModal.setAttribute('aria-hidden',true);
             DialogModal.setAttribute('class','hidden');
         }
-
-
     }
+
 
     function closeRules(){
         let DialogModal:any=document.getElementById('modalRules');
@@ -166,5 +169,4 @@ import {player} from "./Player";
         DialogModal.setAttribute('aria-hidden',true);
         DialogModal.setAttribute('class','hidden');
     }
-
 }
