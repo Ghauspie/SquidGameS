@@ -135,8 +135,8 @@ let Go = document.getElementById('Goplay');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
 StartPlay.addEventListener("click", StartPlayer);
-SelectSolo.addEventListener("click", SelectNumberPlayer);
-SelectMulti.addEventListener("click", SelectNumberPlayer);
+SelectSolo.addEventListener("click", () => SelectNumberPlayer);
+SelectMulti.addEventListener("click", () => SelectNumberPlayer);
 Go.addEventListener("click", goplay);
 home.addEventListener("click", BackHome);
 Rules.addEventListener("click", displayRule);
@@ -147,28 +147,62 @@ function StartPlayer() {
     index.setAttribute('class', "hidden");
     /*  index.style.display="none"; */
     selectPlayerDisplay = document.getElementById('selectPlayers');
-    selectPlayerDisplay.removeAttribute('class', 'hidden');
+    selectPlayerDisplay.removeAttribute('class');
     console.log("test start");
 }
 function SelectNumberPlayer(e) {
-    let versionplayer;
-    versionplayer = e.target.value;
-    let displayname;
-    localStorage.setItem('Type', versionplayer);
-    if (versionplayer === "solo") {
-        displayname = document.getElementById('username1');
-        displayname.removeAttribute('class', 'hidden');
-        document.getElementById('Name1').removeAttribute('class');
-        return versionplayer;
+    if (localStorage.type != null) {
+        localStorage.removeItem('Type');
+        let versionplayer;
+        versionplayer = e.target.value;
+        let displayname;
+        let Name2;
+        Name2 = document.getElementById('Name2');
+        localStorage.setItem('Type', versionplayer);
+        if (versionplayer === "solo") {
+            displayname = document.getElementById('username1');
+            displayname.removeAttribute('class');
+            document.getElementById('Name1').removeAttribute('class');
+            if (Name2.getAttribute('class') == null) {
+                Name2.setAttribute('class', "hidden");
+            }
+            return versionplayer;
+        }
+        else {
+            displayname = document.getElementById('username1');
+            displayname.removeAttribute('class', 'hidden');
+            document.getElementById('Name1').removeAttribute('class');
+            displayname = document.getElementById('username2');
+            displayname.removeAttribute('class');
+            document.getElementById('Name2').removeAttribute('class');
+            return versionplayer;
+        }
     }
     else {
-        displayname = document.getElementById('username1');
-        displayname.removeAttribute('class', 'hidden');
-        document.getElementById('Name1').removeAttribute('class');
-        displayname = document.getElementById('username2');
-        displayname.removeAttribute('class', 'hidden');
-        document.getElementById('Name2').removeAttribute('class');
-        return versionplayer;
+        let versionplayer;
+        versionplayer = e.target.value;
+        let displayname;
+        let Name2;
+        Name2 = document.getElementById('Name2');
+        localStorage.setItem('Type', versionplayer);
+        if (versionplayer === "solo") {
+            displayname = document.getElementById('username1');
+            displayname.removeAttribute('class');
+            document.getElementById('Name1').removeAttribute('class');
+            if (Name2.getAttribute('class') == null) {
+                Name2.setAttribute('class', "hidden");
+            }
+            return versionplayer;
+        }
+        else {
+            displayname = document.getElementById('username1');
+            displayname.removeAttribute('class');
+            document.getElementById('Name1').removeAttribute('class');
+            displayname = document.getElementById('username2');
+            displayname.removeAttribute('class');
+            document.getElementById('Name2').removeAttribute('class');
+            return versionplayer;
+        }
     }
 }
 function goplay() {
@@ -180,12 +214,14 @@ function goplay() {
     if (versionplayer === "solo") {
         player1 = document.getElementById('username1').value;
         localStorage.setItem('name1', player1);
+        gameVsIA();
     }
     else {
         player1 = document.getElementById('username1').value;
         player2 = document.getElementById('username2').value;
         localStorage.setItem('name1', player1);
         localStorage.setItem('name2', player2);
+        gameMultiplayers();
     }
 }
 function BackHome() {
@@ -329,4 +365,4 @@ exports.player = player;
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
 
-},{}]},{},[3,1,2]);
+},{}]},{},[3,2,1]);
