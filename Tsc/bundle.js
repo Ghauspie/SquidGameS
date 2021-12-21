@@ -243,7 +243,7 @@ function BackHome() {
     let chaningPlayer;
     let gameOver;
     HomePage = document.getElementById('homePage');
-    HomePage.classList.toggle('hidden');
+    HomePage.removeAttributeNS('class', 'hidden');
     HomePage.removeAttribute('class');
     HomePage.setAttribute('class', 'home');
     selectPlayers = document.getElementById('selectPlayers');
@@ -251,7 +251,7 @@ function BackHome() {
     gameGuess = document.getElementById('gameGuess');
     chaningPlayer = document.getElementById('changingPlayer');
     gameOver = document.getElementById('gameOver');
-    selectPlayers.classList.toggle('hidden');
+    gameOver.setAttribute('class', 'hidden');
     resetLocalStorage;
 }
 function resetLocalStorage() {
@@ -259,6 +259,7 @@ function resetLocalStorage() {
     localStorage.removeItem('name1');
     localStorage.removeItem('playerTurn');
     sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
+    gameOver.classList.toggle('hidden');
     if (selectPlayers.getAttribute('class') == null) {
         selectPlayers.setAttribute('class', "hidden");
     }
@@ -271,9 +272,9 @@ function resetLocalStorage() {
     if (chaningPlayer.getAttribute('class') == null) {
         chaningPlayer.setAttribute('class', 'hidden');
     }
-    if (gameOver.getAttribute('class') == null) {
-        gameOver.setAttribute('class', 'hidden');
-    }
+    /*         if(gameOver.getAttribute('class')==null){
+                gameOver.setAttribute('class','hidden');
+            } */
 }
 //function Display rule
 function displayRule() {
