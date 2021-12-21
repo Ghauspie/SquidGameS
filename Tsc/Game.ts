@@ -21,6 +21,10 @@ let gameOverSection = document.getElementById('gameOver') as HTMLFormElement;
 let IABetSection = document.getElementById('IABet') as HTMLFormElement;
 let playerGuessResultSection = document.getElementById('playerGuessResult') as HTMLFormElement;
 
+// ---------------------------------TEXTE------------------------------------------------
+
+let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice') as HTMLFormElement;
+
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 
 let username1: any = localStorage.getItem('name1');
@@ -44,6 +48,7 @@ let result: boolean;
 
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
+    document.getElementById('titlePlayerBetChoice')!.innerHTML = `${p1.name}<br> matricule : ${matricule1} !<br> Veuillez choisir un nombre de bille a parier !`
     if(randomEvenOrOdd() === "even"){
         localStorage.setItem("begin", "1");
         gameChoiceSection.classList.toggle('hidden');   

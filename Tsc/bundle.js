@@ -19,6 +19,8 @@ let selectPlayersSection = document.getElementById('selectPlayers');
 let gameOverSection = document.getElementById('gameOver');
 let IABetSection = document.getElementById('IABet');
 let playerGuessResultSection = document.getElementById('playerGuessResult');
+// ---------------------------------TEXTE------------------------------------------------
+let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice');
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 let username1 = localStorage.getItem('name1');
 // ------------------------------ MATRICULES ---------------------------------------
@@ -32,6 +34,7 @@ let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
+    document.getElementById('titlePlayerBetChoice').innerHTML = `${p1.name}<br> matricule : ${matricule1} !<br> Veuillez choisir un nombre de bille a parier !`;
     if (randomEvenOrOdd() === "even") {
         localStorage.setItem("begin", "1");
         gameChoiceSection.classList.toggle('hidden');
