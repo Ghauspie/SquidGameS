@@ -64,15 +64,19 @@ validateBetButton.addEventListener('click', () => {
 });
 toIABetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
-    if (p1.isDead() || IA.isDead()) {
-        result = p1.isDead();
-        document.getElementById('guessIAEvenOrOdd').innerHTML = result ? `Victoire !` : `Game Over`;
+    if (p1.isDead()) {
+        document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        gameOverSection.classList.toggle('hidden');
+    }
+    else if (IA.isDead()) {
+        document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
-        IABetSection.classList.toggle('hidden');
         document.getElementById('guessIAEvenOrOdd').innerHTML = `À <strong>${p1.name}</strong> de deviner  !`;
-        // Compléter le texte à afficher dans la section
+        IABetSection.classList.toggle('hidden');
     }
 });
 toPlayerGuessButton.addEventListener('click', () => {
@@ -91,11 +95,13 @@ oddButton.addEventListener('click', () => {
 toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
     if (p1.isDead()) {
-        document.getElementById('txtPlayerGuessResult').innerHTML = `Joueur ${matricule1}, vous êtes mort !`;
+        document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     }
     else if (IA.isDead()) {
-        document.getElementById('txtPlayerGuessResult').innerHTML = `Bravo ${matricule1}, vous avez gagné !`;
+        document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
@@ -133,8 +139,7 @@ function randomMarblesNumber(max) {
     return randomMarbles;
 }
 function randomEvenOrOdd() {
-    let randomEvenOrOdd = Math.floor(Math.random());
-    if (randomEvenOrOdd === 0) {
+    if (Math.round(Math.random()) === 0) {
         console.log("IA dit pair");
         return "even";
     }
