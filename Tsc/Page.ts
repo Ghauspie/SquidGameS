@@ -1,3 +1,4 @@
+import { doc } from "firebase/firestore";
 import {player} from "./Player";
 /* import { getDatabase } from "firebase/database"; */
 
@@ -37,19 +38,13 @@ import {player} from "./Player";
           }
          },
              false);  */ 
-    document.addEventListener("click", function(e){
-            e.stopPropagation();
-            if (e.target==DialogModal){
-                console.log('test');
-            }
-            else {
-                RulesM.classList.toggle('hidden');
-            }
-    })
+
 /*     window.onclick = function(event) {
         if (event.target == DialogModal) {
             console.log('test');
     }} */
+
+
 
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
@@ -132,13 +127,9 @@ import {player} from "./Player";
         let gameOver:HTMLElement;
         let IAGuess:HTMLElement;
         let IABet:HTMLElement;
-
+        resetLocalStorage();
         HomePage=document.getElementById('homePage') as HTMLElement;
-<<<<<<< HEAD
         HomePage.removeAttributeNS('class','hidden');
-=======
-       /*  HomePage.classList.toggle('hidden'); */
->>>>>>> dev
         HomePage.removeAttribute('class');
         HomePage.setAttribute('class','home'); 
         selectPlayers=document.getElementById('selectPlayers') as HTMLElement;
@@ -146,34 +137,11 @@ import {player} from "./Player";
         playerGuess=document.getElementById('playerGuess') as HTMLElement;
         chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
         gameOver=document.getElementById('gameOver') as HTMLElement;
-<<<<<<< HEAD
-        gameOver.setAttribute('class','hidden');
-        if(selectPlayers.getAttribute('class')==null){
-            selectPlayers.setAttribute('class',"hidden");
-        }
-        if(gameChoose.getAttribute('class')==null){
-            gameChoose.setAttribute('class','hidden');
-        }
-        if(gameGuess.getAttribute('class')==null){
-            gameGuess.setAttribute('class','hidden');
-        }
-        if(chaningPlayer.getAttribute('class')==null){
-            chaningPlayer.setAttribute('class','hidden');
-        }
-        resetLocalStorage;
-
-    }
-    function resetLocalStorage{
-        localStorage.removeItem('Type');
-        localStorage.removeItem('name1');
-        localStorage.removeItem('playerTurn');
-        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');        
-=======
         playerGuessResult=document.getElementById('playerGuessResult') as HTMLElement;
         IAGuess=document.getElementById('IAGuess') as HTMLElement;
         IABet=document.getElementById('IABet') as HTMLElement;
         /* selectPlayers.classList.toggle('hidden'); */
-        resetLocalStorage;
+        
         selectPlayers.setAttribute('class',"hidden");
         gameChoice.setAttribute('class','hidden');
         playerGuess.setAttribute('class','hidden');
@@ -185,13 +153,11 @@ import {player} from "./Player";
         IABet.setAttribute('class','hidden');    
     }
     function resetLocalStorage(){
-        localStorage.removeItem('Type');
+/*         localStorage.removeItem('Type');
         localStorage.removeItem('name1');
         localStorage.removeItem('playerTurn');
-
-        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
-
->>>>>>> dev
+        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer'); */
+        localStorage.clear("http://127.0.0.1:5000");
     }
 //function Display rule
     function displayRule(){
@@ -199,16 +165,24 @@ import {player} from "./Player";
         RulesM.classList.toggle('hidden');
         let DialogModal:HTMLElement=document.getElementById('modalRules')as HTMLElement;
         DialogModal.classList.toggle('hidden');
+        DialogModal.setAttribute('aria-hidden',true);
+        
     }
-
+    
+    document.getElementById('RulesM').addEventListener("click", function(e){
+            if (!e.target.closest("#modalRules")){
+                 closeRules(); 
+            }
+    })
 
     function closeRules(){
         let DialogModal:any=document.getElementById('modalRules');
         DialogModal.removeAttribute('aria-modal');
         DialogModal.removeAttribute('role');
-        DialogModal.setAttribute('aria-hidden',true);
+        DialogModal.setAttribute('aria-hidden',false);
         DialogModal.setAttribute('class','hidden');
         let RulesM=document.getElementById('RulesM')as HTMLElement;
-        RulesM.classList.toggle('hidden');
+        /* RulesM.classList.toggle('hidden'); */
+        RulesM.setAttribute('class','hidden');
     }
 }
