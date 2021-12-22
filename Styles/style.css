@@ -27,24 +27,45 @@
       margin-right: 10%;
       width: 60%;
   }
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 30px;
+}
   h3{
     background-color: transparent;
     margin: auto;
     font-size: var(--size-h3);
-    color: var(--color-bleu-green);
+    color: var(--color-black);
     font-weight: bolder;
 }
+strong {
+    font: bold;
+    color: #830439;
+}
+div {
+    font-family: "MontSerrat", sans-serif;
+    font-size: 25px;
+}
   body{
-      width: 100%;
-      height: 100vh;
-      background-image:url("../Pictures/SquidGameBG.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-image:url("../Pictures/SquidGameBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+
   }
+
   main{
       height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
   }
 
     /*
@@ -60,22 +81,24 @@
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
   nav{
-      background-color:var(--color-pink) 	 ;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      flex-direction: row-reverse;
-      height: 5vh;
-      width: 100%;
+    background-color:var(--color-pink) 	 ;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    height: 5vh;
+    width: 100%;
   }
 
   #backToHomePage{
       width: 10%;
-      height: 4.8vh;
+      height: auto;
       background-color: transparent;
       margin-right: 20%;
       margin-left: 2%;
+      margin-bottom: 2%;
+      margin-top: 2%;
   }
   .fa-hotel{
       font-size: 250%;
@@ -179,7 +202,7 @@
 
 /* ---------------------------------------Button Even or Odd -----------------------------------*/
 
-#even {
+/* #even {
   width: 200px;
   height: 100px;
   margin: 0;
@@ -188,7 +211,7 @@
 #odd {
     width: 200px;
     height: 100px;
-}
+} */
 
       /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,49 +282,289 @@
       margin-right: 5%;
       size: 3em;
   }
-  #Goplay{
-    margin: 2% 40%;
-  }
+
+  .inputPLayerUsername {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    transition: 0.4s ease-out;
+}
+
   .inputplayer{
       font-size: var(--size-p);
   }
 
-  /* --------------------------------GAME GUESS----------------------------------------------- */
 
-  #gameGuess {
-      width: 100%;
-      height: 58vh;  
+  /* Boutton GO play */
+  #Goplay{
+    width: 40%;
+    margin: auto;
   }
 
-    /* --------------------------------GAME CHOICE----------------------------------------------- */
-
-  #gameChoice h2 {
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                            GAME CHOICE                                                 ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+  #usernameGameChoice{
+      position: absolute;
+      width: 25%;
+      height: 40px;
+      left: 20%;
+      top: 20%;
+      font-size: 30px;
+      font-family: "Montserrat", sans-serif;
+      background-color: #00000044;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  #matriculeGameChoice {
     position: absolute;
-    width: 60%;
+    width: 25%;
+    height: 40px;
+    right: 20%;
+    top: 20%;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #00000044;
+    margin-left: auto;
+    margin-right: auto;
+  }
+   
+  #titlePlayerBetChoice {
+    position: absolute;
+    width: 70%;
     color: black;
     font-size: 25px;
-    top: 40%; left: 50%; 
+    top: 30%; 
+    left: 50%; 
     transform: translate(-50%, -50%); 
   }
+
   .marblesBet {
     position: absolute;
-    top: 50%; left: 50%; 
+    bottom: 20%; 
+    left: 50%; 
     transform: translate(-50%, -50%);
   }
-  
-/* ----------------------------Even or Odd ---------------------------------------------------- */
+  #btnMarbles {
+    position: absolute;
+    bottom: 35%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    }
 
-#playerGuess h2 {
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                           IA GUESS                                                     ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#IAGuess{
+    width: 100%;
+    height: 100vh;
+}
+#titleIABet {
+    position: absolute;
+    width: 70%;
+    color: black;
+    top: 20%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                           IA EVEN OR ODD                                               ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#IAGameGuess {
+    width: 100%;
+    height: 100vh;
+}
+
+#titleIABet {
+    position: absolute;
+    width: 70%;
+    color: black;
+    top: 20%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+#guessIAEvenOrOdd {
+    position: absolute;
+    font-size: 30px;
+    top: 30%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+/* button */
+#toPlayerGuess {
+    position: absolute;
+    bottom: 20%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                           IA GUESS                                                     ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+#titleIAGuess {
+    position: absolute;
+    width: 70%;
+    color: black;
+    top: 20%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+#resultIAGuess {
+    position: absolute;
+    font-size: 30px;
+    bottom: 60%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+/* button */
+#toIABet {
+    position: absolute;
+    bottom: 20%; left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                           EVEN OF ODD PLAYER                                           ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+#titlePlayerGuess {
     position: absolute;
     width: 60%;
     color: black;
-    font-size: 25px;
-    top: 40%; left: 50%; 
+    top: 20%; left: 50%; 
     transform: translate(-50%, -50%); 
 }
 .evenOrOdd {
+    display: flex;
     position: absolute;
-    top: 50%; left: 50%; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+#odd {
+    height: 10vh;
+}
+#even {
+    height: 10vh;
+}
+
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                           PLAYER GUESS RESULT                                          ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#titlePlayerGuessResult {
+    position: absolute;
+    width: 60%;
+    color: black;
+    top: 20%; left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+#txtPlayerGuessResult {
+    position: absolute;
+    font-size: 30px;
+    bottom: 50%; left: 50%; 
+    transform: translate(-50%, -50%);
+}
+/* button */
+#toPlayerBet {
+    position: absolute;
+    bottom: 20%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                            GAME  OVER                                                  ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#gameover {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#tittleWinOrLoose {
+    position: absolute;
+    top: 30%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+#txtWinOrLoose {
+    position: absolute;
+    top: 40%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+/* button */
+#replay {
+    position: absolute;
+    bottom: 20%;
+    left: 50%; 
     transform: translate(-50%, -50%);
 }
 
@@ -403,6 +666,53 @@
       margin-bottom: 2%;
   }
 
+
+             /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                            CLASS BUTTON EFFECT                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+  .btnLigthEffect{
+    display: block;
+    font-size: 20px;
+    font-family: SquidGame;
+    margin: 10px;
+    width: 210px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #333;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btnLigthEffect::after {
+    content: '';
+    height: 240px;
+    width: 100px;
+    background: rgba(255,255,255,0.4);
+    display: block;
+    position: absolute;
+    left: -150px;
+    top: -50px;
+    transform: rotate(-45deg);
+}
+.btnLigthEffect:hover::after {
+    transition: transform 0.3s 0.1s linear;
+    transform: translateX(400px);
+}
+
+
   #RulesM{
     background: rgba(0, 0, 0, 0.877);
     position: absolute;
@@ -414,3 +724,5 @@
     bottom: 0%;
     /* z-index: 0; */
   }
+  
+

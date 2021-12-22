@@ -19,6 +19,8 @@ let selectPlayersSection = document.getElementById('selectPlayers');
 let gameOverSection = document.getElementById('gameOver');
 let IABetSection = document.getElementById('IABet');
 let playerGuessResultSection = document.getElementById('playerGuessResult');
+// ---------------------------------TEXTE------------------------------------------------
+let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice');
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 let username1 = localStorage.getItem('name1');
 // ------------------------------ MATRICULES ---------------------------------------
@@ -31,6 +33,8 @@ let IA = new Player_1.player("IA", matricule2);
 let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
+    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
+    document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
     if (randomEvenOrOdd() === "even") {
         localStorage.setItem("begin", "1");
@@ -44,21 +48,35 @@ GoplayButton.addEventListener('click', () => {
     }
 });
 validateBetButton.addEventListener('click', () => {
-    gameChoiceSection.classList.toggle('hidden');
-    IAGuessSection.classList.toggle('hidden');
-    let p = randomEvenOrOdd();
-    result = IA.guess(p, p1);
-    document.getElementById('titleIAGuess').innerHTML = `${IA.name} a choisi ${p == "even" ? "pair" : "impair"}`;
-    document.getElementById('resultIAGuess').innerHTML = result ? "Il gagne !" : "Il perd !";
+    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
+    document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
+    if (p1.marblesBet === 0) {
+        document.getElementById('titlePlayerBetChoice').innerHTML = `Veuillez choisir un nombre de bille a parier !`;
+    }
+    else {
+        gameChoiceSection.classList.toggle('hidden');
+        IAGuessSection.classList.toggle('hidden');
+        let p = randomEvenOrOdd();
+        result = IA.guess(p, p1);
+        document.getElementById('titleIAGuess').innerHTML = `Joueur <strong>${matricule2}</strong> a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>`;
+        document.getElementById('resultIAGuess').innerHTML = result ? `L'adversaire a gagné <strong>${IA.gainedOrLost}</strong> billes!` : `L'adversaire a perdu <strong>${p1.gainedOrLost}</strong> billes!`;
+    }
 });
 toIABetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
-    if (p1.isDead() || IA.isDead()) {
+    if (p1.isDead()) {
+        document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        gameOverSection.classList.toggle('hidden');
+    }
+    else if (IA.isDead()) {
+        document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
+        document.getElementById('guessIAEvenOrOdd').innerHTML = `À <strong>${p1.name}</strong> de deviner  !`;
         IABetSection.classList.toggle('hidden');
-        // Compléter le texte à afficher dans la section
     }
 });
 toPlayerGuessButton.addEventListener('click', () => {
@@ -68,13 +86,22 @@ toPlayerGuessButton.addEventListener('click', () => {
 });
 evenButton.addEventListener('click', () => {
     playerGuess("even");
+    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1.name} a choisi <strong>Pair</strong>`;
 });
 oddButton.addEventListener('click', () => {
     playerGuess("odd");
+    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1.name} a choisi <strong>Impair</strong>`;
 });
 toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
-    if (p1.isDead() || IA.isDead()) {
+    if (p1.isDead()) {
+        document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        gameOverSection.classList.toggle('hidden');
+    }
+    else if (IA.isDead()) {
+        document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
@@ -100,6 +127,7 @@ replayButton.addEventListener('click', () => {
 // ----------------------------- Function VERSUS IA ------------------------------------------------
 function playerGuess(p) {
     result = p1.guess(p, IA);
+    document.getElementById('txtPlayerGuessResult').innerHTML = result ? `${p1.name} a gagné ${p1.gainedOrLost} billes!` : `${p1.name} a perdu ${IA.gainedOrLost} billes!`;
     playerGuessSection.classList.toggle('hidden');
     playerGuessResultSection.classList.toggle('hidden');
     // Ajouter le text Player guess result section
@@ -111,8 +139,7 @@ function randomMarblesNumber(max) {
     return randomMarbles;
 }
 function randomEvenOrOdd() {
-    let randomEvenOrOdd = Math.floor(Math.random());
-    if (randomEvenOrOdd === 0) {
+    if (Math.round(Math.random()) === 0) {
         console.log("IA dit pair");
         return "even";
     }
@@ -150,6 +177,7 @@ const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
 let RulesM = document.getElementsByClassName('RulesM');
+
 //Section for the addEventListener    
 StartPlay.addEventListener("click", StartPlayer);
 SelectSolo.addEventListener("click", SelectNumberPlayer);
@@ -207,6 +235,7 @@ function goplay() {
         localStorage.setItem('name2', player2);
         // player.gameMultiplayers();
     }
+
 }
 //Function return home and reset
 function BackHome() {
@@ -257,6 +286,7 @@ function displayRule() {
 document.getElementById('RulesM').addEventListener("click", function (e) {
     if (!e.target.closest("#modalRules")) {
         closeRules();
+
     }
 });
 //close the modal windows 
@@ -396,4 +426,4 @@ exports.player = player;
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
 
-},{}]},{},[3,2,1]);
+},{}]},{},[3,1,2]);
