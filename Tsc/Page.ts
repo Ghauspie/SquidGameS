@@ -10,13 +10,13 @@ import {player} from "./Player";
         preloadImg();
     }
 
-    let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
+    //let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
     let SelectSolo: HTMLElement= document.getElementById('solo') as HTMLElement;
     let SelectMulti:HTMLElement=document.getElementById('multiplayers') as HTMLElement;
     let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
-    StartPlay.addEventListener("click",StartPlayer);
+    //StartPlay.addEventListener("click",()=>StartPlayer);
     SelectSolo.addEventListener("click",()=>SelectNumberPlayer);
     SelectMulti.addEventListener("click",()=>SelectNumberPlayer);
     Go.addEventListener("click",goplay);
@@ -29,17 +29,27 @@ import {player} from "./Player";
             img.src = `./Pictures/marble${i}.png`;
         }
     }
-
-    function StartPlayer(){
-        let index:HTMLElement;
-        let selectPlayerDisplay:HTMLElement;
-        index=document.getElementById('homePage') as HTMLElement;
-        index.setAttribute('class',"hidden");
-       /*  index.style.display="none"; */ 
-        selectPlayerDisplay=document.getElementById('selectPlayers') as HTMLElement;
-        selectPlayerDisplay.removeAttribute('class');
-        console.log("test start");
+    function preloadImages(array) {
+        if (!preloadImages.list) {
+            preloadImages.list = [];
+        }
+        var list = preloadImages.list;
+        for (var i = 0; i < array.length; i++) {
+            var img = new Image();
+            img.onload = function() {
+                var index = list.indexOf(this);
+                if (index !== -1) {
+                    // remove image from the array once it's loaded
+                    // for memory consumption reasons
+                    list.splice(index, 1);
+                }
+            }
+            list.push(img);
+            img.src = array[i];
+        }
     }
+
+    
     
     function SelectNumberPlayer(e:string){
         if (localStorage.type!=null){
@@ -98,16 +108,16 @@ import {player} from "./Player";
     }
 
     function goplay(){
-        let player1: HTMLFormElement;
-        let player2: HTMLFormElement;
+        let player1: HTMLInputElement;
+        let player2: HTMLInputElement;
         let versionplayer: string;
         versionplayer=localStorage.getItem('Type');
         console.log(localStorage.getItem('Type'));
         if(versionplayer==="solo")
         {
-            player1=document.getElementById('username1').value as HTMLFormElement;
-            localStorage.setItem('name1',player1);
-            gameVsIA();
+            player1=document.getElementById('username1') as HTMLInputElement;
+            localStorage.setItem('name1',player1.value);
+            //gameVsIA();
         }
         else{
             player1=document.getElementById('username1').value as HTMLFormElement;

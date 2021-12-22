@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Player_1 = require("./Player");
 // ------------------------------ BUTTON ---------------------------------------
-let GoplayButton = document.getElementById('Goplay');
-let validateBetButton = document.getElementById('validateChoice');
+let goPlayButton = document.getElementById('Goplay');
+let startPlayButton = document.getElementById("start");
+let toIAGuessButton = document.getElementById('toIAGuess');
 let evenButton = document.getElementById('even');
 let oddButton = document.getElementById('odd');
 let toIABetButton = document.getElementById('toIABet');
@@ -19,7 +20,8 @@ let gameOverSection = document.getElementById('gameOver');
 let IABetSection = document.getElementById('IABet');
 let playerGuessResultSection = document.getElementById('playerGuessResult');
 // ------------------------------ LOCAL STORAGE ---------------------------------------
-let username1 = localStorage.getItem('name1');
+let username1;
+username1 = localStorage.getItem('name1');
 // ------------------------------ MATRICULES ---------------------------------------
 let matricule1 = Math.floor(Math.random() * 456) + 1;
 let matricule2 = Math.floor(Math.random() * 456) + 1;
@@ -28,65 +30,87 @@ let p1 = new Player_1.player(username1, matricule1);
 let IA = new Player_1.player("IA", matricule2);
 // ------------------------------ VARIABLE GLOBALES ---------------------------------------
 let result;
-// ---------------------- Button AddEvenListener -----------------------
-GoplayButton.addEventListener('click', () => {
-    addMarblesButtons();
-    console.log("wait!");
-    changeStyle("#gameChoice", "background-image", 'url("../Pictures/marblesHand.jpg")');
-    changeStyle("#gameChoice", "color", "white");
-    selectPlayersSection.classList.toggle('hidden');
-    gameChoiceSection.classList.toggle('hidden');
-    //(document.getElementById("gameChoice") as HTMLDivElement).style.backgroundImage = 'url("../Pictures/marblesHand.jpg")';
-});
-let testButton = document.getElementById("test");
-testButton.addEventListener("click", () => {
-    changeStyle("#gameChoice", "background-image", 'url("../Pictures/marblesHand.jpg")');
-});
-function changeStyle(selector, prop, value) {
+//Pour le changement de background-image avec une animation.
+//Le div doit être visible à l'écran au moment de l'appel
+//Il faut donc utiliser un setTimeout() avant appel pour voir l'effet de transition
+/**
+ * Change la valeur d'une propriété dans un style.
+ * Exemple, changeStyle("game.css", ".title", "color", "white")
+ * Ira changer dans le fichier de style game.css référencé le style ".title",
+ * et changera "color: xxx" en "color: white"
+ * @param cssFile nom du fichier de style à modifier
+ * @param selector nom du sélecteur CSS recherché
+ * @param prop propriété à changer dans le sélecteur (doit exister)
+ * @param value valeur à attribuer au sélecteur
+ */
+function changeStyle(cssFile, selector, prop, value) {
     var styles = document.styleSheets;
     for (let i = 0; i < styles.length; i++) {
         let href = document.styleSheets[i].href;
-        console.log(href);
-        if (href != null && href.indexOf("game.css") != -1) {
+        if (href != null && href.indexOf(cssFile) != -1) {
             let ruleList = document.styleSheets[i].cssRules;
-            console.log(ruleList);
-            for (let j = 0; j < ruleList.length; j++) {
-                let rule = ruleList[j];
+            for (let r = 0; r < ruleList.length; r++) {
+                let rule = ruleList[r];
                 if (!(rule instanceof CSSStyleRule)) {
                     continue;
                 }
                 if (rule.selectorText == selector) {
-                    console.log("selector " + rule.selectorText);
+                    //Pour une raison étrange prop doit être any
                     rule.style[prop] = value;
                 }
             }
         }
     }
 }
-//changeStyle('.good', 'color', 'purple');
-//changeStyle('.bad', 'color', 'yellow');
-validateBetButton.addEventListener('click', () => {
+// ---------------------- Button AddEvenListener -----------------------
+startPlayButton.addEventListener("click", () => {
+    let homePage = document.getElementById('homePage');
+    homePage.classList.toggle("hidden");
+    selectPlayersSection.classList.toggle("hidden");
+    console.log("test start");
+    setTimeout(changeStyle, 10, "game.css", "#selectPlayers", "background-image", "url('../Pictures/selectPlayers.jpg')");
+});
+goPlayButton.addEventListener('click', () => {
+    changeStyle("game.css", "#selectPlayers", "background-image", "url('../Pictures/selectPlayersBackground.png')");
+    addMarblesButtons();
+    selectPlayersSection.classList.toggle('hidden');
+    gameChoiceSection.classList.toggle('hidden');
+    setTimeout(changeStyle, 10, "game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoice.jpg')");
+});
+toIAGuessButton.addEventListener('click', () => {
     gameChoiceSection.classList.toggle('hidden');
     IAGuessSection.classList.toggle('hidden');
-    let p = randomEvenOrOdd();
-    result = IA.guess(p, p1);
-    document.getElementById('titleIAGuess').innerHTML = `${IA.name} a choisi ${p == "even" ? "pair" : "impair"}`;
+    let pairImpair = randomEvenOrOdd();
+    result = IA.guess(pairImpair, p1);
+    document.getElementById('titleIAGuess').innerHTML = `${IA.name} a choisi ${pairImpair == "even" ? "pair" : "impair"}`;
     document.getElementById('resultIAGuess').innerHTML = result ? "Il gagne !" : "Il perd !";
+    changeStyle("game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoiceBackground.png')");
+    if (result) {
+        setTimeout(changeStyle, 10, "game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessWin.jpg')");
+    }
+    else {
+        setTimeout(changeStyle, 10, "game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessLoose.jpg')");
+    }
 });
 toIABetButton.addEventListener('click', () => {
+    changeStyle("game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessBackground.png')");
     IAGuessSection.classList.toggle('hidden');
     if (p1.isDead() || IA.isDead()) {
         gameOverSection.classList.toggle('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameOver", "background-image", "url('../Pictures/gameOver.jpg')");
     }
     else {
         IABetSection.classList.toggle('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#IABet", "background-image", "url('../Pictures/IABet.jpg')");
         // Compléter le texte à afficher dans la section
     }
 });
 toPlayerGuessButton.addEventListener('click', () => {
+    changeStyle("game.css", "#IABet", "background-image", "url('../Pictures/IABetBackground.png')");
     IABetSection.classList.toggle('hidden');
     playerGuessSection.classList.toggle('hidden');
     IA.bet(randomMarblesNumber(IA.marbles));
+    setTimeout(changeStyle, 10, "game.css", "#playerGuess", "background-image", "url('../Pictures/playerGuess.jpg')");
 });
 evenButton.addEventListener('click', () => {
     playerGuess("even");
@@ -94,27 +118,41 @@ evenButton.addEventListener('click', () => {
 oddButton.addEventListener('click', () => {
     playerGuess("odd");
 });
+/**
+ * Appel par clic sur bouton
+ * @param pairOuImpair le choix du joueur
+ */
+function playerGuess(pairOuImpair) {
+    changeStyle("game.css", "#playerGuess", "background-image", "url('../Pictures/playerGuessBackground.png')");
+    result = p1.guess(pairOuImpair, IA);
+    playerGuessSection.classList.toggle('hidden');
+    playerGuessResultSection.classList.toggle('hidden');
+    if (result) {
+        setTimeout(changeStyle, 10, "game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultWin.jpg')");
+    }
+    else {
+        setTimeout(changeStyle, 10, "game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultLoose.jpg')");
+    }
+    // Ajouter le text Player guess result section
+}
 toPlayerBetButton.addEventListener('click', () => {
+    changeStyle("game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultBackground.png')");
     playerGuessResultSection.classList.toggle('hidden');
     if (p1.isDead() || IA.isDead()) {
         gameOverSection.classList.toggle('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameOver", "background-image", "url('../Pictures/gameOver.jpg')");
     }
     else {
         addMarblesButtons();
         gameChoiceSection.classList.toggle('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoice.jpg')");
     }
 });
 replayButton.addEventListener('click', () => {
-    // p1 = new player(p1.name, parseInt(p1.getMatricule()));
-    // IA = new player(IA.name, parseInt(IA.getMatricule()));
+    p1.reset();
+    IA.reset();
+    //Ajouter ici 
 });
-// ----------------------------- Function VERSUS IA ------------------------------------------------
-function playerGuess(p) {
-    result = p1.guess(p, IA);
-    playerGuessSection.classList.toggle('hidden');
-    playerGuessResultSection.classList.toggle('hidden');
-    // Ajouter le text Player guess result section
-}
 // -------------------------- IA random marbles bet and even or odd-------------------
 function randomMarblesNumber(max) {
     let randomMarbles = Math.floor(Math.random() * max) + 1;
@@ -122,8 +160,8 @@ function randomMarblesNumber(max) {
     return randomMarbles;
 }
 function randomEvenOrOdd() {
-    let randomEvenOrOdd = Math.floor(Math.random() * 2);
-    if (randomEvenOrOdd = 0) {
+    let randomEvenOrOdd = Math.round(Math.random());
+    if (randomEvenOrOdd === 0) {
         console.log("IA dit pair");
         return "even";
     }

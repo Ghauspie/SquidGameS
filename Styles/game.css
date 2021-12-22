@@ -22,36 +22,90 @@
     color:#42BDBA;
     box-shadow: 2px 1px 2px rgba(0,225,255,0.88)
 }
-#gameChoice{
+.gameSection{
     position: relative;
-    background-image: url("../Pictures/marblesHandBackground.jpg");
+    flex: none;
     background-size: cover;
     background-position: center;
     margin: auto;
     width: 70%;
     height: 400px;
     background-color: rgba(0, 0, 0, 0.1);
-    transition: background-image 3s;
+    transition: background-image 1s;
     color:slategray;
 }
+#gameChoice{
+    background-image: url("../Pictures/gameChoiceBackground.png");
+}
+
+#selectPlayers{
+    background-image: url("../Pictures/selectPlayersBackground.png");
+}
+
+#IAGuess{
+    background-image: url("../Pictures/IAGuessBackground.png");
+}
+
+#IABet{
+    background-image: url("../Pictures/IABetBackground.png");
+}
+
+#playerGuess{
+    background-image: url("../Pictures/playerGuessBackground.png");
+}
+
+#playerGuessResult{
+    background-image: url("../Pictures/playerGuessResultBackground.png");
+}
+
+#gameOver{
+    background-image: url("../Pictures/gameOverBackground.png");
+}
+
+.button{
+    display: flex;
+}
+.button button {
+    margin-right: 10%;
+    background: var(--color-gold);
+    background-image: url("../Pictures/CardsquidGame.png");
+    width: 100%;
+    margin-bottom: 10%;
+    font-size: 1.5em;
+    height: 8vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    color: var(--color-white);
+    font-weight: bolder;
+}
+
+#solo:hover {
+   transform: translate(5%,2%);
+   border: solid 0.2em var(--color-bleu-green);
+}
+#multiplayers:hover{
+    transform: translate(5%,2%);
+    border: solid 0.2em var(--color-bleu-green);
+}*/
 
 /* --------------------------------GAME GUESS----------------------------------------------- */
 
-#gameGuess {
+/*#gameGuess {
     width: 100%;
     height: auto;  
-}
+}*/
 
   /* --------------------------------GAME CHOICE----------------------------------------------- */
 
-#gameChoice h2 {
+/*#gameChoice h2 {
     width: 90%;
     color: var(--color-pink-white);
     font-size: 4vh;
     margin-top: 1vh;
     margin-bottom: 1vh;
     text-shadow: rgba(0,225,255,0.88) 0px 0px 17px;
-}
+}*/
 .marblesBet {
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
@@ -60,7 +114,7 @@
 
 /* ----------------------------Even or Odd ---------------------------------------------------- */
 
-#playerGuess h2 {
+/*#playerGuess h2 {
   position: absolute;
   width: 60%;
   color: black;
@@ -72,4 +126,4 @@
   position: absolute;
   top: 50%; left: 50%; 
   transform: translate(-50%, -50%);
-}
+}*/

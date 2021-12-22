@@ -24,27 +24,25 @@
         <button id="backToHomePage" class="fas fa-hotel"></button>
     </nav>
     <main>
-        <section id="homePage" class="home hidden">
+        <section id="homePage" class="home">
             <button id="rules" onclick="">
                 <h3>
                     Régles
                 </h3>
-
             </button>
             <button id="start">
                 <div id="intTri">
                     <h3>Start</h3>
                 </div>
-
             </button>
             <button id="hallOfFame" onclick="">
                 <h3>
                     Meilleurs joueurs
                 </h3>
             </button>
-
         </section>
-        <section id="selectPlayers" class="hidden">
+        <section id="selectPlayers" class="hidden gameSection">
+            <h2>VEUILLEZ VOUS IDENTIFIER</h2>
             <div class="button">
                 <button id="solo" value="solo"><i class="far fa-user"></i>
                     Solo
@@ -53,45 +51,46 @@
             </div>
             <div class="inputplayer">
                 <div>
-                    <p id="Name1" class="hidden">Quel est votre nom joueur matricule temporaire 1 ?</p>
+                    <p id="Name1" class="hidden">Quel est votre nom matricule 456 ?</p>
                     <input type="text" id="username1" class="hidden">
                 </div>
                 <div>
-                    <p id="Name2" class="hidden">Quel est votre nom joueur matricule temporaire 2 ?</p>
+                    <p id="Name2" class="hidden">Quel est votre nom matricule 001 ?</p>
                     <input type="text" id="username2" class="hidden">
                 </div>
             </div>
-            <button id="Goplay">Go play for my life</button>
+            <div class="btnBottomRight">
+                <button id="Goplay" class="btnNext">Commencer le jeu</button>
+            </div>
         </section>
 
-        <section id="gameChoice" class="gameScreen">
+        <section id="gameChoice" class="hidden gameSection">
             <h2>CHOISIR LE NOMBRE DE BILLES A MISER</h2>
             <div class="marblesBet" >
                 <div id="btnMarbles" class="hover15"></div>
             </div>
             <div class="btnBottomRight">
-                <button id="validateChoice" class="btnBottomRight btnNext">Valider</button>
+                <button id="toIAGuess" class="btnBottomRight btnNext">Valider</button>
             </div>
-            <button id="test">test</button>
         </section>
-        <section id="IAGuess" class="hidden">
+        <section id="IAGuess" class="hidden gameSection">
             <h2 id="titleIAGuess"></h2>
             <div id="resultIAGuess"></div>
             <button id="toIABet" class="btnBottomRight btnNext">Continuer</button>
         </section>
-        <section id="IABet" class="hidden">
+        <section id="IABet" class="hidden gameSection">
             <h2>IA Bet</h2>
-            <div>IA Even or Odd</div>
+            <div>IA choisit son nombre de billes</div>
             <button id="toPlayerGuess" class="btnBottomRight btnNext">Continuer</button>
         </section>
-        <section id="playerGuess" class="hidden">
+        <section id="playerGuess" class="hidden gameSection">
             <h2>Pair ou Impair</h2>
             <div class="evenOrOdd">
                 <button id="even">Pair</button>
                 <button id="odd">Impair</button>
             </div>
         </section>
-        <section id="playerGuessResult" class="hidden">
+        <section id="playerGuessResult" class="hidden gameSection">
             <h2>Player result Guess</h2>
             <div>You Win/Loose</div>
             <button id="toPlayerBet" class="btnBottomRight btnNext">Continuer</button>
@@ -99,7 +98,7 @@
         <section id="changingPlayer" class="hidden">
             <button id="myTurn">Je suis prêt!</button>
         </section>
-        <section id="gameOver" class="hidden">
+        <section id="gameOver" class="hidden gameSection">
             <h2>Game Over</h2>
             <div></div>
             <button id="replay" class="btnBottomRight btnNext">Recommencer une partie</button>
