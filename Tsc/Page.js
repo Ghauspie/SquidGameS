@@ -168,6 +168,5 @@ let RulesM = document.getElementsByClassName('RulesM');
         DialogModal.setAttribute('class', 'hidden');
         let RulesM = document.getElementById('RulesM');
         RulesM.classList.toggle('hidden');
-        /* RulesM.setAttribute('class','hidden'); */
     }
 }

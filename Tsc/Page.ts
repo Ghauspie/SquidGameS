@@ -38,7 +38,6 @@ import {player} from "./Player";
          },
              false);  */ 
     document.addEventListener("click", function(e){
-        
             e.stopPropagation();
             if (e.target==DialogModal){
                 console.log('test');
@@ -46,9 +45,6 @@ import {player} from "./Player";
             else {
                 RulesM.classList.toggle('hidden');
             }
-            
-        
-
     })
 /*     window.onclick = function(event) {
         if (event.target == DialogModal) {
@@ -161,10 +157,11 @@ import {player} from "./Player";
         IAGuess.setAttribute('class','hidden');
         IABet.setAttribute('class','hidden');    
     }
-    function resetLocalStorage{
+    function resetLocalStorage(){
         localStorage.removeItem('Type');
         localStorage.removeItem('name1');
         localStorage.removeItem('playerTurn');
+
         sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
 
     }
@@ -185,6 +182,5 @@ import {player} from "./Player";
         DialogModal.setAttribute('class','hidden');
         let RulesM=document.getElementById('RulesM')as HTMLElement;
         RulesM.classList.toggle('hidden');
-        /* RulesM.setAttribute('class','hidden'); */
     }
 }
