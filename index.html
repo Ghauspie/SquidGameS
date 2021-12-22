@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width" , initial-scale="1.0">
-    <title>Squid Game: play or death</title>
+    <title>Squid Game: marbles</title>
     <link rel="stylesheet" href="./Styles/reset.css">
     <link rel="stylesheet" href="./Styles/style.css">
     <link rel="stylesheet" href="./Styles/marbles.css">
+    <link rel="stylesheet" href="./Styles/game.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
@@ -23,7 +24,7 @@
         <button id="backToHomePage" class="fas fa-hotel"></button>
     </nav>
     <main>
-        <section id="homePage" class="home">
+        <section id="homePage" class="home hidden">
             <button id="rules" onclick="">
                 <h3>
                     Régles
@@ -63,23 +64,25 @@
             <button id="Goplay">Go play for my life</button>
         </section>
 
-        <section id="gameChoice" class="hidden">>
+        <section id="gameChoice" class="gameScreen">
             <h2>CHOISIR LE NOMBRE DE BILLES A MISER</h2>
-            <div class="marblesBet">
-                <button id="validateChoice">Valider</button>
+            <div class="marblesBet" >
+                <div id="btnMarbles" class="hover15"></div>
             </div>
-            <br>
-            <div id="btnMarbles" class="hover15"></div>
+            <div class="btnBottomRight">
+                <button id="validateChoice" class="btnBottomRight btnNext">Valider</button>
+            </div>
+            <button id="test">test</button>
         </section>
         <section id="IAGuess" class="hidden">
             <h2 id="titleIAGuess"></h2>
             <div id="resultIAGuess"></div>
-            <button id="toIABet">Continuer</button>
+            <button id="toIABet" class="btnBottomRight btnNext">Continuer</button>
         </section>
         <section id="IABet" class="hidden">
             <h2>IA Bet</h2>
             <div>IA Even or Odd</div>
-            <button id="toPlayerGuess">Continuer</button>
+            <button id="toPlayerGuess" class="btnBottomRight btnNext">Continuer</button>
         </section>
         <section id="playerGuess" class="hidden">
             <h2>Pair ou Impair</h2>
@@ -91,7 +94,7 @@
         <section id="playerGuessResult" class="hidden">
             <h2>Player result Guess</h2>
             <div>You Win/Loose</div>
-            <button id="toPlayerBet">Continuer</button>
+            <button id="toPlayerBet" class="btnBottomRight btnNext">Continuer</button>
         </section>
         <section id="changingPlayer" class="hidden">
             <button id="myTurn">Je suis prêt!</button>
@@ -99,7 +102,7 @@
         <section id="gameOver" class="hidden">
             <h2>Game Over</h2>
             <div></div>
-            <button id="replay">Recommencer une partie</button>
+            <button id="replay" class="btnBottomRight btnNext">Recommencer une partie</button>
         </section>
 
     </main>

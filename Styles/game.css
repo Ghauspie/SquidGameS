@@ -1,0 +1,75 @@
+/* Style des écrans de jeu */
+
+.btnBottomRight{
+    position:absolute;
+    bottom: 0;
+    right: 0;
+}
+.btnNext{
+    cursor: pointer;
+    font-family: SquidGame;
+    font-size: 4vh;
+    color: var(--color-bleu-green);
+    margin-right: 4vh;
+    margin-bottom: 4vh;
+    border-radius: 2vh;
+    border-color: rgba(0,225,255,0.88);
+    padding: 1vh;
+    /*background-color: rgba(237, 37, 118, 0.1);*/
+    background-color: rgba(3, 122, 118, 0.8);
+}
+.btnNext:hover{
+    color:#42BDBA;
+    box-shadow: 2px 1px 2px rgba(0,225,255,0.88)
+}
+#gameChoice{
+    position: relative;
+    background-image: url("../Pictures/marblesHandBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    width: 70%;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-image 3s;
+    color:slategray;
+}
+
+/* --------------------------------GAME GUESS----------------------------------------------- */
+
+#gameGuess {
+    width: 100%;
+    height: auto;  
+}
+
+  /* --------------------------------GAME CHOICE----------------------------------------------- */
+
+#gameChoice h2 {
+    width: 90%;
+    color: var(--color-pink-white);
+    font-size: 4vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    text-shadow: rgba(0,225,255,0.88) 0px 0px 17px;
+}
+.marblesBet {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+
+/* ----------------------------Even or Odd ---------------------------------------------------- */
+
+#playerGuess h2 {
+  position: absolute;
+  width: 60%;
+  color: black;
+  font-size: 25px;
+  top: 40%; left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+.evenOrOdd {
+  position: absolute;
+  top: 50%; left: 50%; 
+  transform: translate(-50%, -50%);
+}

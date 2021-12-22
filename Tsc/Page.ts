@@ -6,6 +6,9 @@ import {player} from "./Player";
     player1:string;
     player2:string;
  */
+    window.onload = function() {
+        preloadImg();
+    }
 
     let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
     let SelectSolo: HTMLElement= document.getElementById('solo') as HTMLElement;
@@ -20,7 +23,12 @@ import {player} from "./Player";
     home.addEventListener("click",BackHome);
     Rules.addEventListener("click",displayRule);
 
-    
+    function preloadImg(): void {
+        for( let i = 1; i <= 9; i++ ) {
+            let img = new Image();
+            img.src = `./Pictures/marble${i}.png`;
+        }
+    }
 
     function StartPlayer(){
         let index:HTMLElement;

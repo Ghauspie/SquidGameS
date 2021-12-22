@@ -31,13 +31,15 @@ export class player {
         this.marbles = this.initMarbles;
         this.initColors();
         this.marblesBet = 0;
+        this.gainedOrLost = 0;
     }
 
     /**
      * Attribue un numéro de couleur de bille aléatoire entre 1 et 9
+     * Ce numéro sera relié aux marbles[1..9].png
      */
     private initColors(): void {
-        for( let i = 0; i < 20; i++) {
+        for( let i = 0; i < 2 * this.initMarbles; i++) {
             this.colorMarbles.push( Math.floor(Math.random()*9) + 1 );
         }
     }
@@ -68,7 +70,7 @@ export class player {
     }
 
     /**
-     * Le joueur doit deviner si la mise du player2 est paire ou impaire
+     * Le joueur devine si la mise du player2 est paire ou impaire
      * Le nombre de billes de chaque joueur est mis à jour en conséquence
      * @param choice le choix entre pair ou impair
      * @param player2 le joueur dont on doit deviner la mise (marblesBet)
@@ -111,21 +113,22 @@ export class player {
 
     
 }
+/**
+ * Exemples d'utilisation
+let p1 = new player("hervé", 1);
+let p2 = new player("jc", 456);
+console.log(p1.getMatricule());
+p2.bet(4);
+if(p1.guess("odd", p2)) {
+    console.log("p1 a gagné");
+} else {
+    console.log("p1 a perdu");
+}
+console.log(p1);
+console.log(p2);
+p1.bet(3);
+if (p2.guess("impair", p1)) {
+    console.log("p2 a bien deviné un nombre pair et gagne.");
+};
+ */
 
-
-//Exemples d'utilisation
-// let p1 = new player("hervé", 1);
-// let p2 = new player("jc", 456);
-// console.log(p1.getMatricule());
-// p2.bet(4);
-// if(p1.guess("impair", p2)) {
-//     console.log("gagné");
-// } else {
-//     console.log("perdu");
-// }
-// console.log(p1);
-// console.log(p2);
-// p1.bet(3);
-// if (p2.guess("impair", p1)) {
-//     console.log("p2 a bien deviné un nombre pair et gagne.");
-// };

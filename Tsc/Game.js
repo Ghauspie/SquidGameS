@@ -30,10 +30,41 @@ let IA = new Player_1.player("IA", matricule2);
 let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
+    addMarblesButtons();
+    console.log("wait!");
+    changeStyle("#gameChoice", "background-image", 'url("../Pictures/marblesHand.jpg")');
+    changeStyle("#gameChoice", "color", "white");
     selectPlayersSection.classList.toggle('hidden');
     gameChoiceSection.classList.toggle('hidden');
-    addMarblesButtons();
+    //(document.getElementById("gameChoice") as HTMLDivElement).style.backgroundImage = 'url("../Pictures/marblesHand.jpg")';
 });
+let testButton = document.getElementById("test");
+testButton.addEventListener("click", () => {
+    changeStyle("#gameChoice", "background-image", 'url("../Pictures/marblesHand.jpg")');
+});
+function changeStyle(selector, prop, value) {
+    var styles = document.styleSheets;
+    for (let i = 0; i < styles.length; i++) {
+        let href = document.styleSheets[i].href;
+        console.log(href);
+        if (href != null && href.indexOf("game.css") != -1) {
+            let ruleList = document.styleSheets[i].cssRules;
+            console.log(ruleList);
+            for (let j = 0; j < ruleList.length; j++) {
+                let rule = ruleList[j];
+                if (!(rule instanceof CSSStyleRule)) {
+                    continue;
+                }
+                if (rule.selectorText == selector) {
+                    console.log("selector " + rule.selectorText);
+                    rule.style[prop] = value;
+                }
+            }
+        }
+    }
+}
+//changeStyle('.good', 'color', 'purple');
+//changeStyle('.bad', 'color', 'yellow');
 validateBetButton.addEventListener('click', () => {
     gameChoiceSection.classList.toggle('hidden');
     IAGuessSection.classList.toggle('hidden');
@@ -69,8 +100,8 @@ toPlayerBetButton.addEventListener('click', () => {
         gameOverSection.classList.toggle('hidden');
     }
     else {
-        gameChoiceSection.classList.toggle('hidden');
         addMarblesButtons();
+        gameChoiceSection.classList.toggle('hidden');
     }
 });
 replayButton.addEventListener('click', () => {
@@ -105,12 +136,11 @@ function randomEvenOrOdd() {
 function addMarblesButtons() {
     let docContext = document.getElementById("btnMarbles");
     docContext.innerHTML = "";
-    console.log("nombre de billes de p1 :", p1.marbles);
     for (let i = 1; i <= p1.marbles; i++) {
         let button = document.createElement("button");
-        button.innerHTML = "<span class='big'> </span>" + i.toString();
-        button.id = "btnMarble" + i;
-        button.className = "marble marble" + p1.colorMarbles[i];
+        button.innerHTML = `<span class='big'> </span>${i}`;
+        button.id = `btnMarble${i}`;
+        button.className = `marble marble${p1.colorMarbles[i]}`;
         button.onclick = function () { p1.bet(i); };
         docContext.appendChild(button);
     }
