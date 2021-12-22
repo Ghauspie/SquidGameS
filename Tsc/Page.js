@@ -40,9 +40,9 @@ let RulesM = document.getElementsByClassName('RulesM');
         if (e.target == DialogModal) {
             console.log('test');
         }
-        else {
-            RulesM.classList.toggle('hidden');
-        }
+        // else {
+        //     RulesM.classList.toggle('hidden');
+        // }
     });
     /*     window.onclick = function(event) {
             if (event.target == DialogModal) {
@@ -147,7 +147,6 @@ let RulesM = document.getElementsByClassName('RulesM');
         IAGuess.setAttribute('class', 'hidden');
         IABet.setAttribute('class', 'hidden');
     }
-    else {
     function resetLocalStorage() {
         localStorage.removeItem('Type');
         localStorage.removeItem('name1');

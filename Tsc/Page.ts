@@ -19,7 +19,7 @@ import {player} from "./Player";
     const DialogModal:any=document.getElementById('modalRules');
     let texte:string;
     let ruleClose=document.getElementById('closeRules');
-    let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
+    // let RulesM = document.getElementsByClassName('RulesM')as HTMLElement;
     
    /*  document.addEventListener("click", function (e) {
          if(DialogModal.getAttribute('role')== "dialog"){
@@ -42,9 +42,9 @@ import {player} from "./Player";
             if (e.target==DialogModal){
                 console.log('test');
             }
-            else {
-                RulesM.classList.toggle('hidden');
-            }
+            // else {
+            //     RulesM.classList.toggle('hidden');
+            // }
     })
 /*     window.onclick = function(event) {
         if (event.target == DialogModal) {

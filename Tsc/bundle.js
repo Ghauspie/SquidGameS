@@ -207,9 +207,9 @@ let RulesM = document.getElementsByClassName('RulesM');
         if (e.target == DialogModal) {
             console.log('test');
         }
-        else {
-            RulesM.classList.toggle('hidden');
-        }
+        // else {
+        //     RulesM.classList.toggle('hidden');
+        // }
     });
     /*     window.onclick = function(event) {
             if (event.target == DialogModal) {
@@ -335,7 +335,6 @@ let RulesM = document.getElementsByClassName('RulesM');
         DialogModal.setAttribute('class', 'hidden');
         let RulesM = document.getElementById('RulesM');
         RulesM.classList.toggle('hidden');
-        /* RulesM.setAttribute('class','hidden'); */
     }
 }
 
@@ -464,4 +463,4 @@ exports.player = player;
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
 
-},{}]},{},[3,2,1]);
+},{}]},{},[3,1,2]);
