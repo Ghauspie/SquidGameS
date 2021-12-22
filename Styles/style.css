@@ -582,7 +582,6 @@ div {
   */
   footer{
       display: flex;
-      
       flex-direction: row;
       height: 5vh;
       background-color: var(--color-pink);
@@ -618,13 +617,17 @@ div {
   }
   .lien {
       margin-right: 2%;
+      width: 10%;
+      height: 3.9vh;
   }
-  #netflix{
-      background-image: url("../Pictures/netflix.png");
-      background-size: 100%;
-      content: " ";
-      height: 4vh;
+
+  .lien img{
+    height: 3.9vh;
   }
+  .lien img:hover{
+    height: 4.2vh;
+  }
+  
 
 /* 
   ┌─┐┌─┐░░░░┌┐░░┌┐░

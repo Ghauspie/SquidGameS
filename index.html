@@ -98,15 +98,14 @@
 
         <!-- Windows modal of rules  -->
     <section id="RulesM" class="hidden">
-        <div id ="modalRules" class="hidden">
+        <div id ="modalRules" class="hidden" aria-hidden="false">
             <div class="modal-card">
                 <button id="closeRules" aria-label="close">close</button>
                 <header class="modal-card-head">
                 <p class="modal-card-title">Comment fonctionne le jeux des billes ?</p>
                 </header>
                 <section id="modal-Content">
-                    Le jeux des billes se joue contre l'ordinateur.<br> Chacun des joueurs obtient un sac contenant 10 billes. <br> Chacun leur tour, les joueurs doivent parier le nombre de billes qu'ils souhaitent miser, allant de 1 au nombre de bille qu'ils possèdent. Puis ils indiquent si l'adversaire à parié un nombre pair ou impair de bille. <br> Pendant le même temps le second joueur decide combien de billes il met dans sa main. <br> Une fois les 2 joueurs prêts le joueur qui doit devine indique son choix de pair ou impair. Si il a bien deviné, alors il emporte le nombre de bille qu'il avait mise. Puis on inverse les roles. Sinon il donne les billes qu'il avait misé.<br> Une fois la partie terminé c'est la fin pour le joueur. Et vous ne reverrez plus jamais la lumiere.
-                </section>
+                    Le jeux des billes se joue à deux. <br> Chaque joueur obtient un sac qui contient 10 billes. <br> On tire au sort qui commence : ce joueur doit faire deviner, et met dans sa main (en secret) le nombre de billes qu'il souhaite miser, au minimum une.<br> Puis son adversaire doit deviner si ce nombre est pair ou impair, et l'annonce à haute voix. Les billes misées sont dévoilées. <br> Si le joueur a bien deviné pair ou impair, alors il remporte les billes misées.  Sinon, c'est lui qui doit donner le nombre de billes misées.<br> On passe alors au tour suivant, et chacun échange son rôle. <br> Si un joueur n'a plus aucune bille, il perd la partie. Et il ne reverra plus jamais la lumière                </section>
             </div>
         </div>
     </section>
@@ -126,10 +125,10 @@
             </ul>
         </div>
         <div class="lien">
-            <a href="https://www.netflix.com/fr/" id="netflix">Squid Game</a>
+            <a href="https://www.netflix.com/fr/" id="netflix"><img src="../Pictures/netflix.png" alt="Link netflix"></a>
         </div>
-        <audio controls>
-            <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3">
+        <audio controls autoplay>
+            <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3" >
             Votre navigateur ne supporte pas la balise audio.
         </audio>
     </footer>
