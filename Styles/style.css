@@ -332,15 +332,16 @@ div {
   */
   #usernameGameChoice{
       position: absolute;
+      font-size: 30px;
       width: 25%;
       height: 40px;
-      background-color: #00000044;
-      top: 30%; 
+      top: 15%; 
       left: 50%; 
       transform: translate(-50%, -50%);
   }
   #matriculeGameChoice {
     position: absolute;
+    font-family: "Squidgame";
     width: 25%;
     height: 40px;
     right: 2%;

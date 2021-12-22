@@ -80,11 +80,11 @@ toIABetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
     if (p1.isDead()) {
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Game Over !`;
-        document.getElementById('txtWinOrLoose')!.innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        document.getElementById('txtWinOrLoose')!.innerHTML = `Joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     } else if (IA.isDead()) {
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Victoire !`;
-        document.getElementById('txtWinOrLoose')!.innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
+        document.getElementById('txtWinOrLoose')!.innerHTML = `Bravo Joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
      else {
@@ -114,11 +114,11 @@ toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
     if (p1.isDead()) {
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Game Over !`;
-        document.getElementById('txtWinOrLoose')!.innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        document.getElementById('txtWinOrLoose')!.innerHTML = `Joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     } else if (IA.isDead()) {
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Victoire !`;
-        document.getElementById('txtWinOrLoose')!.innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
+        document.getElementById('txtWinOrLoose')!.innerHTML = `Bravo Joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     } else {
         gameChoiceSection.classList.toggle('hidden');
