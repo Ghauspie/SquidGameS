@@ -47,7 +47,7 @@ let result: boolean;
 // ---------------------- Button AddEvenListener -----------------------
 
 GoplayButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice')!.innerHTML = `${p1.name}`;
+    document.getElementById('usernameGameChoice')!.innerHTML = `${p1.name}, a vous de miser`;
     document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur ${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
     if (randomEvenOrOdd() === "even") {

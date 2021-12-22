@@ -41,7 +41,7 @@
 }
 strong {
     font: bold;
-    color: #830439;
+    color: var(--color-green);
 }
 div {
     font-family: "MontSerrat", sans-serif;
@@ -67,6 +67,39 @@ div {
       justify-content: space-between;
       text-align: center;
   }
+  
+               /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                          Button, title and texte position                              ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+  .buttonPosition {
+    position: absolute;
+    bottom: 20%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+    .titlePosition {
+    position: absolute;
+    top: 20%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+    .txtPosition {
+    position: absolute;
+    font-size: 30px;
+    bottom: 60%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
 
     /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,19 +173,14 @@ div {
 
   /* button triangle */
   #start {
-
     width:200px;
-/*     border-bottom:solid 150px var(--color-pink-white);
-    border-right:solid 120px transparent;
-    border-left:solid 120px transparent;
-    background-color: transparent; */
     background-image: url("../Pictures/TSG2.png");
     background-repeat: no-repeat;
     background-size: 100%;
     background-color: transparent;
     border: transparent;
 }
-#start:hover{
+    #start:hover{
     background-image: url("../Pictures/TSGred.png");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -179,7 +207,7 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //////                                                                                   //////
   /////                                                                                     /////
-  ////                              Button Squid Game                                        ////
+  ////                             HOME                                                      ////
   ///                                                                                         ///
   //                                                                                           //
   /                                                                                             /
@@ -194,24 +222,9 @@ div {
     justify-content: space-around;
 }
 
-
 .hidden{
     display: none;
 }
-
-
-/* ---------------------------------------Button Even or Odd -----------------------------------*/
-
-/* #even {
-  width: 200px;
-  height: 100px;
-  margin: 0;
-
-}
-#odd {
-    width: 200px;
-    height: 100px;
-} */
 
       /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,7 +245,6 @@ div {
     }
 
     .button{
-
         display: flex;
     }
     .button button {
@@ -322,43 +334,23 @@ div {
       position: absolute;
       width: 25%;
       height: 40px;
-      left: 20%;
-      top: 20%;
-      font-size: 30px;
-      font-family: "Montserrat", sans-serif;
       background-color: #00000044;
-      margin-left: auto;
-      margin-right: auto;
+      top: 30%; 
+      left: 50%; 
+      transform: translate(-50%, -50%);
   }
   #matriculeGameChoice {
     position: absolute;
     width: 25%;
     height: 40px;
-    right: 20%;
-    top: 20%;
+    right: 2%;
+    top: 7%;
     font-size: 30px;
-    font-family: "Montserrat", sans-serif;
     background-color: #00000044;
     margin-left: auto;
     margin-right: auto;
   }
    
-  #titlePlayerBetChoice {
-    position: absolute;
-    width: 70%;
-    color: black;
-    font-size: 25px;
-    top: 30%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-  }
-
-  .marblesBet {
-    position: absolute;
-    bottom: 20%; 
-    left: 50%; 
-    transform: translate(-50%, -50%);
-  }
   #btnMarbles {
     position: absolute;
     bottom: 35%; 
@@ -371,7 +363,7 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //////                                                                                   //////
   /////                                                                                     /////
-  ////                           IA GUESS                                                     ///
+  ////                           GAMES SECTIONS                                                    ///
   //                                                                                           //
   /                                                                                             /
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -381,86 +373,18 @@ div {
     width: 100%;
     height: 100vh;
 }
-#titleIABet {
-    position: absolute;
-    width: 70%;
-    color: black;
-    top: 20%;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-}
 
-           /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                           IA EVEN OR ODD                                               ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
 #IAGameGuess {
     width: 100%;
     height: 100vh;
 }
 
-#titleIABet {
-    position: absolute;
-    width: 70%;
-    color: black;
-    top: 20%;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-}
-#guessIAEvenOrOdd {
-    position: absolute;
-    font-size: 30px;
-    top: 30%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-/* button */
-#toPlayerGuess {
-    position: absolute;
-    bottom: 20%; 
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-
-           /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                           IA GUESS                                                     ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
-
-#titleIAGuess {
-    position: absolute;
-    width: 70%;
-    color: black;
-    top: 20%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-}
-#resultIAGuess {
-    position: absolute;
-    font-size: 30px;
-    bottom: 60%; 
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-/* button */
-#toIABet {
-    position: absolute;
-    bottom: 20%; left: 50%; 
-    transform: translate(-50%, -50%);
+#gameover {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
            /*
@@ -475,97 +399,17 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
 
-#titlePlayerGuess {
-    position: absolute;
-    width: 60%;
-    color: black;
-    top: 20%; left: 50%; 
-    transform: translate(-50%, -50%); 
-}
-.evenOrOdd {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
 #odd {
-    height: 10vh;
+    height: 15vh;
+    position: absolute;
+    top: 45%;
+    right: 25%; 
 }
 #even {
-    height: 10vh;
-}
-
-           /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                           PLAYER GUESS RESULT                                          ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
-#titlePlayerGuessResult {
     position: absolute;
-    width: 60%;
-    color: black;
-    top: 20%; left: 50%; 
-    transform: translate(-50%, -50%); 
-}
-#txtPlayerGuessResult {
-    position: absolute;
-    font-size: 30px;
-    bottom: 50%; left: 50%; 
-    transform: translate(-50%, -50%);
-}
-/* button */
-#toPlayerBet {
-    position: absolute;
-    bottom: 20%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-
-           /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                            GAME  OVER                                                  ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
-#gameover {
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#tittleWinOrLoose {
-    position: absolute;
-    top: 30%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-#txtWinOrLoose {
-    position: absolute;
-    top: 40%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-
-/* button */
-#replay {
-    position: absolute;
-    bottom: 20%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
+    height: 15vh;
+    top: 45%;
+    left: 25%; 
 }
 
             /*
@@ -663,6 +507,17 @@ div {
       margin-bottom: 2%;
   }
 
+  #RulesM{
+    background: rgba(0, 0, 0, 0.877);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top:0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    /* z-index: 0; */
+  }
 
              /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -675,6 +530,8 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
+
+
   .btnLigthEffect{
     display: block;
     font-size: 20px;
@@ -689,7 +546,6 @@ div {
     border: 1px solid #333;
     border-radius: 3px;
     cursor: pointer;
-    position: relative;
     overflow: hidden;
   }
 
@@ -708,18 +564,3 @@ div {
     transition: transform 0.3s 0.1s linear;
     transform: translateX(400px);
 }
-
-
-  #RulesM{
-    background: rgba(0, 0, 0, 0.877);
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    top:0%;
-    left: 0%;
-    right: 0%;
-    bottom: 0%;
-    /* z-index: 0; */
-  }
-  
-

@@ -18,7 +18,7 @@ let Rules = document.getElementById('rules');
 const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
-let RulesM = document.getElementsByClassName('RulesM');
+// let RulesM = document.getElementsByClassName('RulesM')as HTMLElement;
 /*  document.addEventListener("click", function (e) {
       if(DialogModal.getAttribute('role')== "dialog"){
           let pathevent=e.path[1]; */

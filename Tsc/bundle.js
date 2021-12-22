@@ -33,7 +33,7 @@ let IA = new Player_1.player("IA", matricule2);
 let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
+    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}, a vous de miser`;
     document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
     if (randomEvenOrOdd() === "even") {
@@ -185,7 +185,7 @@ let Rules = document.getElementById('rules');
 const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
-let RulesM = document.getElementsByClassName('RulesM');
+// let RulesM = document.getElementsByClassName('RulesM')as HTMLElement;
 /*  document.addEventListener("click", function (e) {
       if(DialogModal.getAttribute('role')== "dialog"){
           let pathevent=e.path[1]; */
