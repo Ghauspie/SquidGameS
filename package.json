@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Ghauspie/SquidGameS#readme",
   "dependencies": {
-    "bulma": "^0.9.3"
+    "bulma": "^0.9.3",
+    "firebase": "^9.4.1",
+    "firebase-admin": "^10.0.1"
   }
 }
