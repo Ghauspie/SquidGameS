@@ -2,24 +2,36 @@
  * Classe représentant un joueur.
  */
 export class player {
+    private readonly initMarbles = 10; //nombre de billes initiales
     marbles: number;
     name: string;
-    colorMarbles: Array<number> = [];
+    gainedOrLost: number; //Le nombre de billes perdues ou gagnées au dernier tour de jeu
+    colorMarbles: Array<number> = []; //couleurs des billes du joueur
     private matricule: number;
     private marblesBet: number;
     
-
     /**
      * Constructeur de la classe. Le joueur reçoit 10 billes.
      * @param playerName le nom du joueur.
      * @param matricule le matricule qui lui sera attribué.
      */
     constructor(playerName: string, matricule: number) {
-        this.marbles = 10;
+        this.marbles = this.initMarbles;
         this.name = playerName;
         this.matricule = matricule;
         this.marblesBet = 0;
+        this.gainedOrLost = 0;
         this.initColors();
+    }
+
+    /**
+     * Garde nom et matricule du joueur, reset le reste
+     */
+    reset(): void {
+        this.marbles = this.initMarbles;
+        this.initColors();
+        this.marblesBet = 0;
+        this.gainedOrLost = 0;
     }
 
     /**
@@ -48,7 +60,6 @@ export class player {
 
         console.log(this.name + " bet " + marbles);
         if( marbles > this.marbles ) {
-
             throw new Error(`Le nombre de billes pariées (${marbles}) est supérieur au nombre de billes restantes (${this.marbles}).`);
         }
         if( marbles <= 0 ) {
@@ -77,11 +88,15 @@ export class player {
         if (victoire) {
             player2.marbles -= player2.marblesBet;
             this.marbles += player2.marblesBet; //le joueur gagne les billes misées
+            this.gainedOrLost = player2.marblesBet;
+            player2.gainedOrLost = -player2.marblesBet;
         } else {
             let perte = player2.marblesBet;
             if( perte > this.marbles ) perte = this.marbles;
             player2.marbles += perte;
             this.marbles -= perte; //le joueur perd les billes misées
+            this.gainedOrLost = -perte;
+            player2.gainedOrLost = perte;
         }
         player2.marblesBet = 0;
         return victoire;

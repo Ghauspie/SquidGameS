@@ -1,3 +1,3 @@
 ﻿*.js
-.vscode/*
-!.vscode/launch.json
+Tsc/Page.js
+node_modules/*

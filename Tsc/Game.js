@@ -31,8 +31,16 @@ let result;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
     selectPlayersSection.classList.toggle('hidden');
-    gameChoiceSection.classList.toggle('hidden');
-    addMarblesButtons();
+    if (randomEvenOrOdd() === "even") {
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');
+        addMarblesButtons();
+    }
+    else {
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+        // L'adversaire commence
+    }
 });
 validateBetButton.addEventListener('click', () => {
     gameChoiceSection.classList.toggle('hidden');
@@ -74,8 +82,19 @@ toPlayerBetButton.addEventListener('click', () => {
     }
 });
 replayButton.addEventListener('click', () => {
-    // p1 = new player(p1.name, parseInt(p1.getMatricule()));
-    // IA = new player(IA.name, parseInt(IA.getMatricule()));
+    gameOverSection.classList.toggle('hidden');
+    p1.reset();
+    IA.reset();
+    let beginner = localStorage.getItem("begin");
+    if (beginner === "1") {
+        localStorage.setItem("begin", "2");
+        IABetSection.classList.toggle('hidden');
+    }
+    else {
+        localStorage.setItem("begin", "1");
+        gameChoiceSection.classList.toggle('hidden');
+        addMarblesButtons();
+    }
 });
 // ----------------------------- Function VERSUS IA ------------------------------------------------
 function playerGuess(p) {
@@ -91,8 +110,8 @@ function randomMarblesNumber(max) {
     return randomMarbles;
 }
 function randomEvenOrOdd() {
-    let randomEvenOrOdd = Math.floor(Math.random() * 2);
-    if (randomEvenOrOdd = 0) {
+    let randomEvenOrOdd = Math.floor(Math.random());
+    if (randomEvenOrOdd === 0) {
         console.log("IA dit pair");
         return "even";
     }

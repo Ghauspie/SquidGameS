@@ -16,19 +16,40 @@ import {player} from "./Player";
     let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
-    let DialogModal:any=document.getElementById('modalRules');
+    const DialogModal:any=document.getElementById('modalRules');
     let texte:string;
     let ruleClose=document.getElementById('closeRules');
+    let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
     
-    document.addEventListener("click", function (e) {
-         console.log(DialogModal.id, e.target.className);
-        if((e.target.className)!=(DialogModal.id="modalRules")){
-            
-            closeRules;
-        }else {
-            closeRules;
-        }
-      },false);  
+   /*  document.addEventListener("click", function (e) {
+         if(DialogModal.getAttribute('role')== "dialog"){
+             let pathevent=e.path[1]; */
+             /* pathevent=console.log(pathevent); */
+/*              console.log(pathevent);
+            console.log(DialogModal, e.path[1]);
+            if(pathevent.indexOf("<div class=\"modal-card>") ||pathevent.indexOf("<div id=\"modalRules\">")) */
+            /* if (pathevent.) */{
+                /* e.stopPropagation(); */
+/*                 console.log("test lol du click")
+            }else {
+                closeRules;
+            }
+          }
+         },
+             false);  */ 
+    document.addEventListener("click", function(e){
+            e.stopPropagation();
+            if (e.target==DialogModal){
+                console.log('test');
+            }
+            else {
+                RulesM.classList.toggle('hidden');
+            }
+    })
+/*     window.onclick = function(event) {
+        if (event.target == DialogModal) {
+            console.log('test');
+    }} */
 
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
@@ -90,33 +111,42 @@ import {player} from "./Player";
         {
             player1=document.getElementById('username1').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
-            player.gameVsIA();
+            // player.gameVsIA();
         }
         else{
             player1=document.getElementById('username1').value as HTMLFormElement;
             player2=document.getElementById('username2').value as HTMLFormElement;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
-            player.gameMultiplayers();
+            // player.gameMultiplayers();
         }
     }
 //Function return home and reset
     function BackHome(){
         let HomePage:HTMLElement;
         let selectPlayers:HTMLElement;
-        let gameChoose:HTMLElement;
-        let gameGuess:HTMLElement;
+        let gameChoice:HTMLElement;
+        let playerGuess:HTMLElement;
+        let playerGuessResult:HTMLElement
         let chaningPlayer:HTMLElement;
         let gameOver:HTMLElement;
+        let IAGuess:HTMLElement;
+        let IABet:HTMLElement;
+
         HomePage=document.getElementById('homePage') as HTMLElement;
+<<<<<<< HEAD
         HomePage.removeAttributeNS('class','hidden');
+=======
+       /*  HomePage.classList.toggle('hidden'); */
+>>>>>>> dev
         HomePage.removeAttribute('class');
         HomePage.setAttribute('class','home'); 
         selectPlayers=document.getElementById('selectPlayers') as HTMLElement;
-        gameChoose=document.getElementById('gameChoice') as HTMLElement;
-        gameGuess=document.getElementById('gameGuess') as HTMLElement;
+        gameChoice=document.getElementById('gameChoice') as HTMLElement;
+        playerGuess=document.getElementById('playerGuess') as HTMLElement;
         chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
         gameOver=document.getElementById('gameOver') as HTMLElement;
+<<<<<<< HEAD
         gameOver.setAttribute('class','hidden');
         if(selectPlayers.getAttribute('class')==null){
             selectPlayers.setAttribute('class',"hidden");
@@ -138,23 +168,37 @@ import {player} from "./Player";
         localStorage.removeItem('name1');
         localStorage.removeItem('playerTurn');
         sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');        
+=======
+        playerGuessResult=document.getElementById('playerGuessResult') as HTMLElement;
+        IAGuess=document.getElementById('IAGuess') as HTMLElement;
+        IABet=document.getElementById('IABet') as HTMLElement;
+        /* selectPlayers.classList.toggle('hidden'); */
+        resetLocalStorage;
+        selectPlayers.setAttribute('class',"hidden");
+        gameChoice.setAttribute('class','hidden');
+        playerGuess.setAttribute('class','hidden');
+        chaningPlayer.setAttribute('class','hidden');
+        gameOver.setAttribute('class','hidden');
+        playerGuessResult.setAttribute('class','hidden');
+        chaningPlayer.setAttribute('class','hidden');
+        IAGuess.setAttribute('class','hidden');
+        IABet.setAttribute('class','hidden');    
+    }
+    function resetLocalStorage(){
+        localStorage.removeItem('Type');
+        localStorage.removeItem('name1');
+        localStorage.removeItem('playerTurn');
+
+        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
+
+>>>>>>> dev
     }
 //function Display rule
     function displayRule(){
-        DialogModal=document.getElementById('modalRules');
-        if(DialogModal.getAttribute('class')!=null){
-            DialogModal.removeAttribute('class','hidden');
-            DialogModal.removeAttribute('aria-hidden');
-            DialogModal.setAttribute('aria-modal',true);
-            DialogModal.setAttribute('role','dialog');
-            document.getElementById('modal-Content').innerHTML= "Le jeux des billes ce joue par deux ou seulement avec le boot.\\n Chacun des joueurs obtienne un sac qui contient 10 billes. \n A chaque tours le joueur qui doit deviner mets dans sa main un nombre de billes qui souhaite miser, allant de 1 a 10. Puis il indique si il choisit le nombre pair ou impair. \n Pendant le même temps le second joueur decide combien de billes il met dans sa main. \n Une fois les 2 joueurs prets le joueur qui doit devine indique son choix de pair ou impair. Si il a bien devine, alors il emporte le nombre de bille qu'il avait mise. Puis on inverse les roles. Sinon il donne les billes qu'il avait misé.\n Une fois la partie terminé c'est la fin pour le joueur. Et vous ne reverrez plus jamais la lumiere.";
-        }
-        else {
-            DialogModal.removeAttribute('aria-modal');
-            DialogModal.removeAttribute('role');
-            DialogModal.setAttribute('aria-hidden',true);
-            DialogModal.setAttribute('class','hidden');
-        }
+        let RulesM=document.getElementById('RulesM') as HTMLElement;
+        RulesM.classList.toggle('hidden');
+        let DialogModal:HTMLElement=document.getElementById('modalRules')as HTMLElement;
+        DialogModal.classList.toggle('hidden');
     }
 
 
@@ -164,5 +208,7 @@ import {player} from "./Player";
         DialogModal.removeAttribute('role');
         DialogModal.setAttribute('aria-hidden',true);
         DialogModal.setAttribute('class','hidden');
+        let RulesM=document.getElementById('RulesM')as HTMLElement;
+        RulesM.classList.toggle('hidden');
     }
 }
