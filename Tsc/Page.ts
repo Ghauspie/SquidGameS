@@ -1,51 +1,17 @@
 import { doc } from "firebase/firestore";
 import {player} from "./Player";
-/* import { getDatabase } from "firebase/database"; */
 
-/* const database = getDatabase(); */
-/*     versionplayer:string;
-    selectPlayerDisplay:void;
-    index:any;
-    game:string[]=[];
-    player1:string;
-    player2:string;
- */
-
-    let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
-    let SelectSolo: HTMLElement= document.getElementById('solo') as HTMLElement;
-    let SelectMulti:HTMLElement=document.getElementById('multiplayers') as HTMLElement;
-    let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
-    let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
-    let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
+    let StartPlay:HTMLButtonElement = document.getElementById('start') as HTMLButtonElement;
+    let SelectSolo: HTMLButtonElement= document.getElementById('solo') as HTMLButtonElement;
+    let SelectMulti:HTMLButtonElement=document.getElementById('multiplayers') as HTMLButtonElement;
+    let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLButtonElement;
+    let home:HTMLButtonElement=document.getElementById('backToHomePage') as HTMLButtonElement;
+    let Rules:HTMLButtonElement=document.getElementById('rules') as HTMLButtonElement;
     const DialogModal:any=document.getElementById('modalRules');
     let texte:string;
     let ruleClose=document.getElementById('closeRules');
     let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
-    
-   /*  document.addEventListener("click", function (e) {
-         if(DialogModal.getAttribute('role')== "dialog"){
-             let pathevent=e.path[1]; */
-             /* pathevent=console.log(pathevent); */
-/*              console.log(pathevent);
-            console.log(DialogModal, e.path[1]);
-            if(pathevent.indexOf("<div class=\"modal-card>") ||pathevent.indexOf("<div id=\"modalRules\">")) */
-            /* if (pathevent.) */{
-                /* e.stopPropagation(); */
-/*                 console.log("test lol du click")
-            }else {
-                closeRules;
-            }
-          }
-         },
-             false);  */ 
-
-/*     window.onclick = function(event) {
-        if (event.target == DialogModal) {
-            console.log('test');
-    }} */
-
-
-
+//Section for the addEventListener    
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
     SelectMulti.addEventListener("click",SelectNumberPlayer);
@@ -59,18 +25,15 @@ import {player} from "./Player";
 //function démarrer la préselection pour une partie
     function StartPlayer(){
         let index:HTMLElement;
-        let selectPlayerDisplay:HTMLElement;
+        let selectPlayerDisplay:HTMLButtonElement;
         index=document.getElementById('homePage') as HTMLElement;
         index.setAttribute('class',"hidden");
-       /*  index.style.display="none"; */ 
         selectPlayerDisplay=document.getElementById('selectPlayers') as HTMLElement;
         selectPlayerDisplay.removeAttribute('class');
-        console.log("test start");
     }
 
 //function select type of game
     function SelectNumberPlayer(e:string){
-        /*  */
         localStorage.removeItem('Type');
         let displayname1=document.getElementById('Name1')as HTMLFormElement;
         let displayname2=document.getElementById('Name2') as HTMLFormElement;
@@ -82,10 +45,6 @@ import {player} from "./Player";
         }
             let versionplayer: string;
             versionplayer=e.target.value;
-            let displayname:HTMLFormElement;
-            let Name2:HTMLFormElement;
-            let username2:HTMLFormElement;
-            Name2=document.getElementById('Name2') as HTMLFormElement;
             localStorage.setItem('Type',versionplayer);
             if(versionplayer==="solo"){
                 displayname1.classList.toggle('hidden');
@@ -139,9 +98,7 @@ import {player} from "./Player";
         gameOver=document.getElementById('gameOver') as HTMLElement;
         playerGuessResult=document.getElementById('playerGuessResult') as HTMLElement;
         IAGuess=document.getElementById('IAGuess') as HTMLElement;
-        IABet=document.getElementById('IABet') as HTMLElement;
-        /* selectPlayers.classList.toggle('hidden'); */
-        
+        IABet=document.getElementById('IABet') as HTMLElement;      
         selectPlayers.setAttribute('class',"hidden");
         gameChoice.setAttribute('class','hidden');
         playerGuess.setAttribute('class','hidden');
@@ -153,10 +110,6 @@ import {player} from "./Player";
         IABet.setAttribute('class','hidden');    
     }
     function resetLocalStorage(){
-/*         localStorage.removeItem('Type');
-        localStorage.removeItem('name1');
-        localStorage.removeItem('playerTurn');
-        sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer'); */
         localStorage.clear("http://127.0.0.1:5000");
     }
 //function Display rule
@@ -168,15 +121,15 @@ import {player} from "./Player";
         DialogModal.setAttribute('aria-hidden',true);
         
     }
-    
+// event listener for when click outside the modal this close it 
     document.getElementById('RulesM').addEventListener("click", function(e){
             if (!e.target.closest("#modalRules")){
                  closeRules(); 
             }
     })
-
+//close the modal windows 
     function closeRules(){
-        let DialogModal:any=document.getElementById('modalRules');
+        let DialogModal:HTMLElement=document.getElementById('modalRules');
         DialogModal.removeAttribute('aria-modal');
         DialogModal.removeAttribute('role');
         DialogModal.setAttribute('aria-hidden',false);
