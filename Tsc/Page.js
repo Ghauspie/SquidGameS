@@ -34,7 +34,6 @@ function SelectNumberPlayer(e) {
     let displayname2 = document.getElementById('Name2');
     if (displayname1.getAttribute("class") !== 'hidden') {
         displayname1.setAttribute('class', 'hidden');
-
     }
     if (displayname2.getAttribute("class") !== 'hidden') {
         displayname2.setAttribute('class', 'hidden');

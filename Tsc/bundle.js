@@ -66,12 +66,12 @@ toIABetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
     if (p1.isDead()) {
         document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     }
     else if (IA.isDead()) {
         document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Bravo Joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
@@ -96,12 +96,12 @@ toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
     if (p1.isDead()) {
         document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     }
     else if (IA.isDead()) {
         document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
+        document.getElementById('txtWinOrLoose').innerHTML = `Bravo Joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
     else {
@@ -177,7 +177,6 @@ const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
 let RulesM = document.getElementsByClassName('RulesM');
-
 //Section for the addEventListener    
 StartPlay.addEventListener("click", StartPlayer);
 SelectSolo.addEventListener("click", SelectNumberPlayer);
@@ -235,7 +234,6 @@ function goplay() {
         localStorage.setItem('name2', player2);
         // player.gameMultiplayers();
     }
-
 }
 //Function return home and reset
 function BackHome() {
@@ -286,7 +284,6 @@ function displayRule() {
 document.getElementById('RulesM').addEventListener("click", function (e) {
     if (!e.target.closest("#modalRules")) {
         closeRules();
-
     }
 });
 //close the modal windows 

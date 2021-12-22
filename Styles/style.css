@@ -83,12 +83,12 @@ div {
   .buttonPosition {
     position: absolute;
     bottom: 20%;
-    left: 50%; 
+    right: 0%; 
     transform: translate(-50%, -50%);
 }
     .titlePosition {
     position: absolute;
-    top: 20%;
+    top: 35%;
     left: 50%; 
     transform: translate(-50%, -50%);
 }
@@ -96,7 +96,7 @@ div {
     .txtPosition {
     position: absolute;
     font-size: 30px;
-    bottom: 60%;
+    top: 40%;
     left: 50%; 
     transform: translate(-50%, -50%);
 }
@@ -335,7 +335,7 @@ div {
       font-size: 30px;
       width: 25%;
       height: 40px;
-      top: 15%; 
+      top: 25%; 
       left: 50%; 
       transform: translate(-50%, -50%);
   }
@@ -344,7 +344,7 @@ div {
     font-family: "Squidgame";
     width: 25%;
     height: 40px;
-    right: 2%;
+    left: 2%;
     top: 7%;
     font-size: 30px;
     background-color: #00000044;
@@ -354,8 +354,12 @@ div {
    
   #btnMarbles {
     position: absolute;
-    bottom: 35%; 
-    left: 50%; 
+    background: #20202086;
+    border-radius: 20px;
+    width: 50%;
+    height: 20vh;
+    bottom: 15%;
+    left: 35%;
     transform: translate(-50%, -50%);
     }
 
@@ -540,12 +544,13 @@ div {
     display: block;
     font-size: 20px;
     font-family: SquidGame;
+    background: #037a76;
     margin: 10px;
-    width: 210px;
+    width: 20%;
     height: 50px;
     line-height: 50px;
     text-align: center;
-    color: #333;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     border: 1px solid #333;
     border-radius: 3px;
@@ -557,7 +562,7 @@ div {
     content: '';
     height: 240px;
     width: 100px;
-    background: rgba(255,255,255,0.4);
+    background: #037a76;
     display: block;
     position: absolute;
     left: -150px;
