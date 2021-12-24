@@ -357,8 +357,8 @@ div {
     background: #20202086;
     border-radius: 20px;
     width: 50%;
-    height: 20vh;
-    bottom: 15%;
+    height: auto;
+    bottom: 10%;
     left: 35%;
     transform: translate(-50%, -50%);
     }
