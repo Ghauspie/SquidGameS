@@ -252,6 +252,8 @@ div {
 
   .inputplayer{
     display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 27%;
@@ -264,11 +266,11 @@ div {
 
   .inputPLayerUsername {
     display: block;
-    width: 100%;
+    width: 150%;
     padding: 10px 0;
     border: none;
     outline: none;
-    background: none;
+    background: rgba(255, 255, 255, 0.438);
     border-bottom: 3px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     font-size: 20px;
@@ -279,9 +281,11 @@ div {
       font-size: var(--size-p);
   }
 
+  #Name2 {
+      margin-left: 30%;
+  }
 
- 
-  
+   
                /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -314,6 +318,9 @@ div {
     top: 25%;
     left: 50%; 
     transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 50%;
+    padding: 20px;
 }
 
     .txtPosition {
