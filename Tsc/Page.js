@@ -4,8 +4,10 @@ let StartPlay = document.getElementById('start');
 let SelectSolo = document.getElementById('solo');
 let SelectMulti = document.getElementById('multiplayers');
 let Go = document.getElementById('Goplay');
+let homePage = document.getElementById('homePage');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
+let selectPlayerDisplay = document.getElementById('selectPlayers');
 const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
@@ -20,12 +22,9 @@ Rules.addEventListener("click", displayRule);
 ruleClose.addEventListener("click", closeRules);
 //function démarrer la préselection pour une partie
 function StartPlayer() {
-    let index;
-    let selectPlayerDisplay;
-    index = document.getElementById('homePage');
-    index.setAttribute('class', "hidden");
-    selectPlayerDisplay = document.getElementById('selectPlayers');
-    selectPlayerDisplay.removeAttribute('class');
+    homePage.classList.toggle('hidden');
+    selectPlayerDisplay.classList.toggle('hidden');
+    ;
 }
 //function select type of game
 function SelectNumberPlayer(e) {

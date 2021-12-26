@@ -20,24 +20,19 @@
     </nav>
     <main>
         <section id="homePage" class="home">
-            <button id="rules" onclick="">
-                <h3>
-                    Régles
-                </h3>
-
-            </button>
-            <button id="start">
-                <div id="intTri">
-                    <h3>Start</h3>
-                </div>
-
-            </button>
-            <button id="hallOfFame" onclick="">
-                <h3>
-                    Meilleurs joueurs
-                </h3>
-            </button>
-
+            <div id="btnHomePage">
+                <button id="rules" onclick="">
+                    <h3>Régles</h3>
+                </button>
+                <button id="start">
+                    <div id="intTri">
+                        <h3>Start</h3>
+                    </div>
+                </button>
+                <button id="hallOfFame" onclick="">
+                    <h3> Meilleurs joueurs</h3>
+                </button>
+            </div>
         </section>
         <section id="selectPlayers" class="hidden">
             <div class="button">
@@ -81,7 +76,7 @@
             <button id="toPlayerGuess" class="btnLigthEffect buttonPosition">Continuer</button>
         </section>
         <section id="playerGuess" class="hidden">
-            <h2 id="titlePlayerGuess" class="titlePosition">Choisissez pair ou impair</h2>
+            <h2 id="titlePlayerGuess" class="txtPosition">Choisissez pair ou impair</h2>
             <div class="evenOrOdd">
                 <button id="even" class="btnLigthEffect">Pair</button>
                 <button id="odd" class="btnLigthEffect">Impair</button>
@@ -112,7 +107,7 @@
         <section id="gameOver" class="hidden">
             <h2 id="tittleWinOrLoose" class="titlePosition"></h2>
             <div id="txtWinOrLoose" class="txtPosition"></div>
-            <button id="replay" class="btnLigthEffect buttonPosition">Recommencer une partie</button>
+            <button id="replay" class="btnLigthEffect buttonPosition">Recommencer</button>
         </section>
     </main>
     <footer>
@@ -125,7 +120,7 @@
             </ul>
         </div>
         <div class="lien">
-            <a href="https://www.netflix.com/fr/" id="netflix"><img src="../Pictures/netflix.png" alt="Link netflix"></a>
+            <a href="https://www.netflix.com/fr/" id="netflix"><img src="./Pictures/netflix.png" alt="Link netflix" target="_blank"></a>
         </div>
         <audio controls>
             <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3" >

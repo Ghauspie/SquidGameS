@@ -5,8 +5,10 @@ import {player} from "./Player";
     let SelectSolo: HTMLButtonElement= document.getElementById('solo') as HTMLButtonElement;
     let SelectMulti:HTMLButtonElement=document.getElementById('multiplayers') as HTMLButtonElement;
     let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLButtonElement;
+    let homePage:HTMLButtonElement=document.getElementById('homePage') as HTMLButtonElement;
     let home:HTMLButtonElement=document.getElementById('backToHomePage') as HTMLButtonElement;
     let Rules:HTMLButtonElement=document.getElementById('rules') as HTMLButtonElement;
+    let selectPlayerDisplay=document.getElementById('selectPlayers') as HTMLElement;
     const DialogModal:any=document.getElementById('modalRules');
     let texte:string;
     let ruleClose=document.getElementById('closeRules');
@@ -25,12 +27,8 @@ import {player} from "./Player";
     
 //function démarrer la préselection pour une partie
     function StartPlayer(){
-        let index:HTMLElement;
-        let selectPlayerDisplay:HTMLButtonElement;
-        index=document.getElementById('homePage') as HTMLElement;
-        index.setAttribute('class',"hidden");
-        selectPlayerDisplay=document.getElementById('selectPlayers') as HTMLElement;
-        selectPlayerDisplay.removeAttribute('class');
+        homePage.classList.toggle('hidden');
+        selectPlayerDisplay.classList.toggle('hidden');;
     }
 
 //function select type of game
@@ -139,4 +137,4 @@ import {player} from "./Player";
         /* RulesM.classList.toggle('hidden'); */
         RulesM.setAttribute('class','hidden');
     }
-}
+

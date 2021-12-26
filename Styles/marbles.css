@@ -1,16 +1,3 @@
-@font-face {
-    font-family: SquidGame;
-    src: url("../font/Game\ Of\ Squids.ttf");
-}
-
-body{
-    background-color: black;
-}
-
-h1 {
-      font-family: SquidGame;
-      color: #24CECB;
-}
 
 .big {
     font-family: SquidGame;

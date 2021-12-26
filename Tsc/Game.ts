@@ -13,17 +13,17 @@ let replayButton = document.getElementById('replay') as HTMLButtonElement;
 
 // ------------------------------ SECTION ---------------------------------------
 
-let gameChoiceSection = document.getElementById('gameChoice') as HTMLFormElement;
-let IAGuessSection = document.getElementById('IAGuess') as HTMLFormElement;
-let playerGuessSection = document.getElementById('playerGuess') as HTMLFormElement;
-let selectPlayersSection = document.getElementById('selectPlayers') as HTMLFormElement;
-let gameOverSection = document.getElementById('gameOver') as HTMLFormElement;
-let IABetSection = document.getElementById('IABet') as HTMLFormElement;
-let playerGuessResultSection = document.getElementById('playerGuessResult') as HTMLFormElement;
+let gameChoiceSection = document.getElementById('gameChoice') as HTMLElement;
+let IAGuessSection = document.getElementById('IAGuess') as HTMLElement;
+let playerGuessSection = document.getElementById('playerGuess') as HTMLElement;
+let selectPlayersSection = document.getElementById('selectPlayers') as HTMLElement;
+let gameOverSection = document.getElementById('gameOver') as HTMLElement;
+let IABetSection = document.getElementById('IABet') as HTMLElement;
+let playerGuessResultSection = document.getElementById('playerGuessResult') as HTMLElement;
 
 // ---------------------------------TEXTE------------------------------------------------
 
-let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice') as HTMLFormElement;
+// let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice') as HTMLFormElement;
 
 // ------------------------------ LOCAL STORAGE ---------------------------------------
 
@@ -43,11 +43,12 @@ let IA = new player("IA", matricule2);
 // ------------------------------ VARIABLE GLOBALES ---------------------------------------
 
 let result: boolean;
+let p1name = p1.name;
 
 // ---------------------- Button AddEvenListener -----------------------
 
 GoplayButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice')!.innerHTML = `${p1.name}, a vous de miser`;
+    document.getElementById('usernameGameChoice')!.innerHTML = `${p1name}, a vous de miser`;
     document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur ${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
     if (randomEvenOrOdd() === "even") {
@@ -62,33 +63,41 @@ GoplayButton.addEventListener('click', () => {
 });
 
 validateBetButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice')!.innerHTML = `${p1.name}`;
-    document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur ${matricule1}`;
+    document.getElementById('usernameGameChoice')!.innerHTML = `${p1name} : Joueur n°${matricule1}`;
+    document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur `;
     if (p1.marblesBet === 0) {
-        document.getElementById('titlePlayerBetChoice')!.innerHTML = `Veuillez choisir un nombre de bille a parier !`  
+        document.getElementById('titlePlayerBetChoice')!.innerHTML = `Veuillez choisir un nombre de billes à parier !`  
     } else {
     gameChoiceSection.classList.toggle('hidden');
     IAGuessSection.classList.toggle('hidden');
     let p = randomEvenOrOdd();
     result = IA.guess(p, p1);
-    document.getElementById('titleIAGuess')!.innerHTML = `Joueur <strong>${matricule2}</strong> a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>`;
-    document.getElementById('resultIAGuess')!.innerHTML = result ? `L'adversaire a gagné <strong>${IA.gainedOrLost}</strong> billes!` : `L'adversaire a perdu <strong>${p1.gainedOrLost}</strong> billes!`;
+    document.getElementById('titleIAGuess')!.innerHTML = `Adversaire : Joueur <strong>${matricule2}</strong>`;
+    if(result) {
+        IAGuessSection.style.backgroundImage = "url('./Pictures/IAGuessWin.jpg')";
+        document.getElementById('resultIAGuess')!.innerHTML = `L'adversaire a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>, il a gagné <strong>${IA.gainedOrLost}</strong> billes!`;
+    } else {
+        IAGuessSection.style.backgroundImage = "url('./Pictures/IAGuessLoose.jpg')";
+        document.getElementById('resultIAGuess')!.innerHTML = `L'adversaire a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>, il a perdu <strong>${p1.gainedOrLost}</strong> billes!`;
+    }    
     }
 });
 
 toIABetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
     if (p1.isDead()) {
+        gameOverSection.style.backgroundImage = "url('./Pictures/squidgame_gun.png')";
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Game Over !`;
         document.getElementById('txtWinOrLoose')!.innerHTML = `Joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     } else if (IA.isDead()) {
+        gameOverSection.style.backgroundImage = "url('./Pictures/background_victory.jpeg')";
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Victoire !`;
         document.getElementById('txtWinOrLoose')!.innerHTML = `Bravo Joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
     }
      else {
-        document.getElementById('guessIAEvenOrOdd')!.innerHTML = `À <strong>${p1.name}</strong> de deviner  !`;
+        document.getElementById('guessIAEvenOrOdd')!.innerHTML = `À <strong>${p1name}</strong> de deviner  !`;
         IABetSection.classList.toggle('hidden');
     }
 });
@@ -102,21 +111,23 @@ toPlayerGuessButton.addEventListener('click', () => {
 
 evenButton.addEventListener('click', () => {
     playerGuess("even");
-    document.getElementById('titlePlayerGuessResult')!.innerHTML = `${p1.name} a choisi <strong>Pair</strong>`;
+    document.getElementById('titlePlayerGuessResult')!.innerHTML = `${p1name}, vous avez choisi <strong>Pair</strong>`;
 });
 
 oddButton.addEventListener('click', () => {
     playerGuess("odd");
-    document.getElementById('titlePlayerGuessResult')!.innerHTML = `${p1.name} a choisi <strong>Impair</strong>`;
+    document.getElementById('titlePlayerGuessResult')!.innerHTML = `${p1name}, vous avez choisi <strong>Impair</strong>`;
 });
 
 toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
     if (p1.isDead()) {
+        gameOverSection.style.backgroundImage = "url('./Pictures/squidgame_gun.png')";
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Game Over !`;
         document.getElementById('txtWinOrLoose')!.innerHTML = `Joueur n°${matricule1}, vous avez perdu !`;
         gameOverSection.classList.toggle('hidden');
     } else if (IA.isDead()) {
+        gameOverSection.style.backgroundImage = "url('./Pictures/background_victory.jpeg')";
         document.getElementById('tittleWinOrLoose')!.innerHTML = `Victoire !`;
         document.getElementById('txtWinOrLoose')!.innerHTML = `Bravo Joueur n°${matricule1}, vous avez gagné !`;
         gameOverSection.classList.toggle('hidden');
@@ -146,7 +157,13 @@ replayButton.addEventListener('click', () => {
 
 function playerGuess(p: "even" | "odd"): void {
     result = p1.guess(p, IA);
-    document.getElementById('txtPlayerGuessResult')!.innerHTML = result ? `${p1.name} a gagné ${p1.gainedOrLost} billes!` : `${p1.name} a perdu ${IA.gainedOrLost} billes!`;
+    if(result) {
+        playerGuessResultSection.setAttribute("style", "background-image: url(./Pictures/playerGuessResultWin.jpg)");
+        document.getElementById('txtPlayerGuessResult')!.innerHTML = `${p1name} a gagné ${p1.gainedOrLost} billes!`;
+    } else {
+        playerGuessResultSection.setAttribute("style", "background-image: url(./Pictures/playerGuessResultLoose.jpg)");
+        document.getElementById('txtPlayerGuessResult')!.innerHTML = `${p1name} a perdu ${IA.gainedOrLost} billes!`;
+    } 
     playerGuessSection.classList.toggle('hidden');
     playerGuessResultSection.classList.toggle('hidden');
     // Ajouter le text Player guess result section
@@ -186,6 +203,6 @@ function addMarblesButtons() {
 
         docContext.appendChild(button);
     }
-    console.log(`Ajout des ${p1.marbles} billes de ${p1.name}`);
+    console.log(`Ajout des ${p1.marbles} billes de ${p1name}`);
 }
 
