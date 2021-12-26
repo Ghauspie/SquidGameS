@@ -47,9 +47,9 @@ let p1name = p1.name;
 
 // ---------------------- Button AddEvenListener -----------------------
 
-GoplayButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice')!.innerHTML = `${p1name}, a vous de miser`;
-    document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur ${matricule1}`;
+GoplayButton.addEventListener('click', () => {  
+    document.getElementById('txtPlayerBetChoice')!.innerHTML = `${p1name}, à vous de miser`;
+    document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur n°${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
     if (randomEvenOrOdd() === "even") {
         localStorage.setItem("begin", "1");
@@ -63,8 +63,7 @@ GoplayButton.addEventListener('click', () => {
 });
 
 validateBetButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice')!.innerHTML = `${p1name} : Joueur n°${matricule1}`;
-    document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur `;
+    document.getElementById('matriculeGameChoice')!.innerHTML = `Joueur ${matricule1} `;
     if (p1.marblesBet === 0) {
         document.getElementById('titlePlayerBetChoice')!.innerHTML = `Veuillez choisir un nombre de billes à parier !`  
     } else {
@@ -72,7 +71,7 @@ validateBetButton.addEventListener('click', () => {
     IAGuessSection.classList.toggle('hidden');
     let p = randomEvenOrOdd();
     result = IA.guess(p, p1);
-    document.getElementById('titleIAGuess')!.innerHTML = `Adversaire : Joueur <strong>${matricule2}</strong>`;
+    document.getElementById('titleIAGuess')!.innerHTML = `Joueur <strong>${matricule2}</strong>`;
     if(result) {
         IAGuessSection.style.backgroundImage = "url('./Pictures/IAGuessWin.jpg')";
         document.getElementById('resultIAGuess')!.innerHTML = `L'adversaire a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>, il a gagné <strong>${IA.gainedOrLost}</strong> billes!`;
@@ -84,6 +83,7 @@ validateBetButton.addEventListener('click', () => {
 });
 
 toIABetButton.addEventListener('click', () => {
+    document.getElementById('titleIABet')!.innerHTML = `Joueur n°${matricule1}`;
     IAGuessSection.classList.toggle('hidden');
     if (p1.isDead()) {
         gameOverSection.style.backgroundImage = "url('./Pictures/squidgame_gun.png')";
@@ -97,12 +97,13 @@ toIABetButton.addEventListener('click', () => {
         gameOverSection.classList.toggle('hidden');
     }
      else {
-        document.getElementById('guessIAEvenOrOdd')!.innerHTML = `À <strong>${p1name}</strong> de deviner  !`;
+        document.getElementById('guessIAEvenOrOdd')!.innerHTML = `L'adversaire a parié un nombre de billes. À vous de deviner  !`;
         IABetSection.classList.toggle('hidden');
     }
 });
 
 toPlayerGuessButton.addEventListener('click', () => {
+    document.getElementById('titlePlayerGuess')!.innerHTML = `Joueur n°${matricule1}`;
     IABetSection.classList.toggle('hidden');
     playerGuessSection.classList.toggle('hidden');
     IA.bet(randomMarblesNumber(IA.marbles));
@@ -159,10 +160,10 @@ function playerGuess(p: "even" | "odd"): void {
     result = p1.guess(p, IA);
     if(result) {
         playerGuessResultSection.setAttribute("style", "background-image: url(./Pictures/playerGuessResultWin.jpg)");
-        document.getElementById('txtPlayerGuessResult')!.innerHTML = `${p1name} a gagné ${p1.gainedOrLost} billes!`;
+        document.getElementById('txtPlayerGuessResult')!.innerHTML = `Vous avez gagné <strong>${p1.gainedOrLost}</strong> billes!`;
     } else {
         playerGuessResultSection.setAttribute("style", "background-image: url(./Pictures/playerGuessResultLoose.jpg)");
-        document.getElementById('txtPlayerGuessResult')!.innerHTML = `${p1name} a perdu ${IA.gainedOrLost} billes!`;
+        document.getElementById('txtPlayerGuessResult')!.innerHTML = `Vous avez perdu <strong>${IA.gainedOrLost}</strong> billes!`;
     } 
     playerGuessSection.classList.toggle('hidden');
     playerGuessResultSection.classList.toggle('hidden');

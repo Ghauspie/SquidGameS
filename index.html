@@ -55,9 +55,9 @@
         </section>
 
         <section id="gameChoice" class="hidden">
-            <div id="usernameGameChoice"></div>
-            <div id="matriculeGameChoice"></div>
+            <div id="matriculeGameChoice" class="matriculeGameChoice"></div>
             <h2 id="titlePlayerBetChoice" class="titlePosition"></h2>
+            <div id="txtPlayerBetChoice" class="txtPosition"></div>
             <div id="btnMarbles" class="hover15"></div>
             <div class="marblesBet">
                 <button id="validateChoice" class="btnLigthEffect btnCenter buttonPosition">Valider</button>
@@ -66,17 +66,18 @@
 
         </section>
         <section id="IAGuess" class="hidden">
-            <h2 id="titleIAGuess" class="titlePosition"></h2>
+            <h2 id="titleIAGuess" class="matriculeGameChoice"></h2>
             <div id="resultIAGuess" class="txtPosition"></div>
             <button id="toIABet" class="btnLigthEffect buttonPosition">Continuer</button>
         </section>
         <section id="IABet" class="hidden">
-            <h2 id="titleIABet" class="titlePosition">L'adversaire parie un nombre de bille ! </h2>
-            <div id="guessIAEvenOrOdd" class="txtPosition">A vous de deviner si c'est pair ou impair</div>
+            <h2 id="titleIABet" class="matriculeGameChoice"></h2>
+            <div id="guessIAEvenOrOdd" class="txtPosition">L'adversaire a parié un nombre de bille !À vous de deviner si c'est pair ou impair</div>
             <button id="toPlayerGuess" class="btnLigthEffect buttonPosition">Continuer</button>
         </section>
         <section id="playerGuess" class="hidden">
-            <h2 id="titlePlayerGuess" class="txtPosition">Choisissez pair ou impair</h2>
+            <h2 id="titlePlayerGuess" class="matriculeGameChoice"></h2>
+            <div id="txtPlayerGuess" class="txtPosition">Choisissez pair ou impair</div>
             <div class="evenOrOdd">
                 <button id="even" class="btnLigthEffect">Pair</button>
                 <button id="odd" class="btnLigthEffect">Impair</button>
@@ -105,7 +106,7 @@
         </div>
     </section>
         <section id="gameOver" class="hidden">
-            <h2 id="tittleWinOrLoose" class="titlePosition"></h2>
+            <h2 id="tittleWinOrLoose" class="titlePositionGameOver"></h2>
             <div id="txtWinOrLoose" class="txtPosition"></div>
             <button id="replay" class="btnLigthEffect buttonPosition">Recommencer</button>
         </section>
