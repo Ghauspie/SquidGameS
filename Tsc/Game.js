@@ -10,6 +10,7 @@ let toIABetButton = document.getElementById('toIABet');
 let toPlayerGuessButton = document.getElementById('toPlayerGuess');
 let toPlayerBetButton = document.getElementById('toPlayerBet');
 let replayButton = document.getElementById('replay');
+let usernameInput = document.getElementById('username1');
 // ------------------------------ SECTION ---------------------------------------
 let gameChoiceSection = document.getElementById('gameChoice');
 let IAGuessSection = document.getElementById('IAGuess');
@@ -21,7 +22,7 @@ let playerGuessResultSection = document.getElementById('playerGuessResult');
 // ---------------------------------TEXTE------------------------------------------------
 // let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice') as HTMLFormElement;
 // ------------------------------ LOCAL STORAGE ---------------------------------------
-let username1 = localStorage.getItem('name1');
+let username1;
 // ------------------------------ MATRICULES ---------------------------------------
 let matricule1 = Math.floor(Math.random() * 456) + 1;
 let matricule2 = Math.floor(Math.random() * 456) + 1;
@@ -30,10 +31,11 @@ let p1 = new Player_1.player(username1, matricule1);
 let IA = new Player_1.player("IA", matricule2);
 // ------------------------------ VARIABLE GLOBALES ---------------------------------------
 let result;
-let p1name = p1.name;
 // ---------------------- Button AddEvenListener -----------------------
 GoplayButton.addEventListener('click', () => {
-    document.getElementById('txtPlayerBetChoice').innerHTML = `${p1name}, à vous de miser`;
+    username1 = usernameInput.value;
+    console.log(username1);
+    document.getElementById('txtPlayerBetChoice').innerHTML = `${username1}, à vous de miser`;
     document.getElementById('matriculeGameChoice').innerHTML = `Joueur n°${matricule1}`;
     selectPlayersSection.classList.toggle('hidden');
     if (randomEvenOrOdd() === "even") {
@@ -96,11 +98,11 @@ toPlayerGuessButton.addEventListener('click', () => {
 });
 evenButton.addEventListener('click', () => {
     playerGuess("even");
-    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1name}, vous avez choisi <strong>Pair</strong>`;
+    document.getElementById('titlePlayerGuessResult').innerHTML = `${username1}, vous avez choisi <strong>Pair</strong>`;
 });
 oddButton.addEventListener('click', () => {
     playerGuess("odd");
-    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1name}, vous avez choisi <strong>Impair</strong>`;
+    document.getElementById('titlePlayerGuessResult').innerHTML = `${username1}, vous avez choisi <strong>Impair</strong>`;
 });
 toPlayerBetButton.addEventListener('click', () => {
     playerGuessResultSection.classList.toggle('hidden');
@@ -180,5 +182,5 @@ function addMarblesButtons() {
         button.onclick = function () { p1.bet(i); };
         docContext.appendChild(button);
     }
-    console.log(`Ajout des ${p1.marbles} billes de ${p1name}`);
+    console.log(`Ajout des ${p1.marbles} billes de ${username1}`);
 }
