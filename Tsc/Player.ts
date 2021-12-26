@@ -2,7 +2,7 @@
  * Classe représentant un joueur.
  */
 export class player {
-    private readonly initMarbles = 10; //nombre de billes initiales
+    private initMarbles = 10; //nombre de billes initiales
     marbles: number;
     name: string;
     gainedOrLost: number; //Le nombre de billes perdues ou gagnées au dernier tour de jeu

@@ -5,14 +5,14 @@
      --color-bleu-green:#249f9c;
      --color-green:#037a76 ;
      --color-gold:#d4af37;
-     --color-black:"black";
+     --color-black: rgb(27, 27, 27);
      --background-url:"../Pictures/SquidGameBG.jpg";
      --background-url-rule:url("../Pictures/squid-game-feature-image.png");
 
     --size-h1:1.8em;
     --size-btn:1em;
     --size-h3:2.7em;
-    --size-p-footer:1.3em;
+    --size-p-footer:0,5em;
     --size-p:1.5em;
 }
 
@@ -24,19 +24,19 @@
   h1 {
       font-family: SquidGame;
       font-size: var(--size-h1);
-      margin-right: 10%;
-      width: 60%;
+      color: var(--color-white);
+      margin-right: auto;
   }
   h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #000000;
+    color: var(--color-white);
     font-size: 30px;
 }
   h3{
     background-color: transparent;
     margin: auto;
     font-size: var(--size-h3);
-    color: var(--color-black);
+    color: var(--color-gold);
     font-weight: bolder;
 }
 strong {
@@ -46,18 +46,12 @@ strong {
 div {
     font-family: "MontSerrat", sans-serif;
     font-size: 25px;
+    color: var(--color-white);
 }
   body{
     width: 100%;
     height: 100vh;
-    background-image:url("../Pictures/SquidGameBG.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden; 
     overflow-y: hidden; 
-
   }
 
   main{
@@ -65,41 +59,9 @@ div {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      text-align: center;
+
   }
-  
-               /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                          Button, title and texte position                              ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
 
-  .buttonPosition {
-    position: absolute;
-    bottom: 20%;
-    right: 0%; 
-    transform: translate(-50%, -50%);
-}
-    .titlePosition {
-    position: absolute;
-    top: 35%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
-
-    .txtPosition {
-    position: absolute;
-    font-size: 30px;
-    top: 40%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-}
 
     /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,7 +76,7 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
   nav{
-    background-color:var(--color-pink) 	 ;
+    background-color:var(--color-bleu-green) 	 ;
     margin: auto;
     display: flex;
     align-items: center;
@@ -155,8 +117,49 @@ div {
   */
 
 
+
+
+  /* button triangle */
+  #start {
+    width: 200px;
+    height: 200px;
+    border: var(--color-pink-white) solid 15px;
+    background: transparent;
+
+}
+#start:hover{
+    transform:translate(15px,5px) ;
+    border: var(--color-gold) solid 15px;
+
+}
+
+/* button carre */
+#btnHomePage{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    top: 30%;
+}
+#rules{
+    width : 200px;
+    height : 200px;
+    background-image: url("../Pictures/TSG2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
+}
+#rules:hover{
+    background-image: url("../Pictures/TSGred.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
+    transform:translate(15px,5px) ;
+}
   /* button rond */
-  #rules{
+  #hallOfFame{
     width : 200px;
     height : 200px;
 /*     background : var(--color-pink-white); */
@@ -166,41 +169,10 @@ div {
     border-radius : 100px;  /* ou 50% */
     background: transparent;
   }
-  #rules:hover{
+  #hallOfFame:hover{
       transform:translate(15px,5px) ;
-      border: var(--color-green) solid 25px;
+      border: var(--color-green) solid 15px;
   }
-
-  /* button triangle */
-  #start {
-    width:200px;
-    background-image: url("../Pictures/TSG2.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-color: transparent;
-    border: transparent;
-}
-    #start:hover{
-    background-image: url("../Pictures/TSGred.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-color: transparent;
-    border: transparent;
-    transform:translate(15px,5px) ;
-}
-
-/* button carre */
-#hallOfFame{
-    width: 200px;
-    height: 200px;
-    border: var(--color-pink-white) solid 15px;
-    background: transparent;
-}
-#hallOfFame:hover{
-    transform:translate(15px,5px) ;
-    border: var(--color-gold) solid 25px;
-}
-
 
       /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,13 +186,8 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
-#homePage{
-    margin-top: 15%;
-}
-.home{
-    display: flex;
-    justify-content: space-around;
-}
+
+
 
 .hidden{
     display: none;
@@ -238,37 +205,36 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
-    #selectPlayers{
-        margin-top: 10%;
-        margin-left: 15%;
-        margin-right: 10%;
-    }
-
     .button{
         display: flex;
+        position: absolute;
+        left: 27%;
+        top: 25%;
+        width: 50%;
     }
     .button button {
         margin-right: 10%;
         background: var(--color-gold);
-       background-image: url("../Pictures/CardsquidGame.png");
-       width: 100%;
-       margin-bottom: 10%;
-       font-size: 1.5em;
-       height: 8vh;
-       background-repeat: no-repeat;
-       background-size: 100%;
-       background-position: center;
-       color: var(--color-white);
-       font-weight: bolder;
+        background-image: url("../Pictures/CardsquidGame.png");
+        width: 100%;
+        margin-bottom: 10%;
+        font-size: 1.5em;
+        height: 15vh;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        color: var(--color-white);
+        font-weight: bolder;
     }
+
 
     #solo:hover {
        transform: translate(5%,2%);
-       border: solid 0.2em var(--color-bleu-green);
+       border: solid 0.1em var(--color-bleu-green);
     }
     #multiplayers:hover{
         transform: translate(5%,2%);
-        border: solid 0.2em var(--color-bleu-green);
+        border: solid 0.1em var(--color-bleu-green);
     }
 
           /*
@@ -285,10 +251,11 @@ div {
   */
 
   .inputplayer{
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 10%;
-      flex-direction: row;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 27%;
+
   }
   .inputplayer input{
       margin-right: 5%;
@@ -313,12 +280,140 @@ div {
   }
 
 
-  /* Boutton GO play */
-  #Goplay{
-    width: 40%;
-    margin: auto;
-  }
+ 
+  
+               /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                         POSITION BUTTON, TITLE, TEXT                                   ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
 
+  .buttonPosition {
+    position: absolute;
+    bottom: 20%;
+    right: 0%; 
+    transform: translate(-50%, -50%);
+}
+.titlePositionGameOver {
+    position: absolute;
+    font-family: "Squidgame";
+    font-size: 4em;
+    top: 25%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+    .titlePosition {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+    .txtPosition {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 50%;
+    height: auto;
+    font-size: 30px;
+    top: 40%;
+    left: 50%; 
+    text-align: center;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
+.matriculeGameChoice {
+    position: absolute;
+    font-family: "Squidgame";
+    width: 25%;
+    height: 40px;
+    left: 2%;
+    top: 7%;
+    font-size: 30px;
+    background-color: #00000044;
+    text-align: center;
+    padding: 10px;
+  }
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                            Backgrounds                                                 ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#homePage{
+    background-image: url("../Pictures/background_squidgame_guards.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#gameChoice{
+    background-image: url("../Pictures/gameChoice.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#selectPlayers{
+    background-image: url("../Pictures/selectPlayers.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#IAGuess{
+    background-image: url("../Pictures/IAGuess.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#IABet{
+    background-image: url("../Pictures/IABet.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#playerGuess{
+    background-image: url("../Pictures/playerGuess.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#playerGuessResult{
+    background-image: url("../Pictures/playerGuessResult.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#gameOver{
+    /* background-image: url("../Pictures/gameOver.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
            /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -330,6 +425,7 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
+
   #usernameGameChoice{
       position: absolute;
       font-size: 30px;
@@ -351,72 +447,10 @@ div {
     margin-left: auto;
     margin-right: auto;
   }
-   
-  #btnMarbles {
-    position: absolute;
-    background: #20202086;
-    border-radius: 20px;
-    width: 50%;
-    height: auto;
-    bottom: 10%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    }
 
-           /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                           GAMES SECTIONS                                                    ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
-#IAGuess{
-    width: 100%;
-    height: 100vh;
-}
-
-#IAGameGuess {
-    width: 100%;
-    height: 100vh;
-}
-
-#gameover {
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-           /*
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //////                                                                                   //////
-  /////                                                                                     /////
-  ////                           EVEN OF ODD PLAYER                                           ///
-  //                                                                                           //
-  /                                                                                             /
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  */
-
-#odd {
-    height: 15vh;
-    position: absolute;
-    top: 45%;
-    right: 25%; 
-}
-#even {
-    position: absolute;
-    height: 15vh;
-    top: 45%;
-    left: 25%; 
-}
-
+  #resultIAGuess{
+      text-align: center;
+  }
             /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -433,7 +467,7 @@ div {
       display: flex;
       flex-direction: row;
       height: 5vh;
-      background-color: var(--color-pink);
+      background-color: var(--color-bleu-green);
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0%;
@@ -527,20 +561,36 @@ div {
     /* z-index: 0; */
   }
 
-             /*
+           /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //////                                                                                   //////
   /////                                                                                     /////
-  ////                            CLASS BUTTON EFFECT                                         ///
+  ////                                      BUTTONS                                           ///
   //                                                                                           //
   /                                                                                             /
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
 
+  #odd {
+    position: absolute;
+    height: 15vh;
+    font-size: 30px;
+    top: 45%;
+    right: 25%; 
+}
+#even {
+    position: absolute;
+    font-size: 30px;
+    height: 15vh;
+    top: 45%;
+    left: 25%; 
+}
 
-  .btnLigthEffect{
+/* ________________________Button ligth effect___________________________________ */
+
+.btnLigthEffect{
     display: block;
     font-size: 20px;
     font-family: SquidGame;
@@ -557,7 +607,9 @@ div {
     cursor: pointer;
     overflow: hidden;
   }
-
+.btnLigthEffect:hover {
+    border: solid 0.1em var(--color-bleu-green);
+}
   .btnLigthEffect::after {
     content: '';
     height: 240px;
@@ -565,7 +617,7 @@ div {
     background: #037a76;
     display: block;
     position: absolute;
-    left: -150px;
+    left: -30px;
     top: -50px;
     transform: rotate(-45deg);
 }
@@ -573,3 +625,21 @@ div {
     transition: transform 0.3s 0.1s linear;
     transform: translateX(400px);
 }
+
+/* _______________________________Buttons Marbles__________________________________________ */
+
+#btnMarbles {
+    position: absolute;
+    background: #20202086;
+    border-radius: 20px;
+    width: 50%;
+    height: auto;
+    bottom: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    }
+
+ /*______________________Boutton GO play_________________________________ */
+ #Goplay{
+    width: 30%;
+  }
