@@ -4,12 +4,13 @@
 export class player {
     private readonly initMarbles = 10; //nombre de billes initiales
     marbles: number;
-    name: string;
+    readonly name: string;
     begin: boolean = false;
     gainedOrLost: number; //Le nombre de billes perdues ou gagnées au dernier tour de jeu
     colorMarbles: Array<number> = []; //couleurs des billes du joueur
     private matricule: number;
     marblesBet: number;
+    private tours: number;
     
     /**
      * Constructeur de la classe. Le joueur reçoit 10 billes.
@@ -22,6 +23,7 @@ export class player {
         this.matricule = matricule;
         this.marblesBet = 0;
         this.gainedOrLost = 0;
+        this.tours = 0;
         this.initColors();
     }
 
@@ -34,6 +36,7 @@ export class player {
         this.initColors();
         this.marblesBet = 0;
         this.gainedOrLost = 0;
+        this.tours = 0;
         this.begin = !this.begin;
     }
 
@@ -56,6 +59,10 @@ export class player {
         return ("000" + m).slice(-3);
     };
 
+    getTours(): number {
+        return this.tours;
+    }
+
     /**
      * Le joueur mise une ou plusieurs billes.
      * @param marbles le nombre de billes misées
@@ -69,6 +76,7 @@ export class player {
         if( marbles <= 0 ) {
             throw new Error("Le nombre de billes misées doit être supérieur à 0 !")
         }
+        this.tours++;
         this.marblesBet = marbles;
     }
 
@@ -103,6 +111,7 @@ export class player {
             player2.gainedOrLost = perte;
         }
         player2.marblesBet = 0;
+        this.tours++;
         return victoire;
     }
 

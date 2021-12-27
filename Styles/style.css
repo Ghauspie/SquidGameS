@@ -49,7 +49,7 @@ div {
     font-family: "MontSerrat", sans-serif;
     font-size: 25px;
 }
-  body{
+/*  body{
     width: 100%;
     height: 100vh;
     background-image:url("../Pictures/SquidGameBG.jpg");
@@ -59,8 +59,7 @@ div {
     flex-direction: column;
     overflow-x: hidden; 
     overflow-y: hidden; 
-
-  }
+  }*/
 
   main{
       height: 90vh;
@@ -323,18 +322,18 @@ div {
     transform: translate(-50%, -50%); 
   }
 
-  .marblesBet {
+  /*.marblesBet {
     position: absolute;
     bottom: 20%; 
     left: 50%; 
     transform: translate(-50%, -50%);
-  }
-  #btnMarbles {
+  }*/
+  /*#btnMarbles {
     position: absolute;
     bottom: 35%; 
     left: 50%; 
     transform: translate(-50%, -50%);
-    }
+    }*/
 
            /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -347,10 +346,10 @@ div {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
-#IAGuess{
+/*#IAGuess{
     width: 100%;
     height: 100vh;
-}
+}*/
 #titleIABet {
     position: absolute;
     width: 70%;
@@ -531,12 +530,12 @@ div {
 }
 
 /* button */
-#replay {
+/*#replay {
     position: absolute;
     bottom: 20%;
     left: 50%; 
     transform: translate(-50%, -50%);
-}
+}*/
 
             /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
