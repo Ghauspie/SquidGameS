@@ -11,6 +11,7 @@ let toIABetButton = document.getElementById('toIABet') as HTMLButtonElement;
 let toPlayerGuessButton = document.getElementById('toPlayerGuess') as HTMLButtonElement;
 let toPlayerBetButton = document.getElementById('toPlayerBet') as HTMLButtonElement;
 let replayButton = document.getElementById('replay') as HTMLButtonElement;
+let backHome = document.getElementById('backToHomePage') as HTMLButtonElement;
 
 // ------------------------------ SECTION ---------------------------------------
 
@@ -106,7 +107,7 @@ goPlayButton.addEventListener('click', () => {
         //localStorage.setItem("begin", "1");
         p1.begin = true;
         IA.begin = false;
-        titleGameChoice.innerHTML = `MATRICULE ${p1.getMatricule()} CHOISI TA MISE.`;
+        titleGameChoice.innerHTML = `MATRICULE ${p1.getMatricule()} CHOISIS TA MISE.`;
         gameChoiceSection.classList.remove('hidden');
         setTimeout( changeStyle, 10, "game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoice.jpg')" );
     } else {
@@ -137,7 +138,7 @@ toIAGuessButton.addEventListener('click', () => {
             setTimeout( changeStyle, 10, "game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessLoose.jpg')" );
         }
     } catch (error) {
-        resultGameChoice.innerHTML = `${p1.name}, clique d'abord sur une bille pour miser !`;
+        resultGameChoice.innerHTML = `${p1.name}, tu dois d'abord cliquer sur une bille pour miser !`;
     }
 });
 
@@ -166,9 +167,20 @@ toPlayerGuessButton.addEventListener('click', () => {
     setTimeout( changeStyle, 10, "game.css", "#playerGuess", "background-image", "url('../Pictures/playerGuess.jpg')" );
 });
 
-evenButton.addEventListener( 'click', () => playerGuess("even") );
+evenButton.addEventListener( 'click', () => {
+    playerGuess("even");
+    document.getElementById('titlePlayerGuessResult')!.innerHTML = `${username1}, VOUS AVEZ CHOISI <strong>PAIR</strong>`;
+});
 
-oddButton.addEventListener( 'click', () => playerGuess("odd") );
+oddButton.addEventListener( 'click', () => {
+    playerGuess("odd");
+    document.getElementById('titlePlayerGuessResult')!.innerHTML = `${username1}, VOUS AVEZ CHOISI <strong>IMPAIR</strong>`; 
+});
+
+backHome.addEventListener('click', () => {
+    p1.reset();
+    IA.reset();
+})
 
 /**
  * Appel par clic sur bouton
@@ -182,8 +194,10 @@ function playerGuess(pairOuImpair:"even" | "odd"): void {
     playerGuessSection.classList.add('hidden');
     playerGuessResultSection.classList.remove('hidden');
     if( result ) {
+        document.getElementById('titlePlayerGuessResult')!.innerHTML = `Vous avez gagné <strong>${p1.gainedOrLost}</strong> billes!`;
         setTimeout( changeStyle, 10, "game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultWin.jpg')" );
     } else {
+        document.getElementById('titlePlayerGuessResult')!.innerHTML = `Vous avez perdu <strong>${IA.gainedOrLost}</strong> billes!`;
         setTimeout( changeStyle, 10, "game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultLoose.jpg')" );
     }
 }

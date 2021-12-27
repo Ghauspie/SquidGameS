@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="./Styles/reset.css">
     <link rel="stylesheet" href="./Styles/style.css">
     <link rel="stylesheet" href="./Styles/marbles.css">
-    <link rel="stylesheet" href="./Styles/game.css">  
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./Styles/game.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,8 +24,8 @@
         <button id="backToHomePage" class="fas fa-hotel"></button>
     </nav>
     <main>
-        <section id="homePage" class="home">
-            <button id="rules" onclick="">
+        <section id="homePage" class="home gameSection">
+            <button id="rules">
                 <h3>
                     Régles
                 </h3>
@@ -31,14 +35,13 @@
                     <h3>Start</h3>
                 </div>
             </button>
-            <button id="hallOfFame" onclick="">
+            <button id="hallOfFame">
                 <h3>
                     Meilleurs joueurs
                 </h3>
             </button>
         </section>
         <section id="selectPlayers" class="hidden gameSection">
-            <h2>VEUILLEZ VOUS IDENTIFIER</h2>
             <div class="button">
                 <button id="solo" value="solo"><i class="far fa-user"></i>
                     Solo
@@ -48,70 +51,77 @@
             <div class="inputplayer">
                 <div id="Name1" class="hidden">
                     <label for="username1">Quel est votre nom matricule 456 ?</label>
-                    <input type="text" name="username1" id="username1">
+                    <input type="text" name="username1" id="username1" class="inputPLayerUsername">
                 </div>
                 <div id="Name2" class="hidden">
-                    <label for="username2" class="hidden">Quel est votre nom matricule 001 ?</label>
-                    <input type="text" id="username2" class="hidden">
+                    <label for="username2">Quel est votre nom matricule 001 ?</label>
+                    <input type="text" id="username2" class="inputPLayerUsername">
                 </div>
             </div>
             <div class="btnBottomRight">
-                <button id="goPlay" class="btnNext">COMMENCER LE JEU</button>
+                <button id="goPlay" class="btnLigthEffect buttonPosition">Jouer</button>
             </div>
         </section>
 
         <section id="gameChoice" class="hidden gameSection">
-            <h2 id="titleGameChoice">CHOISIT LE NOMBRE DE BILLES A MISER</h2>
+            <h2 id="titleGameChoice" class="titlePosition">CHOISIT LE NOMBRE DE BILLES A MISER</h2>
             <div id="resultGameChoice"></div>
-            <div class="marblesBet" >
+            <div class="marblesBet">
                 <div id="btnMarbles" class="hover15"></div>
             </div>
             <div class="btnBottomRight">
-                <button id="toIAGuess" class="btnBottomRight btnNext">Valider</button>
+                <button id="toIAGuess" class="btnLigthEffect buttonPosition">Valider</button>
             </div>
         </section>
         <section id="IAGuess" class="hidden gameSection">
-            <h2 id="titleIAGuess"></h2>
-            <div id="resultIAGuess"></div>
-            <button id="toIABet" class="btnBottomRight btnNext">Continuer</button>
+            <h2 id="titleIAGuess" class="titlePosition"></h2>
+            <div id="resultIAGuess" class="txtPosition"></div>
+            <button id="toIABet" class="btnLigthEffect buttonPosition">Continuer</button>
         </section>
         <section id="IABet" class="hidden gameSection">
-            <h2 id="titleIABet">IA Bet</h2>
-            <div id="resultIABet">IA choisit son nombre de billes</div>
-            <button id="toPlayerGuess" class="btnBottomRight btnNext">Continuer</button>
+            <h2 id="titleIABet" class="titlePosition">IA Bet</h2>
+            <div id="resultIABet" class="txtPosition">IA choisit son nombre de billes</div>
+            <button id="toPlayerGuess" class="btnLigthEffect buttonPosition">Continuer</button>
         </section>
         <section id="playerGuess" class="hidden gameSection">
-            <h2 id="titlePlayerGuess">Pair ou Impair</h2>
-            <div class="evenOrOdd">
+            <h2 id="titlePlayerGuess" class="titlePosition">Pair ou Impair</h2>
+            <div class="evenOrOdd" class="txtPosition">
                 <button id="even" class="btnNext">Pair</button>
                 <button id="odd" class="btnNext">Impair</button>
             </div>
         </section>
         <section id="playerGuessResult" class="hidden gameSection">
-            <h2 id="titlePlayerGuessResult">Player result Guess</h2>
-            <div id="resultPlayerGuessResult">You Win/Loose</div>
-            <button id="toPlayerBet" class="btnBottomRight btnNext">Continuer</button>
+            <h2 id="titlePlayerGuessResult" class="titlePosition"></h2>
+            <div id="resultPlayerGuessResult" class="txtPosition">You Win/Loose</div>
+            <button id="toPlayerBet" class="btnLigthEffect buttonPosition">Continuer</button>
         </section>
         <section id="changingPlayer" class="hidden">
             <button id="myTurn">Je suis prêt!</button>
         </section>
         <!-- Windows modal of rules  -->
         <section id="RulesM" class="hidden">
-            <div id ="modalRules" class="hidden" aria-hidden="false">
+            <div id="modalRules" class="hidden" aria-hidden="false">
                 <div class="modal-card">
                     <button id="closeRules" aria-label="close">close</button>
                     <header class="modal-card-head">
-                    <p class="modal-card-title">Comment fonctionne le jeux des billes ?</p>
+                        <p class="modal-card-title">Comment fonctionne le jeux des billes ?</p>
                     </header>
                     <section id="modal-Content">
-                        Le jeux des billes se joue à deux. <br> Chaque joueur obtient un sac qui contient 10 billes. <br> On tire au sort qui commence : ce joueur doit faire deviner, et met dans sa main (en secret) le nombre de billes qu'il souhaite miser, au minimum une.<br> Puis son adversaire doit deviner si ce nombre est pair ou impair, et l'annonce à haute voix. Les billes misées sont dévoilées. <br> Si le joueur a bien deviné pair ou impair, alors il remporte les billes misées.  Sinon, c'est lui qui doit donner le nombre de billes misées.<br> On passe alors au tour suivant, et chacun échange son rôle. <br> Si un joueur n'a plus aucune bille, il perd la partie. Et il ne reverra plus jamais la lumière                </section>
+                        Le jeux des billes se joue à deux. <br> Chaque joueur obtient un sac qui contient 10 billes.
+                        <br> On tire au sort qui commence : ce joueur doit faire deviner, et met dans sa main (en
+                        secret) le nombre de billes qu'il souhaite miser, au minimum une.<br> Puis son adversaire doit
+                        deviner si ce nombre est pair ou impair, et l'annonce à haute voix. Les billes misées sont
+                        dévoilées. <br> Si le joueur a bien deviné pair ou impair, alors il remporte les billes misées.
+                        Sinon, c'est lui qui doit donner le nombre de billes misées.<br> On passe alors au tour suivant,
+                        et chacun échange son rôle. <br> Si un joueur n'a plus aucune bille, il perd la partie. Et il ne
+                        reverra plus jamais la lumière </section>
                 </div>
             </div>
         </section>
         <section id="gameOver" class="hidden gameSection">
             <h2 id="titleGameOver">Game Over</h2>
             <div id="resultGameOver"></div>
-            <button id="replay" class="btnBottomRight btnNext">Recommencer une partie</button>
+            <button id="replay" class="btnLigthEffect buttonPosition">Recommencer</button>
         </section>
     </main>
     <footer>
@@ -124,15 +134,16 @@
             </ul>
         </div>
         <div class="lien">
-            <a href="https://www.netflix.com/fr/" id="netflix"><img src="../Pictures/netflix.png" alt="Link netflix"></a>
+            <a href="https://www.netflix.com/fr/" id="netflix"><img src="./Pictures/netflix.png" alt="Link netflix"></a>
         </div>
         <audio controls autoplay>
-            <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3" >
+            <source src="./Sound/squid-game-theme-tune-sound-effect.mp3" type="audio/mp3">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
     </footer>
     <script src="./Tsc/bundle.js"></script>
-    
+
     <script src="https://kit.fontawesome.com/6bd3017b32.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
