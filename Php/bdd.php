@@ -1,0 +1,49 @@
+<?php
+header("Content-type: application/javascript");
+    use PDO;
+    class Database {
+        private $dbh;
+        private static $_instance;
+        private function __construct(){
+            $configData= parse_ini_file(__DIR__.'/config.ini');
+
+            try{
+                $this->dbh= new PDO(
+                    "mysql:host={$configData['DB_HOST']};dbname={$configData['DB_NAME']};charset=utf8",
+                    $configData['DB_USERNAME'],
+                    $configData['DB_PASSWORD'],
+                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING) // Affiche les erreurs SQL à l'écran
+                );
+            }
+            catch(\Exception $exception) {
+                echo 'Erreur de connexion...<br>';
+                echo $exception->getMessage().'<br>';
+                echo '<pre>';
+                echo $exception->getTraceAsString();
+                echo '</pre>';
+                exit;
+            }
+        }
+        // the unique method you need to use
+        public static function getPDO() {
+            // If no instance => create one
+            if (empty(self::$_instance)) {
+                self::$_instance = new Database();
+            }
+            return self::$_instance->dbh;
+        }
+    }
+/* 
+            $servername = 'http://37.187.18.79/phpmyadmin';
+            $username = 'SGSimplon';
+            $password = 'SGSimplon';
+            
+            //On établit la connexion
+            $conn = new mysqli($servername, $username, $password);
+            
+            //On vérifie la connexion
+            if($conn->connect_error){
+                die('Erreur : ' .$conn->connect_error);
+            }
+            echo 'Connexion réussie'; */
+        

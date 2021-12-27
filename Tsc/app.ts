@@ -1,6 +1,6 @@
 /* import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getFirestore  } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"; */
-import { initializeApp } from "firebase/app";
+/* import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
         // Import the functions you need from the SDKs you need
@@ -21,4 +21,15 @@ import { getFirestore } from "firebase/firestore";
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const analytics = getFirestore (app);
+        const analytics = getFirestore (app); */
+        const mysql = require ('mysql');
+        const connection = mysql.createConnection ({
+          hôte: "37.187.18.19",
+          utilisateur: 'SGSimplon',
+          mot_de_passe: 'SGSimplon',
+          base_de_données: 'SGSimplon'
+        });
+        connection.connect ((err) => {
+          if (err) throw err;
+          console.log ('Connecté!');
+        });

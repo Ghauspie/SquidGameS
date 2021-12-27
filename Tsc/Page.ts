@@ -56,20 +56,20 @@ import {player} from "./Player";
     }
 
     function goplay(){
-        let player1: HTMLFormElement;
-        let player2: HTMLFormElement;
+        let player1: string;
+        let player2: string;
         let versionplayer: string;
         versionplayer=localStorage.getItem('Type');
         console.log(localStorage.getItem('Type'));
         if(versionplayer==="solo")
         {
-            player1=document.getElementById('username1').value as HTMLFormElement;
+            player1=document.getElementById('username1').value as string;
             localStorage.setItem('name1',player1);
             // player.gameVsIA();
         }
         else{
-            player1=document.getElementById('username1').value as HTMLFormElement;
-            player2=document.getElementById('username2').value as HTMLFormElement;
+            player1=document.getElementById('username1').value as string;
+            player2=document.getElementById('username2').value as string;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
             // player.gameMultiplayers();

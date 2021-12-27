@@ -18,7 +18,9 @@
   "homepage": "https://github.com/Ghauspie/SquidGameS#readme",
   "dependencies": {
     "bulma": "^0.9.3",
-    "firebase": "^9.4.1",
-    "firebase-admin": "^10.0.1"
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
