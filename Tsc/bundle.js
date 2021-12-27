@@ -156,11 +156,11 @@ toPlayerGuessButton.addEventListener('click', () => {
 });
 evenButton.addEventListener('click', () => {
     playerGuess("even");
-    document.getElementById('titlePlayerGuessResult').innerHTML = `${username1}, VOUS AVEZ CHOISI <strong>PAIR</strong>`;
+    document.getElementById('titlePlayerGuessResult').innerHTML = `VOUS AVEZ CHOISI <strong>PAIR</strong>`;
 });
 oddButton.addEventListener('click', () => {
     playerGuess("odd");
-    document.getElementById('titlePlayerGuessResult').innerHTML = `${username1}, VOUS AVEZ CHOISI <strong>IMPAIR</strong>`;
+    document.getElementById('titlePlayerGuessResult').innerHTML = `VOUS AVEZ CHOISI <strong>IMPAIR</strong>`;
 });
 backHome.addEventListener('click', () => {
     p1.reset();

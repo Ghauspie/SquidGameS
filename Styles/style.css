@@ -78,7 +78,7 @@ label {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   */
   nav{
-    background-color:var(--color-pink) 	 ;
+    background-color:var(--color-green) 	 ;
     margin: auto;
     display: flex;
     align-items: center;
@@ -365,7 +365,7 @@ label {
       display: flex;
       flex-direction: row;
       height: 5vh;
-      background-color: var(--color-pink);
+      background-color: var(--color-green);
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0%;
