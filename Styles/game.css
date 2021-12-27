@@ -1,10 +1,4 @@
 /* Style des écrans de jeu */
-
-.btnBottomRight{
-    position:absolute;
-    bottom: 0;
-    right: 0;
-}
 .btnNext{
     cursor: pointer;
     font-family: SquidGame;
@@ -28,11 +22,13 @@
     background-size: cover;
     background-position: center;
     margin: auto;
-    width: 70%;
-    height: 400px;
+    width: 100%;
+    height: 90vh;
     background-color: rgba(0, 0, 0, 0.1);
     transition: background-image 1s;
-    color:slategray;
+}
+#homePage{
+    background-image: url("../Pictures/SquidGameBG.jpg");
 }
 #gameChoice{
     background-image: url("../Pictures/gameChoiceBackground.png");
@@ -40,6 +36,7 @@
 
 #selectPlayers{
     background-image: url("../Pictures/selectPlayersBackground.png");
+    
 }
 
 #IAGuess{
@@ -62,68 +59,5 @@
     background-image: url("../Pictures/gameOverBackground.png");
 }
 
-.button{
-    display: flex;
-}
-.button button {
-    margin-right: 10%;
-    background: var(--color-gold);
-    background-image: url("../Pictures/CardsquidGame.png");
-    width: 100%;
-    margin-bottom: 10%;
-    font-size: 1.5em;
-    height: 8vh;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    color: var(--color-white);
-    font-weight: bolder;
-}
-
-#solo:hover {
-   transform: translate(5%,2%);
-   border: solid 0.2em var(--color-bleu-green);
-}
-#multiplayers:hover{
-    transform: translate(5%,2%);
-    border: solid 0.2em var(--color-bleu-green);
-}*/
-
-/* --------------------------------GAME GUESS----------------------------------------------- */
-
-/*#gameGuess {
-    width: 100%;
-    height: auto;  
-}*/
-
-  /* --------------------------------GAME CHOICE----------------------------------------------- */
-
-/*#gameChoice h2 {
-    width: 90%;
-    color: var(--color-pink-white);
-    font-size: 4vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    text-shadow: rgba(0,225,255,0.88) 0px 0px 17px;
-}*/
-.marblesBet {
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
-}
 
 
-/* ----------------------------Even or Odd ---------------------------------------------------- */
-
-/*#playerGuess h2 {
-  position: absolute;
-  width: 60%;
-  color: black;
-  font-size: 25px;
-  top: 40%; left: 50%; 
-  transform: translate(-50%, -50%); 
-}
-.evenOrOdd {
-  position: absolute;
-  top: 50%; left: 50%; 
-  transform: translate(-50%, -50%);
-}*/
