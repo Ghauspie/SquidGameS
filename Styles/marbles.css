@@ -1,0 +1,105 @@
+
+.big {
+    font-family: SquidGame;
+    font-size: x-large;
+}
+
+.hover15 button {
+	position: relative;
+}
+.hover15 button::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	background: rgba(255,255,255,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.hover15 button:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+
+    .marble {
+        font-family: SquidGame;
+        min-height: 60px;
+        margin: 10px;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 30px;
+        outline: none;
+        background: #BC1150;
+        color: white; 
+        cursor: pointer;
+        background-size: contain;
+        /*box-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);*/
+    }
+    .marble:active {
+        box-shadow: 7px 6px 28px 1px rgba(255, 255, 255, 0.45);
+        transform: translateY(6px);
+    }
+    .marble:focus {
+        box-shadow: 7px 6px 28px 1px rgba(255, 255, 255, 0.45);
+        font-size: x-large;
+    }
+
+    .marble1 {
+        background-image: url("../Pictures/marble1.png");
+    }
+    .marble2 {
+        background-image: url("../Pictures/marble2.png");
+    }
+    .marble3 {
+        background-image: url("../Pictures/marble3.png");
+    }
+    .marble4 {
+        background-image: url("../Pictures/marble4.png");
+    }
+    .marble5 {
+        background-image: url("../Pictures/marble5.png");
+    }
+    .marble6 {
+        background-image: url("../Pictures/marble6.png");
+    }
+    .marble7 {
+        background-image: url("../Pictures/marble7.png");
+    }
+    .marble8 {
+        background-image: url("../Pictures/marble8.png");
+    }
+    .marble9 {
+        background-image: url("../Pictures/marble9.png");
+    }
+    

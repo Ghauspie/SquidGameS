@@ -1,0 +1,653 @@
+:root {
+     --color-pink:#ed1b76; 
+     --color-pink-white: #f44786;
+     --color-white:#ffffff;
+     --color-bleu-green:#249f9c;
+     --color-green:#037a76 ;
+     --color-gold:#d4af37;
+     --color-black: rgb(27, 27, 27);
+     --background-url:"../Pictures/SquidGameBG.jpg";
+     --background-url-rule:url("../Pictures/squid-game-feature-image.png");
+
+    --size-h1:1.8em;
+    --size-btn:1em;
+    --size-h3:2.7em;
+    --size-p-footer:0,5em;
+    --size-p:1.5em;
+}
+
+@font-face {
+    font-family: SquidGame;
+    src: url("../font/Game\ Of\ Squids.ttf");
+  }
+
+  h1 {
+      font-family: SquidGame;
+      font-size: var(--size-h1);
+      color: var(--color-white);
+      margin-right: auto;
+  }
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-white);
+    font-size: 30px;
+}
+  h3{
+    background-color: transparent;
+    margin: auto;
+    font-size: var(--size-h3);
+    color: var(--color-gold);
+    font-weight: bolder;
+}
+strong {
+    font: bold;
+    color: var(--color-green);
+}
+div {
+    font-family: "MontSerrat", sans-serif;
+    font-size: 25px;
+    color: var(--color-white);
+}
+  body{
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden; 
+  }
+
+  main{
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+  }
+
+
+    /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Nav                                                      ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+  nav{
+    background-color:var(--color-bleu-green) 	 ;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    height: 5vh;
+    width: 100%;
+  }
+
+  #backToHomePage{
+      width: 10%;
+      height: auto;
+      background-color: transparent;
+      margin-right: 20%;
+      margin-left: 2%;
+      margin-bottom: 2%;
+      margin-top: 2%;
+  }
+  .fa-hotel{
+      font-size: 250%;
+      color: var(--color-white);
+  }
+  #backToHomePage:hover{
+      color: var(--color-bleu-green);
+  }
+
+      /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Button Squid Game                                        ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+
+
+
+  /* button triangle */
+  #start {
+    width: 200px;
+    height: 200px;
+    border: var(--color-pink-white) solid 15px;
+    background: transparent;
+
+}
+#start:hover{
+    transform:translate(15px,5px) ;
+    border: var(--color-gold) solid 15px;
+
+}
+
+/* button carre */
+#btnHomePage{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    top: 30%;
+}
+#rules{
+    width : 200px;
+    height : 200px;
+    background-image: url("../Pictures/TSG2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
+}
+#rules:hover{
+    background-image: url("../Pictures/TSGred.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
+    transform:translate(15px,5px) ;
+}
+  /* button rond */
+  #hallOfFame{
+    width : 200px;
+    height : 200px;
+/*     background : var(--color-pink-white); */
+    -moz-border-radius : 50px;
+    -webkit-border-radius : 50px;
+    border: var(--color-pink-white) solid 15px;
+    border-radius : 100px;  /* ou 50% */
+    background: transparent;
+  }
+  #hallOfFame:hover{
+      transform:translate(15px,5px) ;
+      border: var(--color-green) solid 15px;
+  }
+
+      /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                             HOME                                                      ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+
+
+.hidden{
+    display: none;
+}
+
+      /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Page Name Player                                         ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+    .button{
+        display: flex;
+        position: absolute;
+        left: 27%;
+        top: 25%;
+        width: 50%;
+    }
+    .button button {
+        margin-right: 10%;
+        background: var(--color-gold);
+        background-image: url("../Pictures/CardsquidGame.png");
+        width: 100%;
+        margin-bottom: 10%;
+        font-size: 1.5em;
+        height: 15vh;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        color: var(--color-white);
+        font-weight: bolder;
+    }
+
+
+    #solo:hover {
+       transform: translate(5%,2%);
+       border: solid 0.1em var(--color-bleu-green);
+    }
+    #multiplayers:hover{
+        transform: translate(5%,2%);
+        border: solid 0.1em var(--color-bleu-green);
+    }
+
+          /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Page Name Player                                         ////
+  ///                                partie input                                             ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+  .inputplayer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 27%;
+
+  }
+  .inputplayer input{
+      margin-right: 5%;
+      size: 3em;
+  }
+
+  .inputPLayerUsername {
+    display: block;
+    width: 150%;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.438);
+    border-bottom: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    transition: 0.4s ease-out;
+}
+
+  .inputplayer{
+      font-size: var(--size-p);
+  }
+
+  #Name2 {
+      margin-left: 30%;
+  }
+
+   
+               /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                         POSITION BUTTON, TITLE, TEXT                                   ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+  .buttonPosition {
+    position: absolute;
+    bottom: 20%;
+    right: 0%; 
+    transform: translate(-50%, -50%);
+}
+.titlePositionGameOver {
+    position: absolute;
+    font-family: "Squidgame";
+    font-size: 4em;
+    top: 25%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+    .titlePosition {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 50%;
+    padding: 20px;
+}
+
+    .txtPosition {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.541);
+    width: 50%;
+    height: auto;
+    font-size: 30px;
+    top: 40%;
+    left: 50%; 
+    text-align: center;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
+.matriculeGameChoice {
+    position: absolute;
+    font-family: "Squidgame";
+    width: 25%;
+    height: 40px;
+    left: 2%;
+    top: 7%;
+    font-size: 30px;
+    background-color: #00000044;
+    text-align: center;
+    padding: 10px;
+  }
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                            Backgrounds                                                 ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+#homePage{
+    background-image: url("../Pictures/background_squidgame_guards.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#gameChoice{
+    background-image: url("../Pictures/gameChoice.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#selectPlayers{
+    background-image: url("../Pictures/selectPlayers.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#IAGuess{
+    background-image: url("../Pictures/IAGuess.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#IABet{
+    background-image: url("../Pictures/IABet.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#playerGuess{
+    background-image: url("../Pictures/playerGuess.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#playerGuessResult{
+    background-image: url("../Pictures/playerGuessResult.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+#gameOver{
+    /* background-image: url("../Pictures/gameOver.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                            GAME CHOICE                                                 ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+  #usernameGameChoice{
+      position: absolute;
+      font-size: 30px;
+      width: 25%;
+      height: 40px;
+      top: 25%; 
+      left: 50%; 
+      transform: translate(-50%, -50%);
+  }
+  #matriculeGameChoice {
+    position: absolute;
+    font-family: "Squidgame";
+    width: 25%;
+    height: 40px;
+    left: 2%;
+    top: 7%;
+    font-size: 30px;
+    background-color: #00000044;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #resultIAGuess{
+      text-align: center;
+  }
+            /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                              Footer                                                   ////
+  ///                                                                                         ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+  footer{
+      display: flex;
+      flex-direction: row;
+      height: 5vh;
+      background-color: var(--color-bleu-green);
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0%;
+  }
+  .nameFooter{
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      margin-left: 2%;
+      width: 80%;
+      margin-bottom: 1%;
+      margin-top: 1%;
+  }
+  .nameFooter p{
+      margin-right: 1%;
+      color: var(--color-green);
+      font-weight: bolder;
+      font-size: var(--size-p-footer);
+      text-shadow: 0.2em 0.2em 0.3em var(--color-white);
+  }
+  ul {
+      display: flex;
+      flex-direction: row;
+  }
+  li {
+      margin-right: 4%;
+      color: var(--color-green);
+      font-weight: bolder;
+      font-size: var(--size-p-footer);
+      text-shadow: 0.2em 0.2em 0.3em var(--color-white);
+  }
+  .lien {
+      margin-right: 2%;
+      width: 10%;
+      height: 3.9vh;
+  }
+
+  .lien img{
+    height: 3.9vh;
+  }
+  .lien img:hover{
+    height: 4.2vh;
+  }
+  
+
+/* 
+  ┌─┐┌─┐░░░░┌┐░░┌┐░
+  ││└┘││░░░░││░░││░
+  │┌┐┌┐├──┬─┘├──┤│░
+  ││││││┌┐│┌┐│┌┐││░
+  ││││││└┘│└┘│┌┐│└┐
+  └┘└┘└┴──┴──┴┘└┴─┘ */
+  
+#modalRules{
+
+      background-color: var(--color-bleu-green);
+      color: var(--color-gold);
+      font-size: var(--size-p);
+      font-weight: bolder;
+     width: 60%;
+      position: absolute;
+      right: 20%;
+      left: 20%;
+      top: 10%;
+      border-radius: 15px;  
+  }
+  .modal-card{
+      margin: 2% 5%;
+  }
+  #closeRules{
+      width: 11%;
+        margin-left: 82%;
+      background-color: var(--color-green);
+      color: var(--color-white);    
+  }
+  button.delete:hover{
+    transform: scale(1.2,1.2) ;
+  }
+  .modal-card-title{
+      margin-bottom: 2%;
+  }
+
+  #RulesM{
+    background: rgba(0, 0, 0, 0.877);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top:0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    /* z-index: 0; */
+  }
+
+           /*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////                                                                                   //////
+  /////                                                                                     /////
+  ////                                      BUTTONS                                           ///
+  //                                                                                           //
+  /                                                                                             /
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+  */
+
+  #odd {
+    position: absolute;
+    height: 15vh;
+    font-size: 30px;
+    top: 45%;
+    right: 25%; 
+}
+#even {
+    position: absolute;
+    font-size: 30px;
+    height: 15vh;
+    top: 45%;
+    left: 25%; 
+}
+
+/* ________________________Button ligth effect___________________________________ */
+
+.btnLigthEffect{
+    display: block;
+    font-size: 20px;
+    font-family: SquidGame;
+    background: #037a76;
+    margin: 10px;
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border: 1px solid #333;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+.btnLigthEffect:hover {
+    border: solid 0.1em var(--color-bleu-green);
+}
+  .btnLigthEffect::after {
+    content: '';
+    height: 240px;
+    width: 100px;
+    background: #037a76;
+    display: block;
+    position: absolute;
+    left: -30px;
+    top: -50px;
+    transform: rotate(-45deg);
+}
+.btnLigthEffect:hover::after {
+    transition: transform 0.3s 0.1s linear;
+    transform: translateX(400px);
+}
+
+/* _______________________________Buttons Marbles__________________________________________ */
+
+#btnMarbles {
+    position: absolute;
+    background: #20202086;
+    border-radius: 20px;
+    width: 50%;
+    height: auto;
+    bottom: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    }
+
+ /*______________________Boutton GO play_________________________________ */
+ #Goplay{
+    width: 30%;
+  }
