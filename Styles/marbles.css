@@ -3,15 +3,6 @@
     src: url("../font/Game\ Of\ Squids.ttf");
 }
 
-body{
-    background-color: black;
-}
-
-h1 {
-      font-family: SquidGame;
-      color: #24CECB;
-}
-
 .big {
     font-family: SquidGame;
     font-size: x-large;
@@ -63,7 +54,16 @@ h1 {
 		opacity: 0;
 	}
 }
-
+#btnMarbles {
+    position: absolute;
+    background: #20202086;
+    border-radius: 20px;
+    width: 50%;
+    height: auto;
+    bottom: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    }
     .marble {
         font-family: SquidGame;
         min-height: 60px;
