@@ -5,6 +5,7 @@ export class player {
     private readonly initMarbles = 10; //nombre de billes initiales
     marbles: number;
     name: string;
+    begin: boolean = false;
     gainedOrLost: number; //Le nombre de billes perdues ou gagnées au dernier tour de jeu
     colorMarbles: Array<number> = []; //couleurs des billes du joueur
     private matricule: number;
@@ -25,13 +26,15 @@ export class player {
     }
 
     /**
-     * Garde nom et matricule du joueur, reset le reste
+     * Garde nom et matricule du joueur, reset le reste.
+     * Change le joueur qui commence.
      */
     reset(): void {
         this.marbles = this.initMarbles;
         this.initColors();
         this.marblesBet = 0;
         this.gainedOrLost = 0;
+        this.begin = !this.begin;
     }
 
     /**

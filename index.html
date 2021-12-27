@@ -51,21 +51,22 @@
             </div>
             <div class="inputplayer">
                 <div>
-                    <p id="Name1" class="hidden">Quel est votre nom matricule 456 ?</p>
-                    <input type="text" id="username1" class="hidden">
+                    <label for="username1">Quel est votre nom matricule 456 ?</label>
+                    <input type="text" name="username1" id="username1">
                 </div>
                 <div>
-                    <p id="Name2" class="hidden">Quel est votre nom matricule 001 ?</p>
+                    <label for="username2" class="hidden">Quel est votre nom matricule 001 ?</label>
                     <input type="text" id="username2" class="hidden">
                 </div>
             </div>
             <div class="btnBottomRight">
-                <button id="Goplay" class="btnNext">Commencer le jeu</button>
+                <button id="goPlay" class="btnNext">COMMENCER LE JEU</button>
             </div>
         </section>
 
         <section id="gameChoice" class="hidden gameSection">
-            <h2>CHOISIR LE NOMBRE DE BILLES A MISER</h2>
+            <h2 id="titleGameChoice">CHOISIT LE NOMBRE DE BILLES A MISER</h2>
+            <div id="resultGameChoice"></div>
             <div class="marblesBet" >
                 <div id="btnMarbles" class="hover15"></div>
             </div>
@@ -79,28 +80,28 @@
             <button id="toIABet" class="btnBottomRight btnNext">Continuer</button>
         </section>
         <section id="IABet" class="hidden gameSection">
-            <h2>IA Bet</h2>
-            <div>IA choisit son nombre de billes</div>
+            <h2 id="titleIABet">IA Bet</h2>
+            <div id="resultIABet">IA choisit son nombre de billes</div>
             <button id="toPlayerGuess" class="btnBottomRight btnNext">Continuer</button>
         </section>
         <section id="playerGuess" class="hidden gameSection">
-            <h2>Pair ou Impair</h2>
+            <h2 id="titlePlayerGuess">Pair ou Impair</h2>
             <div class="evenOrOdd">
-                <button id="even">Pair</button>
-                <button id="odd">Impair</button>
+                <button id="even" class="btnNext">Pair</button>
+                <button id="odd" class="btnNext">Impair</button>
             </div>
         </section>
         <section id="playerGuessResult" class="hidden gameSection">
-            <h2>Player result Guess</h2>
-            <div>You Win/Loose</div>
+            <h2 id="titlePlayerGuessResult">Player result Guess</h2>
+            <div id="resultPlayerGuessResult">You Win/Loose</div>
             <button id="toPlayerBet" class="btnBottomRight btnNext">Continuer</button>
         </section>
         <section id="changingPlayer" class="hidden">
             <button id="myTurn">Je suis prêt!</button>
         </section>
         <section id="gameOver" class="hidden gameSection">
-            <h2>Game Over</h2>
-            <div></div>
+            <h2 id="titleGameOver">Game Over</h2>
+            <div id="resultGameOver"></div>
             <button id="replay" class="btnBottomRight btnNext">Recommencer une partie</button>
         </section>
 

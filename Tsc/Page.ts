@@ -13,7 +13,7 @@ import {player} from "./Player";
     //let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
     let SelectSolo: HTMLElement= document.getElementById('solo') as HTMLElement;
     let SelectMulti:HTMLElement=document.getElementById('multiplayers') as HTMLElement;
-    let Go:HTMLFormElement=document.getElementById('Goplay') as HTMLFormElement;
+    let Go:HTMLFormElement=document.getElementById('goPlay') as HTMLFormElement;
     let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
     let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
     //StartPlay.addEventListener("click",()=>StartPlayer);
