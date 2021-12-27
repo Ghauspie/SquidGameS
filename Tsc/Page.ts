@@ -1,27 +1,25 @@
+import { doc } from "firebase/firestore";
 import {player} from "./Player";
-/*     versionplayer:string;
-    selectPlayerDisplay:void;
-    index:any;
-    game:string[]=[];
-    player1:string;
-    player2:string;
- */
-    window.onload = function() {
-        preloadImg();
-    }
 
-    //let StartPlay:HTMLElement = document.getElementById('start') as HTMLElement;
-    let SelectSolo: HTMLElement= document.getElementById('solo') as HTMLElement;
-    let SelectMulti:HTMLElement=document.getElementById('multiplayers') as HTMLElement;
-    let Go:HTMLFormElement=document.getElementById('goPlay') as HTMLFormElement;
-    let home:HTMLFormElement=document.getElementById('backToHomePage') as HTMLFormElement;
-    let Rules:HTMLElement=document.getElementById('rules') as HTMLElement;
-    //StartPlay.addEventListener("click",()=>StartPlayer);
-    SelectSolo.addEventListener("click",()=>SelectNumberPlayer);
-    SelectMulti.addEventListener("click",()=>SelectNumberPlayer);
+    let StartPlay:HTMLButtonElement = document.getElementById('start') as HTMLButtonElement;
+    let SelectSolo: HTMLButtonElement= document.getElementById('solo') as HTMLButtonElement;
+    let SelectMulti:HTMLButtonElement=document.getElementById('multiplayers') as HTMLButtonElement;
+    let Go:HTMLFormElement=document.getElementById('goPlay') as HTMLButtonElement;
+    let home:HTMLButtonElement=document.getElementById('backToHomePage') as HTMLButtonElement;
+    let Rules:HTMLButtonElement=document.getElementById('rules') as HTMLButtonElement;
+    const DialogModal:any=document.getElementById('modalRules');
+    let texte:string;
+    let ruleClose=document.getElementById('closeRules');
+    let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
+//Section for the addEventListener    
+
+    StartPlay.addEventListener("click",StartPlayer);
+    SelectSolo.addEventListener("click",SelectNumberPlayer);
+    SelectMulti.addEventListener("click",SelectNumberPlayer);
     Go.addEventListener("click",goplay);
     home.addEventListener("click",BackHome);
     Rules.addEventListener("click",displayRule);
+    ruleClose.addEventListener("click",closeRules);
 
     function preloadImg(): void {
         for( let i = 1; i <= 9; i++ ) {
@@ -29,6 +27,7 @@ import {player} from "./Player";
             img.src = `./Pictures/marble${i}.png`;
         }
     }
+    //todo
     function preloadImages(array) {
         if (!preloadImages.list) {
             preloadImages.list = [];
@@ -52,59 +51,25 @@ import {player} from "./Player";
     
     
     function SelectNumberPlayer(e:string){
-        if (localStorage.type!=null){
         localStorage.removeItem('Type');
-        let versionplayer: string;
-        versionplayer=e.target.value;
-        let displayname:HTMLFormElement;
-        let Name2:HTMLFormElement;
-        Name2=document.getElementById('Name2') as HTMLFormElement;
-        localStorage.setItem('Type',versionplayer);
-        if(versionplayer==="solo"){
-            displayname=document.getElementById('username1')as HTMLFormElement;
-            displayname.removeAttribute('class');
-            document.getElementById('Name1').removeAttribute('class');
-            if(Name2.getAttribute('class')==null){
-                Name2.setAttribute('class',"hidden"); 
-            }
-            return versionplayer;
+        let displayname1=document.getElementById('Name1')as HTMLFormElement;
+        let displayname2=document.getElementById('Name2') as HTMLFormElement;
+        if (displayname1.getAttribute("class")!=='hidden'){
+            displayname1.setAttribute('class','hidden');
         }
-        else {
-            displayname=document.getElementById('username1')as HTMLFormElement;
-            displayname.removeAttribute('class','hidden');
-            document.getElementById('Name1').removeAttribute('class') as HTMLElement ;
-            displayname=document.getElementById('username2');
-            displayname.removeAttribute('class');
-            document.getElementById('Name2').removeAttribute('class') as HTMLElement ;
-            return versionplayer;
-            } 
+        if (displayname2.getAttribute("class")!=='hidden'){
+            displayname2.setAttribute('class','hidden');
         }
-        else {
             let versionplayer: string;
             versionplayer=e.target.value;
-            let displayname:HTMLFormElement;
-            let Name2:HTMLFormElement;
-            Name2=document.getElementById('Name2') as HTMLFormElement;
             localStorage.setItem('Type',versionplayer);
             if(versionplayer==="solo"){
-                displayname=document.getElementById('username1')as HTMLFormElement;
-                displayname.removeAttribute('class');
-                document.getElementById('Name1').removeAttribute('class');
-                if(Name2.getAttribute('class')==null){
-                    Name2.setAttribute('class',"hidden"); 
-                }
-                return versionplayer;
+                displayname1.classList.toggle('hidden');
             }
             else {
-                displayname=document.getElementById('username1')as HTMLFormElement;
-                displayname.removeAttribute('class');
-                document.getElementById('Name1').removeAttribute('class');
-                displayname=document.getElementById('username2');
-                displayname.removeAttribute('class');
-                document.getElementById('Name2').removeAttribute('class');
-                return versionplayer;
-                } 
-        }
+                displayname1.classList.toggle('hidden');
+                displayname2.classList.toggle('hidden');
+            }
     }
 
     function goplay(){
@@ -112,6 +77,7 @@ import {player} from "./Player";
         let player2: HTMLInputElement;
         let versionplayer: string;
         versionplayer=localStorage.getItem('Type');
+        console.log(versionplayer);
         console.log(localStorage.getItem('Type'));
         if(versionplayer==="solo")
         {
@@ -120,44 +86,74 @@ import {player} from "./Player";
             //gameVsIA();
         }
         else{
-            player1=document.getElementById('username1').value as HTMLFormElement;
-            player2=document.getElementById('username2').value as HTMLFormElement;
+            player1=document.getElementById('username1').value as string;
+            player2=document.getElementById('username2').value as string;
             localStorage.setItem('name1',player1);
             localStorage.setItem('name2',player2);
-            gameMultiplayers()
+            // player.gameMultiplayers();
         }
     }
-
+//Function return home and reset
     function BackHome(){
         let HomePage:HTMLElement;
         let selectPlayers:HTMLElement;
-        let gameChoose:HTMLElement;
-        let gameGuess:HTMLElement;
+        let gameChoice:HTMLElement;
+        let playerGuess:HTMLElement;
+        let playerGuessResult:HTMLElement
         let chaningPlayer:HTMLElement;
+        let gameOver:HTMLElement;
+        let IAGuess:HTMLElement;
+        let IABet:HTMLElement;
+        resetLocalStorage();
         HomePage=document.getElementById('homePage') as HTMLElement;
+        HomePage.removeAttributeNS('class','hidden');
         HomePage.removeAttribute('class');
-        HomePage.setAttribute('class','home');
+        HomePage.setAttribute('class','home'); 
         selectPlayers=document.getElementById('selectPlayers') as HTMLElement;
-        gameChoose=document.getElementById('gameChoice') as HTMLElement;
-        gameGuess=document.getElementById('gameGuess') as HTMLElement;
+        gameChoice=document.getElementById('gameChoice') as HTMLElement;
+        playerGuess=document.getElementById('playerGuess') as HTMLElement;
         chaningPlayer=document.getElementById('changingPlayer') as HTMLElement;
-        if(selectPlayers.getAttribute('class')==null){
-            selectPlayers.setAttribute('class',"hidden");
-        }
-        if(gameChoose.getAttribute('class')==null){
-            gameChoose.setAttribute('class','hidden');
-        }
-        if(gameGuess.getAttribute('class')==null){
-            gameGuess.setAttribute('class','hidden');
-        }
-        if(chaningPlayer.getAttribute('class')==null){
-            chaningPlayer.setAttribute('class','hidden');
-        }
+        gameOver=document.getElementById('gameOver') as HTMLElement;
+        playerGuessResult=document.getElementById('playerGuessResult') as HTMLElement;
+        IAGuess=document.getElementById('IAGuess') as HTMLElement;
+        IABet=document.getElementById('IABet') as HTMLElement;      
+        selectPlayers.setAttribute('class',"hidden");
+        gameChoice.setAttribute('class','hidden');
+        playerGuess.setAttribute('class','hidden');
+        chaningPlayer.setAttribute('class','hidden');
+        gameOver.setAttribute('class','hidden');
+        playerGuessResult.setAttribute('class','hidden');
+        chaningPlayer.setAttribute('class','hidden');
+        IAGuess.setAttribute('class','hidden');
+        IABet.setAttribute('class','hidden');    
     }
-
+    function resetLocalStorage(){
+        localStorage.clear("http://127.0.0.1:5000");
+    }
+//function Display rule
     function displayRule(){
-        let DialogModal:any=document.getElementById('DialogModal').showModal()
-        console.log('test');
-
+        /* let RulesM=document.getElementById('RulesM') as HTMLElement; */
+        RulesM.classList.toggle('hidden');
+        let DialogModal:HTMLElement=document.getElementById('modalRules')as HTMLElement;
+        DialogModal.classList.toggle('hidden');
+        DialogModal.setAttribute('aria-hidden',true);
+        
+    }
+// event listener for when click outside the modal this close it 
+    document.getElementById('RulesM').addEventListener("click", function(e){
+            if (!e.target.closest("#modalRules")){
+                 closeRules(); 
+            }
+    })
+//close the modal windows 
+    function closeRules(){
+        let DialogModal:HTMLElement=document.getElementById('modalRules');
+        DialogModal.removeAttribute('aria-modal');
+        DialogModal.removeAttribute('role');
+        DialogModal.setAttribute('aria-hidden',false);
+        DialogModal.setAttribute('class','hidden');
+        /* let RulesM=document.getElementById('RulesM')as HTMLElement; */
+        /* RulesM.classList.toggle('hidden'); */
+        RulesM.setAttribute('class','hidden');
     }
 }
