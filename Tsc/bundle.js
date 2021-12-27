@@ -3,8 +3,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Player_1 = require("./Player");
 // ------------------------------ BUTTON ---------------------------------------
-let GoplayButton = document.getElementById('Goplay');
-let validateBetButton = document.getElementById('validateChoice');
+let goPlayButton = document.getElementById('goPlay');
+let startPlayButton = document.getElementById("start");
+let toIAGuessButton = document.getElementById('toIAGuess');
 let evenButton = document.getElementById('even');
 let oddButton = document.getElementById('odd');
 let toIABetButton = document.getElementById('toIABet');
@@ -12,6 +13,7 @@ let toPlayerGuessButton = document.getElementById('toPlayerGuess');
 let toPlayerBetButton = document.getElementById('toPlayerBet');
 let replayButton = document.getElementById('replay');
 // ------------------------------ SECTION ---------------------------------------
+let homePage = document.getElementById('homePage');
 let gameChoiceSection = document.getElementById('gameChoice');
 let IAGuessSection = document.getElementById('IAGuess');
 let playerGuessSection = document.getElementById('playerGuess');
@@ -19,127 +21,220 @@ let selectPlayersSection = document.getElementById('selectPlayers');
 let gameOverSection = document.getElementById('gameOver');
 let IABetSection = document.getElementById('IABet');
 let playerGuessResultSection = document.getElementById('playerGuessResult');
-// ---------------------------------TEXTE------------------------------------------------
-let titlePlayerBetChoice = document.getElementById('titlePlayerBetChoice');
+let titleGameChoice = document.getElementById('titleGameChoice');
+let resultGameChoice = document.getElementById('resultGameChoice');
+let titleIAGuess = document.getElementById('titleIAGuess');
+let resultIAGuess = document.getElementById('resultIAGuess');
+let titleGameOver = document.getElementById('titleGameOver');
+let resultGameOver = document.getElementById('resultGameOver');
+let titleIABet = document.getElementById('titleIABet');
+let resultIABet = document.getElementById('resultIABet');
+let titlePlayerGuess = document.getElementById('titlePlayerGuess');
+let titlePlayerGuessResult = document.getElementById('titlePlayerGuessResult');
+let resultPlayerGuessResult = document.getElementById('resultPlayerGuessResult');
 // ------------------------------ LOCAL STORAGE ---------------------------------------
-let username1 = localStorage.getItem('name1');
+let username1;
+username1 = localStorage.getItem('name1');
 // ------------------------------ MATRICULES ---------------------------------------
-let matricule1 = Math.floor(Math.random() * 456) + 1;
 let matricule2 = Math.floor(Math.random() * 456) + 1;
 // ------------------------------ NEW PLAYERS ---------------------------------------
-let p1 = new Player_1.player(username1, matricule1);
-let IA = new Player_1.player("IA", matricule2);
+let p1; // = new player(username1, matricule1);
+let IA; // = new player("Oh Il-Nam", 1);
 // ------------------------------ VARIABLE GLOBALES ---------------------------------------
 let result;
+//Pour le changement de background-image avec une animation.
+//Le div doit être visible à l'écran au moment de l'appel
+//Il faut donc utiliser un setTimeout() avant appel pour voir l'effet de transition
+/**
+ * Change la valeur d'une propriété dans un style.
+ * Exemple, changeStyle("game.css", ".title", "color", "white")
+ * Ira changer dans le fichier de style game.css référencé le style ".title",
+ * et changera "color: xxx" en "color: white"
+ * @param cssFile nom du fichier de style à modifier
+ * @param selector nom du sélecteur CSS recherché
+ * @param prop propriété à changer dans le sélecteur (doit exister)
+ * @param value valeur à attribuer au sélecteur
+ */
+function changeStyle(cssFile, selector, prop, value) {
+    var styles = document.styleSheets;
+    for (let i = 0; i < styles.length; i++) {
+        let href = document.styleSheets[i].href;
+        if (href != null && href.indexOf(cssFile) != -1) {
+            let ruleList = document.styleSheets[i].cssRules;
+            for (let r = 0; r < ruleList.length; r++) {
+                let rule = ruleList[r];
+                if (!(rule instanceof CSSStyleRule)) {
+                    continue;
+                }
+                if (rule.selectorText == selector) {
+                    //Pour une raison étrange prop doit être any
+                    rule.style[prop] = value;
+                }
+            }
+        }
+    }
+}
 // ---------------------- Button AddEvenListener -----------------------
-GoplayButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
-    document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
-    selectPlayersSection.classList.toggle('hidden');
+startPlayButton.addEventListener("click", () => {
+    homePage.classList.add("hidden");
+    selectPlayersSection.classList.remove("hidden");
+    setTimeout(changeStyle, 10, "game.css", "#selectPlayers", "background-image", "url('../Pictures/selectPlayers.jpg')");
+});
+goPlayButton.addEventListener('click', () => {
+    //let matricule1 = Math.floor(Math.random() * 455) + 2; //on évite 1 pris par l'IA
+    p1 = new Player_1.player(username1, 456);
+    IA = new Player_1.player("Oh Il-Nam", 1);
+    changeStyle("game.css", "#selectPlayers", "background-image", "url('../Pictures/selectPlayersBackground.png')");
+    addMarblesButtons();
+    selectPlayersSection.classList.add('hidden');
+    //On tire au sort celui qui commence
     if (randomEvenOrOdd() === "even") {
-        localStorage.setItem("begin", "1");
-        gameChoiceSection.classList.toggle('hidden');
-        addMarblesButtons();
+        //Le joueur commence
+        //localStorage.setItem("begin", "1");
+        p1.begin = true;
+        IA.begin = false;
+        titleGameChoice.innerHTML = `MATRICULE ${p1.getMatricule()} CHOISI TA MISE.`;
+        gameChoiceSection.classList.remove('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoice.jpg')");
     }
     else {
-        localStorage.setItem("begin", "2");
-        IABetSection.classList.toggle('hidden');
-        // L'adversaire commence
+        //IA commence
+        //localStorage.setItem("begin", "2");
+        p1.begin = false;
+        IA.begin = true;
+        IABetSection.classList.remove('hidden');
+        titleIABet.innerHTML = `MATRICULE ${IA.getMatricule()} PARIE`;
+        resultIABet.innerHTML = `${IA.name} A FAIT SON CHOIX.`;
+        setTimeout(changeStyle, 10, "game.css", "#IABet", "background-image", "url('../Pictures/IABet.jpg')");
     }
 });
-validateBetButton.addEventListener('click', () => {
-    document.getElementById('usernameGameChoice').innerHTML = `${p1.name}`;
-    document.getElementById('matriculeGameChoice').innerHTML = `Joueur ${matricule1}`;
-    if (p1.marblesBet === 0) {
-        document.getElementById('titlePlayerBetChoice').innerHTML = `Veuillez choisir un nombre de bille a parier !`;
+toIAGuessButton.addEventListener('click', () => {
+    try {
+        let pairImpair = randomEvenOrOdd();
+        result = IA.guess(pairImpair, p1); //throw error if no marbles bet by p1
+        gameChoiceSection.classList.add('hidden');
+        IAGuessSection.classList.remove('hidden');
+        let s = (IA.gainedOrLost > 1) ? "s" : ""; //billes au pluriel ?
+        titleIAGuess.innerHTML = `MATRICULE <strong>${IA.getMatricule()}</strong> A CHOISI <strong>${pairImpair == "even" ? "PAIR" : "IMPAIR"}.</strong>`;
+        resultIAGuess.innerHTML = result ? `${IA.name} gagne <strong>${IA.gainedOrLost}</strong> bille${s} !` : `${IA.name} perd <strong>${p1.gainedOrLost}</strong> bille${s} !`;
+        changeStyle("game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoiceBackground.png')");
+        if (result) {
+            setTimeout(changeStyle, 10, "game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessWin.jpg')");
+        }
+        else {
+            setTimeout(changeStyle, 10, "game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessLoose.jpg')");
+        }
     }
-    else {
-        gameChoiceSection.classList.toggle('hidden');
-        IAGuessSection.classList.toggle('hidden');
-        let p = randomEvenOrOdd();
-        result = IA.guess(p, p1);
-        document.getElementById('titleIAGuess').innerHTML = `Joueur <strong>${matricule2}</strong> a choisi <strong>${p == "even" ? "Pair" : "Impair"}</strong>`;
-        document.getElementById('resultIAGuess').innerHTML = result ? `L'adversaire a gagné <strong>${IA.gainedOrLost}</strong> billes!` : `L'adversaire a perdu <strong>${p1.gainedOrLost}</strong> billes!`;
+    catch (error) {
+        resultGameChoice.innerHTML = `${p1.name}, clique d'abord sur une bille pour miser !`;
     }
 });
 toIABetButton.addEventListener('click', () => {
-    IAGuessSection.classList.toggle('hidden');
-    if (p1.isDead()) {
-        document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
-        gameOverSection.classList.toggle('hidden');
-    }
-    else if (IA.isDead()) {
-        document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
-        gameOverSection.classList.toggle('hidden');
+    changeStyle("game.css", "#IAGuess", "background-image", "url('../Pictures/IAGuessBackground.png')");
+    IAGuessSection.classList.add('hidden');
+    if (p1.isDead() || IA.isDead()) {
+        updateGameOver();
+        gameOverSection.classList.remove('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameOver", "background-image", "url('../Pictures/gameOver.jpg')");
     }
     else {
-        document.getElementById('guessIAEvenOrOdd').innerHTML = `À <strong>${p1.name}</strong> de deviner  !`;
-        IABetSection.classList.toggle('hidden');
+        IABetSection.classList.remove('hidden');
+        titleIABet.innerHTML = `MATRICULE ${IA.getMatricule()} PARIE`;
+        resultIABet.innerHTML = `${IA.name} A FAIT SON CHOIX.`;
+        setTimeout(changeStyle, 10, "game.css", "#IABet", "background-image", "url('../Pictures/IABet.jpg')");
     }
 });
 toPlayerGuessButton.addEventListener('click', () => {
-    IABetSection.classList.toggle('hidden');
-    playerGuessSection.classList.toggle('hidden');
+    changeStyle("game.css", "#IABet", "background-image", "url('../Pictures/IABetBackground.png')");
+    IABetSection.classList.add('hidden');
+    playerGuessSection.classList.remove('hidden');
+    titlePlayerGuess.innerHTML = `${p1.getMatricule()} TU DOIS DEVINER`;
+    //pas de result, mais les deux boutons
     IA.bet(randomMarblesNumber(IA.marbles));
+    setTimeout(changeStyle, 10, "game.css", "#playerGuess", "background-image", "url('../Pictures/playerGuess.jpg')");
 });
-evenButton.addEventListener('click', () => {
-    playerGuess("even");
-    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1.name} a choisi <strong>Pair</strong>`;
-});
-oddButton.addEventListener('click', () => {
-    playerGuess("odd");
-    document.getElementById('titlePlayerGuessResult').innerHTML = `${p1.name} a choisi <strong>Impair</strong>`;
-});
-toPlayerBetButton.addEventListener('click', () => {
-    playerGuessResultSection.classList.toggle('hidden');
-    if (p1.isDead()) {
-        document.getElementById('tittleWinOrLoose').innerHTML = `Game Over !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `${p1.name}: joueur n°${matricule1}, vous avez perdu !`;
-        gameOverSection.classList.toggle('hidden');
-    }
-    else if (IA.isDead()) {
-        document.getElementById('tittleWinOrLoose').innerHTML = `Victoire !`;
-        document.getElementById('txtWinOrLoose').innerHTML = `Bravo ${p1.name}: joueur n°${matricule1}, vous avez gagné !`;
-        gameOverSection.classList.toggle('hidden');
+evenButton.addEventListener('click', () => playerGuess("even"));
+oddButton.addEventListener('click', () => playerGuess("odd"));
+/**
+ * Appel par clic sur bouton
+ * @param pairOuImpair le choix du joueur
+ */
+function playerGuess(pairOuImpair) {
+    changeStyle("game.css", "#playerGuess", "background-image", "url('../Pictures/playerGuessBackground.png')");
+    result = p1.guess(pairOuImpair, IA);
+    let s = (p1.gainedOrLost > 1) ? "s" : ""; //billes au pluriel ?
+    resultPlayerGuessResult.innerHTML = result ? `${p1.name} gagne ${p1.gainedOrLost} bille${s} !` : `${p1.name} perd ${IA.gainedOrLost} bille${s} !`;
+    playerGuessSection.classList.add('hidden');
+    playerGuessResultSection.classList.remove('hidden');
+    if (result) {
+        setTimeout(changeStyle, 10, "game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultWin.jpg')");
     }
     else {
-        gameChoiceSection.classList.toggle('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultLoose.jpg')");
+    }
+}
+toPlayerBetButton.addEventListener('click', () => {
+    changeStyle("game.css", "#playerGuessResult", "background-image", "url('../Pictures/playerGuessResultBackground.png')");
+    playerGuessResultSection.classList.add('hidden');
+    if (p1.isDead() || IA.isDead()) {
+        updateGameOver();
+        gameOverSection.classList.remove('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameOver", "background-image", "url('../Pictures/gameOver.jpg')");
+    }
+    else {
         addMarblesButtons();
+        titleGameChoice.innerHTML = `MATRICULE ${p1.getMatricule()} CHOISI TA MISE.`;
+        resultGameChoice.innerHTML = ""; //rappel de clic sur bille
+        gameChoiceSection.classList.remove('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoice.jpg')");
     }
 });
 replayButton.addEventListener('click', () => {
-    gameOverSection.classList.toggle('hidden');
+    changeStyle("game.css", "#gameOver", "background-image", "url('../Pictures/gameOverBackground.png')");
+    gameOverSection.classList.add('hidden');
     p1.reset();
     IA.reset();
-    let beginner = localStorage.getItem("begin");
-    if (beginner === "1") {
-        localStorage.setItem("begin", "2");
-        IABetSection.classList.toggle('hidden');
+    if (IA.begin) {
+        IABetSection.classList.remove('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#IABet", "background-image", "url('../Pictures/IABet.jpg')");
     }
     else {
-        localStorage.setItem("begin", "1");
-        gameChoiceSection.classList.toggle('hidden');
+        gameChoiceSection.classList.remove('hidden');
         addMarblesButtons();
+        titleGameChoice.innerHTML = `MATRICULE ${p1.getMatricule()} CHOISI TA MISE.`;
+        gameChoiceSection.classList.remove('hidden');
+        setTimeout(changeStyle, 10, "game.css", "#gameChoice", "background-image", "url('../Pictures/gameChoice.jpg')");
     }
 });
-// ----------------------------- Function VERSUS IA ------------------------------------------------
-function playerGuess(p) {
-    result = p1.guess(p, IA);
-    document.getElementById('txtPlayerGuessResult').innerHTML = result ? `${p1.name} a gagné ${p1.gainedOrLost} billes!` : `${p1.name} a perdu ${IA.gainedOrLost} billes!`;
-    playerGuessSection.classList.toggle('hidden');
-    playerGuessResultSection.classList.toggle('hidden');
-    // Ajouter le text Player guess result section
+function updateGameOver() {
+    titleGameOver.innerHTML = p1.isDead() ? "GAME OVER !" : "VICTOIRE !";
+    resultGameOver.innerHTML = p1.isDead() ? `JOUEUR MATRICULE ${p1.getMatricule()}, VOUS AVEZ PERDU.` : `BRAVO JOUEUR MATRICULE ${p1.getMatricule()}, VOUS GAGNEZ CETTE PARTIE.`;
 }
 // -------------------------- IA random marbles bet and even or odd-------------------
-function randomMarblesNumber(max) {
-    let randomMarbles = Math.floor(Math.random() * max) + 1;
+function randomMarblesNumber(billes) {
+    let randomMarbles;
+    let max;
+    let d100 = Math.floor(Math.random() * 100);
+    if (d100 < 10) {
+        //ce fou parie éventuellement toutes ses billes...
+        max = billes;
+    }
+    else if (d100 < 40) {
+        //parfois jusqu'à 60% de ses billes
+        max = Math.round(billes * 6 / 10);
+    }
+    else {
+        //le plus souvent, jusqu'à 30% de ses billes pour faire durer le plaisir
+        max = Math.round(billes * 3 / 10);
+    }
+    console.log("mise max " + max);
+    randomMarbles = Math.floor(Math.random() * max) + 1;
     console.log("Billes pariées par l'IA: ", randomMarbles);
     return randomMarbles;
 }
 function randomEvenOrOdd() {
-    if (Math.round(Math.random()) === 0) {
+    let randomEvenOrOdd = Math.round(Math.random());
+    if (randomEvenOrOdd === 0) {
         console.log("IA dit pair");
         return "even";
     }
@@ -152,12 +247,11 @@ function randomEvenOrOdd() {
 function addMarblesButtons() {
     let docContext = document.getElementById("btnMarbles");
     docContext.innerHTML = "";
-    console.log("nombre de billes de p1 :", p1.marbles);
     for (let i = 1; i <= p1.marbles; i++) {
         let button = document.createElement("button");
-        button.innerHTML = "<span class='big'> </span>" + i.toString();
-        button.id = "btnMarble" + i;
-        button.className = "marble marble" + p1.colorMarbles[i];
+        button.innerHTML = `<span class='big'> </span>${i}`;
+        button.id = `btnMarble${i}`;
+        button.className = `marble marble${p1.colorMarbles[i]}`;
         button.onclick = function () { p1.bet(i); };
         docContext.appendChild(button);
     }
@@ -170,7 +264,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 let StartPlay = document.getElementById('start');
 let SelectSolo = document.getElementById('solo');
 let SelectMulti = document.getElementById('multiplayers');
-let Go = document.getElementById('Goplay');
+let Go = document.getElementById('goPlay');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
 const DialogModal = document.getElementById('modalRules');
@@ -178,23 +272,39 @@ let texte;
 let ruleClose = document.getElementById('closeRules');
 let RulesM = document.getElementsByClassName('RulesM');
 //Section for the addEventListener    
-StartPlay.addEventListener("click", StartPlayer);
+//StartPlay.addEventListener("click",StartPlayer);
 SelectSolo.addEventListener("click", SelectNumberPlayer);
 SelectMulti.addEventListener("click", SelectNumberPlayer);
 Go.addEventListener("click", goplay);
 home.addEventListener("click", BackHome);
 Rules.addEventListener("click", displayRule);
 ruleClose.addEventListener("click", closeRules);
-//function démarrer la préselection pour une partie
-function StartPlayer() {
-    let index;
-    let selectPlayerDisplay;
-    index = document.getElementById('homePage');
-    index.setAttribute('class', "hidden");
-    selectPlayerDisplay = document.getElementById('selectPlayers');
-    selectPlayerDisplay.removeAttribute('class');
+function preloadImg() {
+    for (let i = 1; i <= 9; i++) {
+        let img = new Image();
+        img.src = `./Pictures/marble${i}.png`;
+    }
 }
-//function select type of game
+//todo
+function preloadImages(array) {
+    if (!preloadImages.list) {
+        preloadImages.list = [];
+    }
+    var list = preloadImages.list;
+    for (var i = 0; i < array.length; i++) {
+        var img = new Image();
+        img.onload = function () {
+            var index = list.indexOf(this);
+            if (index !== -1) {
+                // remove image from the array once it's loaded
+                // for memory consumption reasons
+                list.splice(index, 1);
+            }
+        };
+        list.push(img);
+        img.src = array[i];
+    }
+}
 function SelectNumberPlayer(e) {
     localStorage.removeItem('Type');
     let displayname1 = document.getElementById('Name1');
@@ -224,9 +334,9 @@ function goplay() {
     console.log(versionplayer);
     console.log(localStorage.getItem('Type'));
     if (versionplayer === "solo") {
-        player1 = document.getElementById('username1').value;
-        localStorage.setItem('name1', player1);
-        // player.gameVsIA();
+        player1 = document.getElementById('username1');
+        localStorage.setItem('name1', player1.value);
+        //gameVsIA();
     }
     else {
         player1 = document.getElementById('username1').value;
@@ -314,6 +424,7 @@ class player {
      */
     constructor(playerName, matricule) {
         this.initMarbles = 10; //nombre de billes initiales
+        this.begin = false;
         this.colorMarbles = []; //couleurs des billes du joueur
         this.marbles = this.initMarbles;
         this.name = playerName;
@@ -323,19 +434,22 @@ class player {
         this.initColors();
     }
     /**
-     * Garde nom et matricule du joueur, reset le reste
+     * Garde nom et matricule du joueur, reset le reste.
+     * Change le joueur qui commence.
      */
     reset() {
         this.marbles = this.initMarbles;
         this.initColors();
         this.marblesBet = 0;
         this.gainedOrLost = 0;
+        this.begin = !this.begin;
     }
     /**
      * Attribue un numéro de couleur de bille aléatoire entre 1 et 9
+     * Ce numéro sera relié aux marbles[1..9].png
      */
     initColors() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 2 * this.initMarbles; i++) {
             this.colorMarbles.push(Math.floor(Math.random() * 9) + 1);
         }
     }
@@ -363,7 +477,7 @@ class player {
         this.marblesBet = marbles;
     }
     /**
-     * Le joueur doit deviner si la mise du player2 est paire ou impaire
+     * Le joueur devine si la mise du player2 est paire ou impaire
      * Le nombre de billes de chaque joueur est mis à jour en conséquence
      * @param choice le choix entre pair ou impair
      * @param player2 le joueur dont on doit deviner la mise (marblesBet)
@@ -407,21 +521,23 @@ class player {
     }
 }
 exports.player = player;
-//Exemples d'utilisation
-// let p1 = new player("hervé", 1);
-// let p2 = new player("jc", 456);
-// console.log(p1.getMatricule());
-// p2.bet(4);
-// if(p1.guess("impair", p2)) {
-//     console.log("gagné");
-// } else {
-//     console.log("perdu");
-// }
-// console.log(p1);
-// console.log(p2);
-// p1.bet(3);
-// if (p2.guess("impair", p1)) {
-//     console.log("p2 a bien deviné un nombre pair et gagne.");
-// };
+/**
+ * Exemples d'utilisation
+let p1 = new player("hervé", 1);
+let p2 = new player("jc", 456);
+console.log(p1.getMatricule());
+p2.bet(4);
+if(p1.guess("odd", p2)) {
+    console.log("p1 a gagné");
+} else {
+    console.log("p1 a perdu");
+}
+console.log(p1);
+console.log(p2);
+p1.bet(3);
+if (p2.guess("impair", p1)) {
+    console.log("p2 a bien deviné un nombre pair et gagne.");
+};
+ */
 
-},{}]},{},[3,2,1]);
+},{}]},{},[1,2,3]);

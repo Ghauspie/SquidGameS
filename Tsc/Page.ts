@@ -13,7 +13,7 @@ import {player} from "./Player";
     let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
 //Section for the addEventListener    
 
-    StartPlay.addEventListener("click",StartPlayer);
+    //StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
     SelectMulti.addEventListener("click",SelectNumberPlayer);
     Go.addEventListener("click",goplay);

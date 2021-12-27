@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 let StartPlay = document.getElementById('start');
 let SelectSolo = document.getElementById('solo');
 let SelectMulti = document.getElementById('multiplayers');
-let Go = document.getElementById('Goplay');
+let Go = document.getElementById('goPlay');
 let home = document.getElementById('backToHomePage');
 let Rules = document.getElementById('rules');
 const DialogModal = document.getElementById('modalRules');
@@ -11,23 +11,39 @@ let texte;
 let ruleClose = document.getElementById('closeRules');
 let RulesM = document.getElementsByClassName('RulesM');
 //Section for the addEventListener    
-StartPlay.addEventListener("click", StartPlayer);
+//StartPlay.addEventListener("click",StartPlayer);
 SelectSolo.addEventListener("click", SelectNumberPlayer);
 SelectMulti.addEventListener("click", SelectNumberPlayer);
 Go.addEventListener("click", goplay);
 home.addEventListener("click", BackHome);
 Rules.addEventListener("click", displayRule);
 ruleClose.addEventListener("click", closeRules);
-//function démarrer la préselection pour une partie
-function StartPlayer() {
-    let index;
-    let selectPlayerDisplay;
-    index = document.getElementById('homePage');
-    index.setAttribute('class', "hidden");
-    selectPlayerDisplay = document.getElementById('selectPlayers');
-    selectPlayerDisplay.removeAttribute('class');
+function preloadImg() {
+    for (let i = 1; i <= 9; i++) {
+        let img = new Image();
+        img.src = `./Pictures/marble${i}.png`;
+    }
 }
-//function select type of game
+//todo
+function preloadImages(array) {
+    if (!preloadImages.list) {
+        preloadImages.list = [];
+    }
+    var list = preloadImages.list;
+    for (var i = 0; i < array.length; i++) {
+        var img = new Image();
+        img.onload = function () {
+            var index = list.indexOf(this);
+            if (index !== -1) {
+                // remove image from the array once it's loaded
+                // for memory consumption reasons
+                list.splice(index, 1);
+            }
+        };
+        list.push(img);
+        img.src = array[i];
+    }
+}
 function SelectNumberPlayer(e) {
     localStorage.removeItem('Type');
     let displayname1 = document.getElementById('Name1');
@@ -57,9 +73,9 @@ function goplay() {
     console.log(versionplayer);
     console.log(localStorage.getItem('Type'));
     if (versionplayer === "solo") {
-        player1 = document.getElementById('username1').value;
-        localStorage.setItem('name1', player1);
-        // player.gameVsIA();
+        player1 = document.getElementById('username1');
+        localStorage.setItem('name1', player1.value);
+        //gameVsIA();
     }
     else {
         player1 = document.getElementById('username1').value;
