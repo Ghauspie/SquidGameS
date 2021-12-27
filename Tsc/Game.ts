@@ -10,6 +10,7 @@ let toIABetButton = document.getElementById('toIABet') as HTMLButtonElement;
 let toPlayerGuessButton = document.getElementById('toPlayerGuess') as HTMLButtonElement;
 let toPlayerBetButton = document.getElementById('toPlayerBet') as HTMLButtonElement;
 let replayButton = document.getElementById('replay') as HTMLButtonElement;
+let backHome = document.getElementById('backToHomePage') as HTMLButtonElement;
 
 
 let usernameInput = document.getElementById('username1') as HTMLInputElement;
@@ -155,6 +156,11 @@ replayButton.addEventListener('click', () => {
     }
 
 });
+
+backHome.addEventListener('click', () => {
+    p1.reset();
+    IA.reset();
+})
 
 // ----------------------------- Function VERSUS IA ------------------------------------------------
 
