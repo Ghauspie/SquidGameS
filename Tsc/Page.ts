@@ -12,6 +12,7 @@ import {player} from "./Player";
     let ruleClose=document.getElementById('closeRules');
     let RulesM:HTMLElement=document.getElementsByClassName('RulesM');
 //Section for the addEventListener    
+
     StartPlay.addEventListener("click",StartPlayer);
     SelectSolo.addEventListener("click",SelectNumberPlayer);
     SelectMulti.addEventListener("click",SelectNumberPlayer);

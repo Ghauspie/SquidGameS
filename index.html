@@ -48,46 +48,49 @@
             </div>
             <div class="inputplayer">
                 <div id="Name1" class="hidden">
-                    <p class="Name1">Quel est votre nom joueur matricule  temporaire 1 ?</p>
-                    <input type="text" id="username1" >
+                    <p class="Name1 inputLabel">Entrez votre nom joueur 1</p>
+                    <input type="text" id="username1" class="inputPLayerUsername">
                 </div>
                 <div id="Name2" class="hidden">
-                    <p class="Name2">Quel est votre nom joueur matricule temporaire 2 ?</p>
-                    <input type="text" id="username2">  
+                    <p class="Name2">Entrez votre nom joueur 2</p>
+                    <input type="text" id="username2" class="inputPLayerUsername">  
                 </div>
             </div>
-            <button id="Goplay">Go play for my life</button>
+            <button id="Goplay" class="btnLigthEffect">Go play for my life</button>
         </section>
 
-        <section id="gameChoice" class="hidden">>
-            <h2>CHOISIR LE NOMBRE DE BILLES A MISER</h2>
+        <section id="gameChoice" class="hidden">
+            <div id="usernameGameChoice"></div>
+            <div id="matriculeGameChoice"></div>
+            <h2 id="titlePlayerBetChoice"></h2>
+            <div id="btnMarbles" class="hover15"></div>
             <div class="marblesBet">
-                <button id="validateChoice">Valider</button>
+                <button id="validateChoice" class="btnLigthEffect btnCenter">Valider</button>
             </div>
             <br>
-            <div id="btnMarbles" class="hover15"></div>
+
         </section>
         <section id="IAGuess" class="hidden">
             <h2 id="titleIAGuess"></h2>
             <div id="resultIAGuess"></div>
-            <button id="toIABet">Continuer</button>
+            <button id="toIABet" class="btnLigthEffect">Continuer</button>
         </section>
         <section id="IABet" class="hidden">
-            <h2>IA Bet</h2>
-            <div>IA Even or Odd</div>
-            <button id="toPlayerGuess">Continuer</button>
+            <h2 id="titleIABet">L'adversaire parie un nombre de bille ! </h2>
+            <div id="guessIAEvenOrOdd">A vous de deviner si c'est pair ou impair</div>
+            <button id="toPlayerGuess" class="btnLigthEffect">Continuer</button>
         </section>
         <section id="playerGuess" class="hidden">
-            <h2>Pair ou Impair</h2>
+            <h2 id="titlePlayerGuess">Choisissez pair ou impair</h2>
             <div class="evenOrOdd">
-                <button id="even">Pair</button>
-                <button id="odd">Impair</button>
+                <button id="even" class="btnLigthEffect">Pair</button>
+                <button id="odd" class="btnLigthEffect">Impair</button>
             </div>
         </section>
         <section id="playerGuessResult" class="hidden">
-            <h2>Player result Guess</h2>
-            <div>You Win/Loose</div>
-            <button id="toPlayerBet">Continuer</button>
+            <h2 id="titlePlayerGuessResult"></h2>
+            <div id="txtPlayerGuessResult"></div>
+            <button id="toPlayerBet" class="btnLigthEffect">Continuer</button>
         </section>
         <section id="changingPlayer" class="hidden">
             <button id="myTurn">Je suis prêt!</button>
@@ -102,15 +105,14 @@
                 <p class="modal-card-title">Comment fonctionne le jeux des billes ?</p>
                 </header>
                 <section id="modal-Content">
-                    Le jeux des billes se joue à deux. <br> Chaque joueur obtient un sac qui contient 10 billes. <br> On tire au sort qui commence : ce joueur doit faire deviner, et met dans sa main (en secret) le nombre de billes qu'il souhaite miser, au minimum une.<br> Puis son adversaire doit deviner si ce nombre est pair ou impair, et l'annonce à haute voix. Les billes misées sont dévoilées. <br> Si le joueur a bien deviné pair ou impair, alors il remporte les billes misées.  Sinon, c'est lui qui doit donner le nombre de billes misées.<br> On passe alors au tour suivant, et chacun échange son rôle. <br> Si un joueur n'a plus aucune bille, il perd la partie. Et il ne reverra plus jamais la lumière
-                </section>
+                    Le jeux des billes se joue à deux. <br> Chaque joueur obtient un sac qui contient 10 billes. <br> On tire au sort qui commence : ce joueur doit faire deviner, et met dans sa main (en secret) le nombre de billes qu'il souhaite miser, au minimum une.<br> Puis son adversaire doit deviner si ce nombre est pair ou impair, et l'annonce à haute voix. Les billes misées sont dévoilées. <br> Si le joueur a bien deviné pair ou impair, alors il remporte les billes misées.  Sinon, c'est lui qui doit donner le nombre de billes misées.<br> On passe alors au tour suivant, et chacun échange son rôle. <br> Si un joueur n'a plus aucune bille, il perd la partie. Et il ne reverra plus jamais la lumière                </section>
             </div>
         </div>
     </section>
         <section id="gameOver" class="hidden">
-            <h2>Game Over</h2>
-            <div></div>
-            <button id="replay">Recommencer une partie</button>
+            <h2 id="tittleWinOrLoose"></h2>
+            <div id="txtWinOrLoose"></div>
+            <button id="replay" class="btnLigthEffect">Recommencer une partie</button>
         </section>
     </main>
     <footer>
