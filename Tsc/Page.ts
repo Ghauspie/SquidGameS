@@ -61,6 +61,7 @@ import {player} from "./Player";
         let player2: string;
         let versionplayer: string;
         versionplayer=localStorage.getItem('Type');
+        console.log(versionplayer);
         console.log(localStorage.getItem('Type'));
         if(versionplayer==="solo")
         {
@@ -115,7 +116,7 @@ import {player} from "./Player";
     }
 //function Display rule
     function displayRule(){
-        let RulesM=document.getElementById('RulesM') as HTMLElement;
+        /* let RulesM=document.getElementById('RulesM') as HTMLElement; */
         RulesM.classList.toggle('hidden');
         let DialogModal:HTMLElement=document.getElementById('modalRules')as HTMLElement;
         DialogModal.classList.toggle('hidden');
@@ -135,7 +136,7 @@ import {player} from "./Player";
         DialogModal.removeAttribute('role');
         DialogModal.setAttribute('aria-hidden',false);
         DialogModal.setAttribute('class','hidden');
-        let RulesM=document.getElementById('RulesM')as HTMLElement;
+        /* let RulesM=document.getElementById('RulesM')as HTMLElement; */
         /* RulesM.classList.toggle('hidden'); */
         RulesM.setAttribute('class','hidden');
     }

@@ -34,7 +34,6 @@ function SelectNumberPlayer(e) {
     let displayname2 = document.getElementById('Name2');
     if (displayname1.getAttribute("class") !== 'hidden') {
         displayname1.setAttribute('class', 'hidden');
-
     }
     if (displayname2.getAttribute("class") !== 'hidden') {
         displayname2.setAttribute('class', 'hidden');
@@ -55,6 +54,7 @@ function goplay() {
     let player2;
     let versionplayer;
     versionplayer = localStorage.getItem('Type');
+    console.log(versionplayer);
     console.log(localStorage.getItem('Type'));
     if (versionplayer === "solo") {
         player1 = document.getElementById('username1').value;
@@ -108,7 +108,7 @@ function resetLocalStorage() {
 }
 //function Display rule
 function displayRule() {
-    let RulesM = document.getElementById('RulesM');
+    /* let RulesM=document.getElementById('RulesM') as HTMLElement; */
     RulesM.classList.toggle('hidden');
     let DialogModal = document.getElementById('modalRules');
     DialogModal.classList.toggle('hidden');
@@ -127,7 +127,7 @@ function closeRules() {
     DialogModal.removeAttribute('role');
     DialogModal.setAttribute('aria-hidden', false);
     DialogModal.setAttribute('class', 'hidden');
-    let RulesM = document.getElementById('RulesM');
+    /* let RulesM=document.getElementById('RulesM')as HTMLElement; */
     /* RulesM.classList.toggle('hidden'); */
     RulesM.setAttribute('class', 'hidden');
 }

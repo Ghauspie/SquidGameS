@@ -177,7 +177,6 @@ const DialogModal = document.getElementById('modalRules');
 let texte;
 let ruleClose = document.getElementById('closeRules');
 let RulesM = document.getElementsByClassName('RulesM');
-
 //Section for the addEventListener    
 StartPlay.addEventListener("click", StartPlayer);
 SelectSolo.addEventListener("click", SelectNumberPlayer);
@@ -222,6 +221,7 @@ function goplay() {
     let player2;
     let versionplayer;
     versionplayer = localStorage.getItem('Type');
+    console.log(versionplayer);
     console.log(localStorage.getItem('Type'));
     if (versionplayer === "solo") {
         player1 = document.getElementById('username1').value;
@@ -235,7 +235,6 @@ function goplay() {
         localStorage.setItem('name2', player2);
         // player.gameMultiplayers();
     }
-
 }
 //Function return home and reset
 function BackHome() {
@@ -276,7 +275,7 @@ function resetLocalStorage() {
 }
 //function Display rule
 function displayRule() {
-    let RulesM = document.getElementById('RulesM');
+    /* let RulesM=document.getElementById('RulesM') as HTMLElement; */
     RulesM.classList.toggle('hidden');
     let DialogModal = document.getElementById('modalRules');
     DialogModal.classList.toggle('hidden');
@@ -286,7 +285,6 @@ function displayRule() {
 document.getElementById('RulesM').addEventListener("click", function (e) {
     if (!e.target.closest("#modalRules")) {
         closeRules();
-
     }
 });
 //close the modal windows 
@@ -296,7 +294,7 @@ function closeRules() {
     DialogModal.removeAttribute('role');
     DialogModal.setAttribute('aria-hidden', false);
     DialogModal.setAttribute('class', 'hidden');
-    let RulesM = document.getElementById('RulesM');
+    /* let RulesM=document.getElementById('RulesM')as HTMLElement; */
     /* RulesM.classList.toggle('hidden'); */
     RulesM.setAttribute('class', 'hidden');
 }
@@ -426,4 +424,4 @@ exports.player = player;
 //     console.log("p2 a bien deviné un nombre pair et gagne.");
 // };
 
-},{}]},{},[3,1,2]);
+},{}]},{},[3,2,1]);
