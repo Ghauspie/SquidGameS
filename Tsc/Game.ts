@@ -10,6 +10,8 @@ let toIABetButton = document.getElementById('toIABet') as HTMLButtonElement;
 let toPlayerGuessButton = document.getElementById('toPlayerGuess') as HTMLButtonElement;
 let toPlayerBetButton = document.getElementById('toPlayerBet') as HTMLButtonElement;
 let replayButton = document.getElementById('replay') as HTMLButtonElement;
+let backToHomePageButton = document.getElementById('backToHomePage') as HTMLButtonElement;
+
 
 
 let usernameInput = document.getElementById('username1') as HTMLInputElement;
@@ -139,6 +141,11 @@ toPlayerBetButton.addEventListener('click', () => {
         addMarblesButtons();
     }
 });
+
+backToHomePageButton.addEventListener('click', () => {
+    p1.reset();
+    IA.reset();
+})
 
 replayButton.addEventListener('click', () => {
     gameOverSection.classList.toggle('hidden');

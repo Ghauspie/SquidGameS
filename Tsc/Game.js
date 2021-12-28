@@ -10,6 +10,7 @@ let toIABetButton = document.getElementById('toIABet');
 let toPlayerGuessButton = document.getElementById('toPlayerGuess');
 let toPlayerBetButton = document.getElementById('toPlayerBet');
 let replayButton = document.getElementById('replay');
+let backToHomePageButton = document.getElementById('backToHomePage');
 let usernameInput = document.getElementById('username1');
 // ------------------------------ SECTION ---------------------------------------
 let gameChoiceSection = document.getElementById('gameChoice');
@@ -122,6 +123,10 @@ toPlayerBetButton.addEventListener('click', () => {
         gameChoiceSection.classList.toggle('hidden');
         addMarblesButtons();
     }
+});
+backToHomePageButton.addEventListener('click', () => {
+    p1.reset();
+    IA.reset();
 });
 replayButton.addEventListener('click', () => {
     gameOverSection.classList.toggle('hidden');
